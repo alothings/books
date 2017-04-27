@@ -1,0 +1,560 @@
+#+STARTUP: hidestars
+#+STARTUP: indent
+
+* Data Structures and Algorithms in Python
+- www.wiley.com/college/goodrich
+
+** 1 Python Primer
+*** 1.2 Objects in Python
+- Python is an object-oriented language and *classes* form the basis for all data types.
+**** Identifiers, Objects, and Assignment
+  temperature = 98.6
+- temperature is the *identifier*, aka name.
+- the *identifier* is associated with the object float with the value of 98.6
+***** Identifiers
+Are case-sensitive
+Identifiers are like reference variable in Java or pointer variable in C++.
+Each identifier is associated with the memory address of the object.
+
+- Note python uses *alias*, so original = temperature makes original point to the same object as temperature.
+***** Accessors:
+- Methods of a class that return information about the state of object, but do not modify it.
+***** Mutators (or update methods):
+- DO change the state of an object (like sort())
+***** Sequences: Collection of values in which order is significant
+- list: stores sequence of references to its elements. Dynamic
+- tuples: like lists but immutable
+***** Set and Frozenset classes
+- set: represents mathematical notion of a set. Collection of elements without duplicates nor order. Optimized to check if element is contained. Can only contain instances of *immutable* types.
+- frozenset: is a set thats immutable.
+***** dict
+
+*** 1.3 Expressions, Operators, and Precedence
+- / true division
+- // integer division
+- and & or are short circuit (don't need to eval second operand)
+
+Note that extened assignment operators can mutate elements without reassigning. For isntance
+alpha = [1,2,3]
+beta = alpha          # alias for alpha
+beta += [4,5]         # extends original
+beta = beta + [6,7]   # reassings beta to a new list 
+print(alpha)          # outputs: [1,2,3,4,5]
+**** Bitwise Operators
+- ~ bitwise complement
+- & bitwise and
+- | bitwise or
+- ^ bitwise exclusive-or
+- << shift bits left, filling with zeros
+- >> shift bits to right, filling with sign bit
+**** Sequence Operators
+Each of pythons built-in sequence types str,stuple,list support:
+- s[j]
+- s[start:stop] which slices [start,stop)
+- s[start:stop:step] 
+- s + t concatenates
+- k * s shortand for s + s .. + s (k times)
+- val in s: check containment
+- val not in s: check non-containment
+**** Operators for Sets and Dictionaries
+- key *in* s, key *not in* s
+- ==, !=, <=, >=, | (uniont), & (intersection)
+- s1 - s2 set of elements in s1 but not in s2
+- s1 ^ s1 set of elements in only s1 or s2
+  
+*** 1.4 Control Flow
+- if, elif, else.
+- while
+- for element in iterable, for i in range()
+- break, continue
+
+*** 1.5 Functions
+- Function: describe traditional, stateless function invoked without the context of a class or instance. Such as sorted(data)
+- Method: a member function invoked upon a specific object, such as data.sort()
+When a function is called, Python creates a dedicated *activation record* that stores info of the current call, including the *namespace* to manage all *identifiers* that have a local scope.
+**** 1.5.1 Information Passing
+- formal parameters: parameters describing input
+- actual parameters: object sent when functin is called.
+- Mutable Parameters: makes it possible for the body of a function to alter the object passed as an actual parameter.
+#+BEGIN_SRC python
+def scale(data, factor):
+  for j in range(len(data)):
+    data[j] *= factor
+#+END_SRC
+- The code above shows that the body of the function can modify the object. Because data (the formal parameter) works as an alias for the actual parameter.
+- Python is polymorphic, also functions can declare one or more default values for parameters. Like 
+  - def foo(a, b=15, c=27)
+- Remember: In python, functions are first-class objects(1.10).
+**** 1.5.2 Python's built-in functions
+Chart on page 29
+
+*** 1.6 Simple I/O
+- print(a, b, .., sep=":"): can modify separator
+- input(): optional string, always returns string. Do something like:
+  + year = int(input('In what year were you born'))
+**** 1.6.2 Files
+fp = open('sample.txt') returns a proxy for interactions. Allows read-only access to file.
+r: reading
+w: writing (causing existing file to be overwritten)
+a: appending to existing file
+rb, wb: working with binary files 
+***** Reading from file
+To access a file, beging with creating a proxy with open:
+- fp = open('sample.txt')
+
+Optional second parameter: r (reading), w (writing), a (appending), rb (read binary), wb (write binary)
+
+most basic command for reading via proxy is read method.
+- fp.read() or fp.read(k): return remaining contents, or return next k bytes
+- fp.readline() return corrent line
+- fp.readlines() return all lines
+- fp.seek(k) change the current position to be at the kth byte
+- fp.tell() return current position as byte-offset from start
+- fp.write(string), fp.writelines(seq)
+
+*** 1.7 Exception Handling
+Page 33
+- raise: raise ValueError('wrong'): throws exception
+Catching Exceptions: "Look before you leap."
+- if y != 0: ration = x/y, else do something else.
+Or "Easier ask for forgiveness than permission"
+- try: ratio = x/y, except ZeroDivisionError: do something else
+
+*** 1.8 Iterators and Generators
+**** Iterators
+They are used to allow objects to be iterable, like: 
+- for element in iterable:
+    do something..
+
+*Iterator*: object that manages an iteration through a series of values. So if i identifies an iterator object, then calling next(i) produces the next element until geting StopIteration exception.
+
+*Iterable*: object, obj, that produces an iterator via the syntax iter(obj)
+
+By this definitions:
+- _instance_ of a _list_ is an iterable, but not an iterator.
+  however, an iterator object can be produced with syntax i=iter(data), and then each call to next(i) returns an element of that list.
+- It is possible to create multiple *iterators* from the same iterable object. Note iterator does not store its own copy of the iterable object. So if it is modified while iterating, it will report the updated contents of the list.
+
+**** Generators
+Most convenient technique for creating *iterators* in Python is by using *generators*.
+A *generator* is just a function that instead of having a *return* statement, it has a *yield* statement.
+#+BEGIN_SRC python
+def factors(n)            # traditonal f to compute factors
+  results = []
+  for k in range(1, n+1):
+    if n % k == 0:
+      results.append(k)   # add k to list
+  return results          # return entire list
+
+#+END_SRC
+
+#+BEGIN_SRC python
+def factors(n):           # generator that computes factors
+  for k in range(1, n+1):
+    if n % k == 0:        # instead of appending to list
+      yield k             # yield each iteam k
+#+END_SRC
+
+Then that can be used in a loop like:
+
+#+BEGIN_SRC python
+for factor in factors(100):
+  do something
+#+END_SRC
+
+*** 1.9 Python Conveniences  
+**** Support for *conditional expression* 
+  + expression1 *if* condition *else* expression2
+
+**** *comprehension syntax* like *list comprehension*
+- [expression *for* value *in* iterable *if* condition]
+- [expression *for* value *in* iterable]
+Examples:
+squares = [ k*k for k in range(1, n+1)]
+
+- [ k*k for k in range(1, n+1) ]      list comprehension
+- { k*k for k in range(1, n+1) }      set 
+- ( k*k for k in range(1, n+1) )      generator
+- { k : k*k for k in range(1, n+1) }  dictionary
+ 
+**** Packagin/Unpackaging sequences
+Like: a,b,c = range(7,10)
+Simultaneous assignments j,k = k,j  
+
+*** 1.10 Scopes
+**** First-class Objects
+Are instances of a type that can be:
+- assigned to identifier,
+- passed as a parameter,
+- returned by a function.
+In python, all data types like int and list are first-class types, but additionally *functions* are as well. Example:
++ scream = print
++ scream("Hello")
+
+*** 1.11 Modules and Import Statements
+Example: from math import pi, sqrt or import math, in which case the use should be math.pi.
+
+- Use: if __name__ == '__main__':
+To place commands that will be executed if module is directly invoked as script, but not when it is imported as a module. This is specially ised for *unit tests*
+
+Existing modules: array, collections, copy, math, os, random, re, sys, time, etc..
+
+
+** 2 OOP
+In OO Paradigm, main actors are *objects*.
+Each *object* is an *instance* of a *class*.
+Class has:
+- Instance variables (aka data members)
+- Methods (member functions)
+  
+*** 2.1 Goals, Principles, and Patterns
+**** 2.1.1 OO Design Goals
+***** Robustness   : Capable of handling unexpected inputs
+***** Adaptability : Aka Evolvability, so it can run withminimal change on different hardward or OS
+***** Reusability  : Same code should be usable as a component of different systems.
+
+**** 2.1.2 OO Design Principles
+***** Modularity   : Helps support Robustness and Reusability. 
+Different components of a software system are divided into separate functional units
+
+***** Abstraction  : To distill a complicated system down to its most fundamental parts
+Uses ADTs (abstract data types). ADT specifies what and not how. ADT is a mathematical model, it specifies:
+- data stored
+- operations supported on such data
+- types of parameters of the operations
+Set of behaviors supported by ADT = *public interface*
+
+In Python, supports ABC (abstract base class): ABC cannot be instantiated, but defines methods that all implementations of the abstraction must have.
+Concrete classes that inherit ABC
+
+***** Encapsulation: Diff components of system should not reveal internat details of their implementations
+Pros: Gives programmer freedom to implement the details of a component without concern that other programmers will be writing code dependent on those internal components.
+Yields: Robustness and adaptability. Sincea public interface for such component will need to be created.
+
+In Python, variables with underscore are nonpublic: (_secret)
+
+**** 2.1.3 Design Patterns
+Design pattern = Describes a solution to a "typical" software design problem. Provides general template for solution for many diff situations.
+
+Researchers have developed a variety of organizational concepts and methodologies for designing quality OO Software.
+
+***** Examples of ALgorithm Design Patterns:
+- Recursion
+- Amortization
+- Divide and conquer
+- Prune-and-search aka Decrease and conquer
+- Brute force
+- Dynamic Programming
+- Greedy method
+
+***** Examples of Engineering Design Patterns:
+- Iterator
+- Adapter
+- Position
+- Composition
+- Template method
+- Locator
+- Factory method
+  
+*** 2.2 Software Development
+Traditional steps: Design, IMplementation, Testing & Debugging
+
+**** 2.2.1 Design
+Helpful rules to determine how to design classes:
+- Responsabilities: Divide work into different actors, each with their own responsability. They are the classes
+- Independence: Define work of each class to be as independent from other classes as possible. Subdivide responsabilities between classes to make the autonomous.
+- Behaviors: Define behaviors carefully and precisely, so consequences are well udnerstood by other classes.
+
+Notes:
+- Can use UML to express the design. Like class diagram.
+- An intermediate step before implementations: Pseudo-code.
+
+**** 2.2.3 Coding style and Documentation
+Encapsulation: private identifiers being with _underscore
+Docstring """ for documentation.
+
+**** 2.2.4 Testing and Debugging
+Perform unit test in:
+- if __name__ == '__main__': 
+
+*** 2.3 Class Definition
+**** 2.3.2 Operator Overloading and Python's Special Methods
+**** 2.3.4 Iterators
+
+#+BEGIN_SRC python
+class SequenceIterator:
+  def __init__(self, sequence):
+    self._seq = sequence
+    self._k = -1
+
+  def __next__(self):
+    self._k += 1
+    if self._k < len(self._seq):
+      return(self._seq[self._k])    # return the data element
+    else:
+      raise StopIteration()
+
+ def __iter__(self):
+  return self             # By convention, always return self
+
+#+END_SRC
+
+*** 2.4 Inheritance
+**** 2.4.1 Extending class
+**** 2.4.3 Abstract Base Classes 
+
+*** 2.5 Namespaces and Object-Orientation
+**** 2.5.1 Instance and Class namespaces
+**** 2.5.2 Name Resolution & Dunamic Dispatch
+
+*** 2.6 Shallow and Deep Copying
+
+
+** 3 Algorithm Analysis
+Data structure: systematic way of organizing and accessing data
+Algorithm: step-by-step procedure for performing some task
+*** 3.1 Experimental Studies
+Determining the elapsed time by recording in it just before and just after the algorithm occurs:
+- start_time = time() # record starting time
+- end_time = time()   # record the ending time
+- elapsed = end_time - start_time
+This method is not practical for all instances, so need to find a different approach. Maybe time as a function of input?
+
+*** 3.2 The seven functions used in this Book
+Seven most important functions used in the analysis of alogirhtms. 
+- The Constant Function: f(n) = c
+- The Logarithm Function: x = logb(n) iff b^x = n
+- Linear: f(n) = n
+- N-log-N: f(n) = nlogn, 
+- Quadratic: f(n) = n^2
+- Cubic and other Polynomials: f(n) = n^3
+- Exponential Function: b^n
+
+*** 3.3 Asymptotic Analysis
+Big-Oh notation. 
+
+*** 3.4 Simple Justification Techniques
+Technique to make claims about an algorith. Such is showing it is correct or that it runs fast.
+- *By example* (or by counter exampleto negate something)
+- *The Contra Attack*: Contrapositive and COntradiction. Contrapositive method is like looking through a negative mirror. To justyfy "if p is true, then q is true", we can establish that "if q is not true, then p is not true". Rememer *DeMorgan's Law*. 
+- *Induction and Loop Variants*: showing q(n) is true for n=1, then inductive step is true for n>k, namely, show "if q(j) is true for al j<n, then q(n) is true"
+
+
+
+** 4 Recursion
+Important technique in the study of data structures and algorithms. Will be used in chapters 8 and 12 (Trees and Sorting and Selection)
+*** 4.1 Ilustrative Examples
+**** Factorial Function: classic math function naturally recursive
+Definition:
+- n! = 1                      , if n = 0
+     = n*(n-1)*(n-2)...2*1    , if n <= 1
+which can also be written as
+- n! = 1                      , if n = 0      # base case
+     = n*(n-1)!               , if n <= 1
+
+In Python, each time a function is called, a structure known as *activation reccord* or *frame* is created to store info on the progress of that invocation. 
+During recursion, the former call is suspended and its  *activation record* stores the place that will resume when the nested function is done. There is a different activation record for each active call.
+
+**** English Ruler: has recursive pattern example of fractal struct.
+Drawing the markings of a typical English ruler. Like:
+----0
+-
+--
+-
+---
+-
+--
+-
+----1
+
+It is a simple example of a fractal, a shape that has a self-recursive structure at varios levels of magnification.
+
+**** Binary Search: duh
+**** File System: used to explore and manage file systems
+*** 4.2 Analyzing Recursive Algorithms
+*** 4.3 Recursion run Amok
+*** 4.4 Further Examples of Recursion
+*** 4.5 Designing Recursive Algorithms
+Follows the following form:
+- Test for base cases: (exit)
+- Recur: It should make progress towards base case
+
+*** 4.6 rEliminating Tail Recursion
+
+
+** 5 Array-based sequences
+*** 5.1 Python's Sequence Types
+*** 5.2 Low-Level Arrays
+*** 5.3 Dynamic arrays and amortization
+*** 5.4 Efficiency of Python's sequence types
+*** 5.5 Using Array-based sequences
+*** 5.6 Multidimensional Data Sets
+
+
+** 6 Stacks, Queues, and Deques
+*** 6.1 Stacks
+*** 6.2 Queues
+*** 6.3 Double-ended Queues
+
+
+** 7 Linked Lists
+*** 7.1 Singly Linked Lists
+*** 7.2 Circularly linked lits
+*** 7.3 Doubly linked lits
+*** 7.4 The positional list ADT
+*** 7.5 Sorting a Positional List
+*** 7.7 Link-based vs Array-based sequences
+
+
+** 8 Trees
+*** General Trees
+*** Binary Trees 
+*** Implementing Trees
+*** Tree Traversal Algorithms
+**** Preorder and postorder Traversal for general trees
+**** Breadth-first 
+**** Inorder traversal for binary tree
+**** Implementing tree traversals in Python
+
+
+*** Case Study: An Expression Tree
+
+
+** 9 Priority Queues
+*** 9.1 The Priority Queue Abstract Data Type
+*** 9.2 Implementing Priority Queue
+*** 9.3 Heaps
+*** 9.4 Sorting with a Priority Queue
+*** 9.5 Adaptable Priority Queues
+
+
+** 10 Maps, Hash Tables, and Skip Lists
+*** 1 Maps and Dictionaries
+*** 2 Hash Tables
+*** 3 Sorted Maps
+*** 4 Skip Lists
+*** 5 Sets, Multisents, and Multimaps
+
+
+** 11 Search Trees 
+*** 1 Binary Search Trees
+*** 2 Balanced Search Trees
+*** 3 AVL Trees
+*** 4 Splay Trees
+*** 5 (2,4) Trees
+*** 6 Red-Black Trees
+
+
+** 12 Sorting and Selection
+*** 12.2 Merge-Sort
+*** 12.3 Quick-Sort
+*** 12.4 Studying Sorting through an Algorithmic Lens
+*** 12.5 Comparing Sorting Algorithms
+*** 12.6 Python's Built-in sorting functions
+*** 12.7 Selection
+
+
+** 13 Text Processing
+*** 13.1 Abunadnce of Digitized Text
+*** 13.2 Pattern-matching algorihtms
+*** [#A] 13.3 Dynamic Programming
+*** 13.4 Text Compression and the Greedy Method
+
+
+** 14 Graph Algorithm
+*** 14.1 Graphs
+*** 14.2 Data structures for graphs
+*** 14.3 Graph Traversals
+*** 14.6 Shortest Paths
+*** 14.7 Minimum Spanning Trees
+**** 14.7.1 Prim-jarnik Algorithm
+**** 14.7.2 Kriskal's Algorithm
+**** 14.7.3 Disjoint Partitions and Union-Find Structures
+
+
+** 15 Memory Management and B-Trees
+Computer systems are greatly impacted by the management of the computer's memory system. This book talks about *ways in which memory is allocated and deallocated during execution* and the impact in performance. Then, the *complexity of multilevel memory hierarchies* in systems. Finally, *use of classic data structures and algorithms used to manage memory*, and how the use of memory hierarchies impacts choice of data structures and algorithms.
+
+*** 15.1 Memory Management
+Computer memory is organized into a sequence of *words*, of typical sizes: 4, 8, 16 bytes. Memory words numbered from 0 to N-1, where N is the number of memory words available in the computer.
+- Memory address: number associated with each mem word.
+So memory of computer can be seen as giant array of memory words.
+
+**** 15.1.1 Memory allocation
+In Python, all objects are stored in a pool of memory called *memory heap* or *Python heap* (not same as ds heap).
+- *blocks*: storage available is divided into contiguous array-like chuncks of memory.
+System must quickly allocate memory for new objects.
+- *free list*: method to keep contiguous holes of available memory in a linked list.
+- *fragmentation*: separation of unused memory into diff holes. Becomes a problem bc makes it harder to find large contiguous chunks of free space. Goal: minimize fragmentation.
+Types of fragmentation: Internal and External.
+- Internal: portion of allocated memory block is unused. ie array of size 1000, but only 100 cells contain values. (Not much run-time env can do...)
+- External: significant amount of unused memory between many blocks of allocated memory..So run-time env should allocate memory in a way to try to reduce external fragmentation.
+Herustics for allocating memory from the heap:
+- Best-fit algorithm: searches entire free list to find hole whose size is closes to amount of mem requested.
+- First-fit algorithm: searches from beginning for first hole large enough.
+- Next-fit algorithm: similar to first-fit, but begins search where it left off previously. (Like circular ll)
+- Worst-fit algorithm: searches free list to find largest hole of available memory.
+In each algorithm, the requested amount of memory is subtracted from the chosen memory hole and the leftover part of that hole is returned to the *free list*.
+Best-fit -> produces worst fragmentation,since leftover parts are tiny. The first-fit is fast, but produces a lot of fragmentation in the front of the list. The next-fit fixes that by spreading fragmentation eavenly, but still makes it hard to allocate large blocks. Worst-fit attempts to avoid this by keeping contiguous sections of free memory as large as possible.
+
+**** 15.1.2 Garbage collection
+Other languages: memory space for objects must be explicitly deallocated by programmer. 
+In Python: interpreter does the memory management.
+- *Garbage collection*: process of detecting "stale" objects, deallocated their space, and returning reclaimed space to *free list*
+
+Definitions for garbage collection:
+- *Live objects*: program has direct or indirect reference to such object.
+- *Direct reference*: to an object is identifier in active namespace (ie global namespace or local namespace for active function).
+- *root objects*: objects with direct references (like w = Widget(), w is in current namespace.
+- *indirect reference*: reference that occurs withing state of some other live object. ie if widget object maintains a list attribute. That list is a live obj.
+Python deallocate any object that is not considered *live obj*. Python uses 2 strategies: Reference counts & Cycle Detection.
+
+***** Reference Counts
+Every Python object has integer called *reference count*. This is the count of how many references to this object exist anywhere in the system. 
+Increases when reference is assigned to object.
+Decreases when reference is reassigned to something else.
+- Python allows programs to see object's ref count. Using *sys* module, function called *getrefcount*.
+Whenever ref count is 0, object is deallocated.
+
+***** Cycle Detection
+Some objects with nonzero ref counts may be live. For isntance, if a group of objects have references to each other, but are not reachable from a root object.
+Every so often, especially when memory heap is running out of space, the interpreter runs certain algorithms to reclaim memory. A classic algo is *mark-sweep*.
+- *Mark-Sweep Algorithm*: This algorithm associates a "mark" bit with each object that identifies whether obj is alive. When garbage collection seems needed, it suspends all other activity and clear themark bits of all the objects currently in mem heap. Then, go through active namespace and mark all root objects as live. Then, perform *deph-first* search on directed graph defined by objects referencing other objects. So objects = vertex and reference = directed edge. Once all objects marked, scan through heap and reclaim space from objects not marketd. Optionally coalesce all allocated space into a single block.
+- Performing DFS In-Place: Note that since the goal is to reclaim unused space, algorith must not use extra space during garbage collection. So no recursive. DFS using only a constant amount of additional space.
+
+**** 15.1.3 Additional memory used by interpreter
+***** The Run-Time Call Stack
+Stacks = Super important in run-time env of python programs.
+- *Call stack (Python interpreter stack)*: Private stack of a running program in python. Keeps track of nested sequence of currently active invocations of functions.
+- *Activation record (frame)*: each entry of stack. Stores important info about the func invoked.
+- *Running Call*: activation record of  function that is being executed is at top of stack. All others are *suspended calls*
+- Each activation record has dictionary with local namespace for that call.
+- Also has a reference to the function definition itself, and a variable called *program counter* , to maintain the address of the statement within the function. This is used by the interpreter when a suspended function becomes active.
+
+***** Operand Stack
+In arithmetic operations, the interpreter uses the operand stack.
+
+*** 15.2 Memory Hierarchies and Caching
+**** Memory Systems
+Hierarchy: CPU, Registers, Caches, Int memory, Ext memory, network storage.
+
+**** Caching Strategies
+Most algorithms are not designed with memory hierarchy in mind, in spite of the great variance between access times.
+A justification is that, it wouldn't be device independent, and such optimizations are not always necessary.
+- Caching: bringing data into primary memory (motivated by temporal locality), expecting that to be used again soon.
+- Blocking: (motivated by spatial locality) bringing a chunk surrounding l (location needed), expecting locations nearby to be accessed soon.
+Blocks in between cache memory & internal memory: *cache lines*.
+- Blocks between internal memory & external memory: *pages*.
+
+*** 15.3 External searching and B-trees
+- *disk blocks*: secondary memory blocks
+- *disk transfer*: transfer of a block from secondary to primary memory.
+Goal: minimize # of disk transfers needed to perform a query or update. Such count known as *I/O complexity*.
+**** 15.3.1 (a,b) Trees
+**** 15.3.2 B-Trees
+
+*** 15.4 External-Memory Sorting
+**** 15.4.1 Multiway merging
+
+
+

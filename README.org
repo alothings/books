@@ -1,1 +1,3 @@
-# books
+* Summaries
+This is just a repository of notes and summaries of books to make reviewing easier.
+

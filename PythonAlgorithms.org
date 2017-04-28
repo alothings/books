@@ -557,4 +557,24 @@ Goal: minimize # of disk transfers needed to perform a query or update. Such cou
 **** 15.4.1 Multiway merging
 
 
+* Fundamental Techniques (from Algorithm Design - Goodrich book)
+Actually they are also in this Book!!!
+** The Greedy Method
+** Divide and Conquer
+** Dynamic Programming
+
+* Algorithm Design Patterns in this book
+** Algorithm design patterns: 
+*** Recursion (chapter 4)
+*** Dynamic programming (section 13.3)
+*** The Greedy method (sections 13.4.2, 14.6.2, 14.7)
+*** Divide and conquer (section 12.2.1)
+
+** Software Engineering Design Patterns:
+*** Template Method 
+*** Position (Sections 7.4 and 8.1.2)
+*** Composition (Sections 7.6.1, 9.2.1, and 10.1.4)
+*** Template method (Sections 2.4.3, 8.4.6, 10.1.3, 10.5.2, and 11.2.1)
+*** Locator (Section 9.5.1)
+*** Factory method (Section 11.2.1)
 

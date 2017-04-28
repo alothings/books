@@ -1,0 +1,10 @@
+#+STARTUP: hidestars
+#+STARTUP: indent
+
+* Algorithms 4th Edition - Sedgewick
+** 1 Fundamentals
+** 2 Sorting
+** 3 Searching
+** 4 Graphs
+** 5 Strings
+

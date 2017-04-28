@@ -1,0 +1,4 @@
+#+STARTUP: hidestars
+#+STARTUP: indent
+
+* Algorithm Design (Foundations, Analysis, and Examples)

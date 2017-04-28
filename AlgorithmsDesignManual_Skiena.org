@@ -1,0 +1,4 @@
+#+STARTUP: hidestars
+#+STARTUP: indent
+
+* The Algorithm Design Manual by Skiena

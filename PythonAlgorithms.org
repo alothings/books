@@ -4,7 +4,7 @@
 * Data Structures and Algorithms in Python
 - www.wiley.com/college/goodrich
 
-** 1 Python Primer
+** DONE 1 Python Primer
 *** 1.2 Objects in Python
 - Python is an object-oriented language and *classes* form the basis for all data types.
 **** Identifiers, Objects, and Assignment
@@ -199,8 +199,7 @@ To place commands that will be executed if module is directly invoked as script,
 
 Existing modules: array, collections, copy, math, os, random, re, sys, time, etc..
 
-
-** 2 OOP
+** DONE 2 OOP
 In OO Paradigm, main actors are *objects*.
 Each *object* is an *instance* of a *class*.
 Class has:
@@ -309,8 +308,7 @@ class SequenceIterator:
 
 *** 2.6 Shallow and Deep Copying
 
-
-** 3 Algorithm Analysis
+** DONE 3 Algorithm Analysis
 Data structure: systematic way of organizing and accessing data
 Algorithm: step-by-step procedure for performing some task
 *** 3.1 Experimental Studies
@@ -339,9 +337,7 @@ Technique to make claims about an algorith. Such is showing it is correct or tha
 - *The Contra Attack*: Contrapositive and COntradiction. Contrapositive method is like looking through a negative mirror. To justyfy "if p is true, then q is true", we can establish that "if q is not true, then p is not true". Rememer *DeMorgan's Law*. 
 - *Induction and Loop Variants*: showing q(n) is true for n=1, then inductive step is true for n>k, namely, show "if q(j) is true for al j<n, then q(n) is true"
 
-
-
-** 4 Recursion
+** DONE 4 Recursion
 Important technique in the study of data structures and algorithms. Will be used in chapters 8 and 12 (Trees and Sorting and Selection)
 *** 4.1 Ilustrative Examples
 **** Factorial Function: classic math function naturally recursive
@@ -381,8 +377,7 @@ Follows the following form:
 
 *** 4.6 rEliminating Tail Recursion
 
-
-** 5 Array-based sequences
+** TODO 5 Array-based sequences
 *** 5.1 Python's Sequence Types
 *** 5.2 Low-Level Arrays
 *** 5.3 Dynamic arrays and amortization
@@ -390,12 +385,10 @@ Follows the following form:
 *** 5.5 Using Array-based sequences
 *** 5.6 Multidimensional Data Sets
 
-
 ** 6 Stacks, Queues, and Deques
 *** 6.1 Stacks
 *** 6.2 Queues
 *** 6.3 Double-ended Queues
-
 
 ** 7 Linked Lists
 *** 7.1 Singly Linked Lists
@@ -405,20 +398,185 @@ Follows the following form:
 *** 7.5 Sorting a Positional List
 *** 7.7 Link-based vs Array-based sequences
 
+** TODO 8 Trees
+*** 8.1 General Trees
+**** 8.1.1 General Tree Stuff
+Tree: is an *abstract data type* that stores elements hierarchically. Except the root, each element has a *parent* and zero or more *children*.
+Typically we call the *root* of the tree, and the other elements are connected to it.
 
-** 8 Trees
-*** General Trees
-*** Binary Trees 
-*** Implementing Trees
+Formal definition
+A tree T is a set of nodes storing elements such that the nodes have a *parent-child* relationship.
+- If T is nonempty, it has a special node called the *root* that has no parent.
+- Each node v of T different grom the root has a unique *parent* node w; every node with a parent w is a child of w.
+Note: According to def, tree can be empty. This allows us to define a tree recursively, such that a tree T is either empty or consists of a node r, called the root of T, and a set of subtrees whose roots are the children of r.
+
+- *edge*: is a pair of nods (u,v) such that /u/ is the parent of /v/, or vice versa.
+
+- *Internal Nodes*: Nodes that have children
+- *External Nodes*: Nodes that are leafs, so don't have children.
+
+**** 8.1.2 Tree Abstract Data Type
+We define a tree ADT using the concept of a *position* as an abstraction for a node of a tree.
+Position supports:
+- p.element(): Return element stored at position p
+
+- Tree ADT supports following *accessor methods*:
+  + T.Root() : Returns position fo root in tree or None
+  + T.is_root(p) : 
+  + T.parent(p) : Returns position of parent or None
+  + T.num_children(p) : Returns number of children
+  + T.Children(p) : Generate an iteration of the children of p
+  + T.is_leaf(p) : True if p doesn't have children
+  + len(T) : Length
+  + T.is_empty() : True if empty
+  + T.positions() : Generate iteration fo all positions of T
+  + iter(T) : Generate an iteration fo all elements stored in T
+
+At this point, this book goes into defining a Tree Abstract Base Class in Python, which will be the base class for a lot of different Tree types (Binary search trees, etc) to reuse as much code as possible.
+Provides definition for a nested *Position class* and a number of accessor methods. However, it does not define any internal representation for storing a tree.
+There are 5 methods that remain abstract: 
+root, parent, num_children, children, and __len__
+Each method raises a NotImplementedError
+
+**** 8.1.3 Computing Depth and Height
+- Depth(p): If p is root, the depth is 0, otherwise, deph of p is 1 + depth(parent of p). This allows for a simple recursive algorithm.
+- Height(p): If p is a leaf, then height is 0. Otherwise, height of p is 1 + max(height(children))
+- Height of tree = Height of the root.
+
+#+BEGIN_SRC python
+def _height1(self):
+    return max(self.depth(p) for p in self.positions() if self.is_leaf(p))
+# Works in O(n^2)
+#+END_SRC
+
+#+BEGIN_SRC python
+def _height2(self, p):
+  if self.is_leaf(p): return 0
+  else: return 1 + max(self._height2(c) for c in self.children(p))
+# This runs in linear time
+#+END_SRC
+
+Better way:
+#+BEGIN_SRC python
+def height(self, p=None):
+  if p is None:
+    p = self.root()
+  return self._height2(p)
+
+#+END_SRC
+
+*** 8.2 Binary Trees 
+**** Definitions
+Normal Definition:
+A bt is an ordered tree with the following properties:
+1. Every node has at most 2 childrem
+2. each child is labeled as left child or right child
+3. a left child precedes the right child in the order of children of a node.
+
+Recursive Binary Tree Definition:
+A tree is either empty of consists of:
+- A node r, called the root of T, stores an element
+- A BT (possibly empty), called the left subtree of T
+- A BT (possibly empty), called right subtree of T
+
+- Binary Tree Abstract Data Type can support:
+  - T.left(p)
+  - T.right(p)
+  - T.sibling(p)
+
+- *proper BT*: if each node has either 0 or 2 children
+
+**** Properties of Binary Trees
+Denoting all the nodes of same depth d as *level* d of T,
+level 0 has at most 1 node, level 1 at most 2 nodes, etc. 
+Thus, *level d* has at most 2^d nodes
+
+Proposition 8.8: Let T be nonempty BT. n=# nodes, ne=# of external nodes, ni=# internal nodes, and h=height of T.
+Then:
+- h+1 <= n <= 2^(h+1) - 1
+- 1 <= ne <= 2^h
+- h <= ni <= 2^h - 1
+- lof(n+1 - 1 <= h <= n-1 
+
+Proposition 8.9: In nonempty *proper* bt T: ne = ni+1
+
+*** 8.3 Implementing Trees
+**** 8.3.1 Linked List Representation
+We all know what it is. It's the most commong way of representing Trees.
+Summary of performance of this implementation:
+- len: LinkedBinaryTree uses an isntance variable to store numer of nodes of T. Takes O(1)
+- is_empty: inherited from Tree,relies on a single call to len, so O(1) as well.
+- root, left, right, num_children from Tree run in O(1), same as is_root (which calls root)
+- depth(p) in O(dp + 1)
+- height runs in O(n)
+- add_root, add_left, add_right, replace, delete, attach all run in O(1)
+SEE CODE OF IMPLEMENTATION in repository
+
+**** 8.3.2 Array-Based Representation
+Alternative representation based on array (though in Python we will use lists)
+For very position p of T, let f(p) be the integer defined as follows:
+- if p is in the root of T, then f(p) = 0
+- if p is the left child of position q, then f(p) = 2f(q)+1
+- if p is the right child of position q, then f(p) = 2f(q)+2
+f function is known as *level numbering* of positions in a binary tree T.
+
+Advantages:
+Position p can be represented by a single integer.
+Position-based methods such as root, parent, left, right can be implemented using arithmetic.
+left child = 2f(p) + 1
+parent = floor((f(p)-1)/2)
+
+Considerations:
+- Space usage can be a problem. Depends of the shape of the tree. If it is not *full* there would be a lot of empty cells. The worst case is N = 2^n -1 (N is length of array) Note: the array A requires length N = 1+fm (where N is length, and fm is the maximum value of f(p)).
+- Some update operations are not efficient. Like *delete* and *promoting* take O(n), because all descendants need to move within the array.
+
+It is of great usefulness in certain cases, though, like in *"heaps"*
+
+**** 8.3.4 Linked Structure for General Trees:
+Same, just have a *container* to store references to children. Like a Python list for example.
+
 *** Tree Traversal Algorithms
-**** Preorder and postorder Traversal for general trees
-**** Breadth-first 
-**** Inorder traversal for binary tree
+**** 8.4.1 Preorder and postorder Traversal for general trees
+- Preorder: root is visited first. Then the subtrees rooted at its children are traversed recursively. If the tree is ordered, then subtrees are traversed according to the order of the children. Like a Book Index.
+- Postorder: Recursively traverses subtrees rooted at the children of the root first, then it visits the root.
+
+Running-Time Analysis
+Both are efficient ways to access all the positions of a tree. At each position p, the nonrecursive part requires constant O(cp+1) time, making the traversal be O(n), where n is the number of positions in the tree.
+
+**** 8.4.2 Breadth-first for general trees too
+Another traversing approach, is to go visit all the positions of level (or depth) d, before visiting the next level (or depth) d+1.
+This approach is commong in software for playing games, to represent the possible choices of moves.
+
+Algorithm: It is not recursive. Instead think of using a  *Queue*. While queue is not empty, p = deque, visit(p), then for all the children of p, enqueue them.
+ 
+**** 8.4.3 Inorder traversal for binary tree
+The previous ways of traversing could be applied to general trees because they don't require an order. 
+#+BEGIN_SRC python
+def inorder(p):
+  if p.left:
+    inorder(p.left)
+  visit(p)
+  if p.right:
+    inorder(p.right)
+
+#+END_SRC
+
+***** Binary Search Trees
+Let S be a set of unique elements with an order relation.
+- Position p stores element of S, denoted as e(p)
+- Elements in left subtree of p, are less than e(p)
+- Elements in right of subtree of p, are greater than e(p)
+It can be viewed as a *binary decision tree*
+
 **** Implementing tree traversals in Python
+Remember that when defining the Tree ADT, we stated T should include support for:
+- T.positions(): To generate an iteration of all positions
+- iter(T): To generate all elements stored within the tree T
+
+
 
 
 *** Case Study: An Expression Tree
-
 
 ** 9 Priority Queues
 *** 9.1 The Priority Queue Abstract Data Type
@@ -427,14 +585,12 @@ Follows the following form:
 *** 9.4 Sorting with a Priority Queue
 *** 9.5 Adaptable Priority Queues
 
-
 ** 10 Maps, Hash Tables, and Skip Lists
 *** 1 Maps and Dictionaries
 *** 2 Hash Tables
 *** 3 Sorted Maps
 *** 4 Skip Lists
 *** 5 Sets, Multisents, and Multimaps
-
 
 ** 11 Search Trees 
 *** 1 Binary Search Trees
@@ -444,7 +600,6 @@ Follows the following form:
 *** 5 (2,4) Trees
 *** 6 Red-Black Trees
 
-
 ** 12 Sorting and Selection
 *** 12.2 Merge-Sort
 *** 12.3 Quick-Sort
@@ -453,13 +608,11 @@ Follows the following form:
 *** 12.6 Python's Built-in sorting functions
 *** 12.7 Selection
 
-
 ** 13 Text Processing
 *** 13.1 Abunadnce of Digitized Text
 *** 13.2 Pattern-matching algorihtms
 *** [#A] 13.3 Dynamic Programming
 *** 13.4 Text Compression and the Greedy Method
-
 
 ** 14 Graph Algorithm
 *** 14.1 Graphs
@@ -470,7 +623,6 @@ Follows the following form:
 **** 14.7.1 Prim-jarnik Algorithm
 **** 14.7.2 Kriskal's Algorithm
 **** 14.7.3 Disjoint Partitions and Union-Find Structures
-
 
 ** 15 Memory Management and B-Trees
 Computer systems are greatly impacted by the management of the computer's memory system. This book talks about *ways in which memory is allocated and deallocated during execution* and the impact in performance. Then, the *complexity of multilevel memory hierarchies* in systems. Finally, *use of classic data structures and algorithms used to manage memory*, and how the use of memory hierarchies impacts choice of data structures and algorithms.
@@ -577,4 +729,37 @@ Actually they are also in this Book!!!
 *** Template method (Sections 2.4.3, 8.4.6, 10.1.3, 10.5.2, and 11.2.1)
 *** Locator (Section 9.5.1)
 *** Factory method (Section 11.2.1)
+draw trees in org mode emacs
+* New Things I learned
+- Duck typing: Trying something and handling exceptions if they occur. (As long as long as it quacks, treat it like a duck, otherwise treat differently)
 
+#+BEGIN_SRC python
+class Person:
+    def help(self):
+        print("Heeeelp!")
+
+class Duck:
+    def help(self):
+        print("Quaaaaaack!")
+
+class SomethingElse:
+    pass
+
+def InTheForest(x):      # Here, passing any object
+    x.help()             # and calling its help() method.
+# This either works differentl for each object or gives runtime error
+
+donald = Duck()
+john = Person()
+who = SomethingElse()
+
+for thing in [donald, john, who]:
+    try:
+        InTheForest(thing)
+    except AttributeError:
+        print 'Meeowww!'
+
+#+END_SRC
+
+- Abstract Base Class: ABC cannot be instantiated. But defines one or more common methods that all implementations of the abstraction *must* have.
+- Concrete classes inherit from ABC and provide implementations for the methods declared by the ABC.

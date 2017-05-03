@@ -200,6 +200,7 @@ To place commands that will be executed if module is directly invoked as script,
 Existing modules: array, collections, copy, math, os, random, re, sys, time, etc..
 
 ** DONE 2 OOP
+CLOSED: [2017-05-04 Thu 15:57]
 In OO Paradigm, main actors are *objects*.
 Each *object* is an *instance* of a *class*.
 Class has:
@@ -377,7 +378,8 @@ Follows the following form:
 
 *** 4.6 rEliminating Tail Recursion
 
-** TODO 5 Array-based sequences
+** DONE 5 Array-based sequences
+CLOSED: [2017-05-04 Thu 15:57]
 *** 5.1 Python's Sequence Types
 *** 5.2 Low-Level Arrays
 *** 5.3 Dynamic arrays and amortization
@@ -398,7 +400,8 @@ Follows the following form:
 *** 7.5 Sorting a Positional List
 *** 7.7 Link-based vs Array-based sequences
 
-** TODO 8 Trees
+** DONE 8 Trees
+CLOSED: [2017-05-04 Thu 17:20]
 *** 8.1 General Trees
 **** 8.1.1 General Tree Stuff
 Tree: is an *abstract data type* that stores elements hierarchically. Except the root, each element has a *parent* and zero or more *children*.
@@ -535,7 +538,7 @@ It is of great usefulness in certain cases, though, like in *"heaps"*
 **** 8.3.4 Linked Structure for General Trees:
 Same, just have a *container* to store references to children. Like a Python list for example.
 
-*** Tree Traversal Algorithms
+*** 8.4 Tree Traversal Algorithms
 **** 8.4.1 Preorder and postorder Traversal for general trees
 - Preorder: root is visited first. Then the subtrees rooted at its children are traversed recursively. If the tree is ordered, then subtrees are traversed according to the order of the children. Like a Book Index.
 - Postorder: Recursively traverses subtrees rooted at the children of the root first, then it visits the root.
@@ -568,21 +571,100 @@ Let S be a set of unique elements with an order relation.
 - Elements in right of subtree of p, are greater than e(p)
 It can be viewed as a *binary decision tree*
 
-**** Implementing tree traversals in Python
+**** 8.4.4 Implementing tree traversals in Python
 Remember that when defining the Tree ADT, we stated T should include support for:
 - T.positions(): To generate an iteration of all positions
 - iter(T): To generate all elements stored within the tree T
 
-
-
+**** 8.4.5 Applications of Tree Traversals
+- To indent! Like book table of contents or label 
+- Parenthetic string representations P(T)
+  1) if T consists of only 1 single position:
+       P(T) = str(p.element())
+  2) else: 
+       P(T) = str(p.element()) + '(' + P(T1) + ', ' + ... + ', ' + P(Tk) + ')' 
+Example:
+Electronics R’Us (R&D, Sales (Domestic, International (Canada,
+S. America, Overseas (Africa, Europe, Asia, Australia))),
+Purchasing, Manufacturing (TV, CD, Tuner))
 
 *** Case Study: An Expression Tree
 
-** 9 Priority Queues
+** TODO 9 Priority Queues
 *** 9.1 The Priority Queue Abstract Data Type
+**** Priorities
+Collection of prioratized elements that allows arbitrary element insertion, and the removal of element with first priority.
+When element is added to PQ, it is associated with a *key*. The elements with lowest *key* values are removed first.
+
+**** Priority Queue ADT
+The following is the PQ ADT modeled as key-value pair.
+
+| P.add(k, v)    | Insert item with key k and value v          |
+| P.min()        | return tuple (k,v) but don't removed        |
+| P.remove_min() | Remove and return item with min key from PQ |
+| P.is_empty()   | True of P is empty                          |
+| len(P)         | return # items in P                         |
+
+In Section 9.5, we consider keys with changing values.
+
 *** 9.2 Implementing Priority Queue
+**** 9.2.1 The Composition Design Patter
+To keep track of elements in our data structure, in this case the element and its key, even as they are relocated within the ds.
+We can define a _Item class to ensure that each element remains paired.
+In PQ, we use *composition* to store items internally as pairs.
+View code priority_queue_base.py
+
+**** Implementation with Unsorted list
+Storing entries in unsorted list, key-value pairs are represented as composites. This items are stored within a PositionalList, identified as the _data member of the class.
+
+How it works: When adding an element,a new _Item composite is created and its added to the end of the list. Taking O(1).
+Min() and remove_min() must locate item so they take O(n)
+Analysis:
+| len, is_empty, add | O(1) |
+| min, remove_min    | O(n) |
+
+**** Implementation with Sorted list
+Another implementation using a positional list, is to maintain entries sorted by non-decreasing keys.
+In this case the analysis of running times:
+| len, is_empty, min, remove_min | O(1) |
+| add                            | O(n) |
+
 *** 9.3 Heaps
+A difference with the other 2 strategies for implementing a priority queue in which there are trade-offs for running times. This section provides a more efficient realization using: *binary heaps*.
+
+*Binary heap* allows perform insertions and removals in logarithmic time. This improvement is acchieved by using a *binary tree* structure to find a compromise between elements being entirely unsorted or perfectly sorted.
+
+**** 9.3.1 Heap Data Structure
+*Heap* is a binary tree T that stores a collection of items at its positions with 2 additional properties:
+- a *relational property* defined in the way keys are stored in T
+- a *structural property* defined in terms of the shape of T
+
+*Relational Property: Heap-Order Property*
+In a heap T, for every position p other than the root, the key stored at p is greater or equal than the key stored at p's parent.
+T.key(p) >= T.key(T.parent(p))
+- keys stored in nondecreasing order while traversing to leaves.
+- minimum key always at top
+- better if height of heap tree is small as possible.
+
+*Structural Property: Complete Binary Tree Property*
+A heap T with height h is a *complete* binary tree if levels 0,1,..h-1 have the max number of nodes. In other words, all levels but the last one are full.
+
+*The Height of a Heap*
+Proposition 9.2: A heap T storing n entries has height h = floor(logn)
+
+**** 9.3.2 Implementing a PQ with a Heap
+
+
+**** 9.3.3 Array-Based representation of Complete Binary Tree
+
+**** 9.3.3 Python Heap Implementation
+
+**** 9.3.7 Python's heapq Module
+
 *** 9.4 Sorting with a Priority Queue
+**** Selection-sort and Insertion-sort
+**** Heap-sort 
+
 *** 9.5 Adaptable Priority Queues
 
 ** 10 Maps, Hash Tables, and Skip Lists
@@ -708,7 +790,6 @@ Goal: minimize # of disk transfers needed to perform a query or update. Such cou
 *** 15.4 External-Memory Sorting
 **** 15.4.1 Multiway merging
 
-
 * Fundamental Techniques (from Algorithm Design - Goodrich book)
 Actually they are also in this Book!!!
 ** The Greedy Method
@@ -731,7 +812,7 @@ Actually they are also in this Book!!!
 *** Factory method (Section 11.2.1)
 draw trees in org mode emacs
 * New Things I learned
-- Duck typing: Trying something and handling exceptions if they occur. (As long as long as it quacks, treat it like a duck, otherwise treat differently)
+** Duck typing: Trying something and handling exceptions if they occur. (As long as long as it quacks, treat it like a duck, otherwise treat differently)
 
 #+BEGIN_SRC python
 class Person:
@@ -763,3 +844,14 @@ for thing in [donald, john, who]:
 
 - Abstract Base Class: ABC cannot be instantiated. But defines one or more common methods that all implementations of the abstraction *must* have.
 - Concrete classes inherit from ABC and provide implementations for the methods declared by the ABC.
+
+** Composition design patter (Section 7.6 and 9.2)
+Defining an _Item class to ensure that each element remained paired with its associated count in the primary data structure.
+
+* HW Solutions
+** Ch 8
+1) root is the node without parents, internal nodes have children, cs016 has 9 descendants, and one ancestor. depth of the node paper is 3. height of tree is 4.
+2) a linear tree
+3) Proposition 4: Heigh of nonempty tree is equal to the maximum of the depths of its leaf positions. Because the height of tree is = to the height of the root. Which by the definition is one more than the maximum of the heights of its children. and the max height of the children is the max depth of a leaf.
+5) Given a T. Recurse the tree in order. For node in T.inorder(): if T.right(node) is None and T.left(node) is not None and not T.children(T.left(node)) count += 1
+6) 

@@ -74,11 +74,16 @@ class Tree:
 
     def _subtree_preorder(self, p):
         """ Generate preorder iteration fo position in subtree """
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0ce49c005bf5f0603043384be104f191c26c43ae
         yield p
         for c in self.children(p):
             for other in self._subtree_preorder(c):
                 yield other
 
+<<<<<<< HEAD
     # ---------- Preorder indented ------------------
 
     def preorder_indent(self, p, d):
@@ -86,6 +91,8 @@ class Tree:
         for c in self.children(p):
             self.preorder_indent(self, c, d+1)
 
+=======
+>>>>>>> 0ce49c005bf5f0603043384be104f191c26c43ae
     # ---------- Postorder Traversal ----------------------
     def postorder(self):
         if not self.is_empty():
@@ -100,7 +107,11 @@ class Tree:
 
     # --------- Breadth First traversal  ------------------
     def breadthfirst(self):
+<<<<<<< HEAD
         """ Generates iterator by levels"""
+=======
+
+>>>>>>> 0ce49c005bf5f0603043384be104f191c26c43ae
         if not self.is_empty():         # why is it called fringe?
             fringe = deque()
             fringe.append(self.root())

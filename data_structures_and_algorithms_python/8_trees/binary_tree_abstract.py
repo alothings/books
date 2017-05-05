@@ -33,6 +33,7 @@ class BinaryTree(Tree):
         if self.right(p) is not None:
             yield self.right(p)
 
+<<<<<<< HEAD
     # -------- inorder traversal ---------------------
     def inorder(self):
         if not self.is_empty():
@@ -51,6 +52,8 @@ class BinaryTree(Tree):
     # ------- Overriding inherited versions------------
     def positions(self):
         return self.inorder()
+=======
+>>>>>>> 0ce49c005bf5f0603043384be104f191c26c43ae
 
 if __name__ == '__main__':
     bt = BinaryTree()

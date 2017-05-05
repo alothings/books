@@ -653,13 +653,27 @@ A heap T with height h is a *complete* binary tree if levels 0,1,..h-1 have the 
 Proposition 9.2: A heap T storing n entries has height h = floor(logn)
 
 **** 9.3.2 Implementing a PQ with a Heap
+Since heigh h = floot(log(n)), we can perform update operations in O(logn) time!
+Implementation is really simple. We can store elements as Section 9.2 shows using key-value pairs as items in the heap. Len and is_empty methods are simple. And min is trivial because it just returns the root (which is the element with the minimum key).
+The add and remove_min methods, though, are interesting.
 
+*Adding Item to Heap*
+1. Add at leftmost position available in the last level.
+2. Swim up! or as this book calls it *up-heap bubbling*
+
+*Remiving Item with Minimum Key*
+1. Remove root
+2. Put last item of T in the root
+3. Down-heap bubbling 
 
 **** 9.3.3 Array-Based representation of Complete Binary Tree
+Just like the array implementation we mentioned in the chapter above. In this case it works great because it is a *complete* tree, meaning there won't be wasted spaces in the array. 
+Also adding/finding the last element in a linked structure would mean traversing, while in an array we know is the element at n-1.
+Plus, in Python works great because the size is dynamic.
 
-**** 9.3.3 Python Heap Implementation
-
-**** 9.3.7 Python's heapq Module
+**** 9.3.4 Python Heap Implementation
+**** 9.3.5 Analysis of Heap-Based PQ
+Well... this method is much better than the unordered and ordered implementations, since the worst case scenario for either adding or removing in those implementations was O(n). While for Binary Heap the worst case is O(logn).
 
 *** 9.4 Sorting with a Priority Queue
 **** Selection-sort and Insertion-sort

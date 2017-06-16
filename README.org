@@ -1,3 +1,7 @@
 * Summaries
 This is just a repository of notes and summaries of books to make reviewing easier.
 
+** Books
+- Data Structures and Algorithms in Python by Goodrich
+- Systems Thinking: Creative Holism for Managers by Jackson
+

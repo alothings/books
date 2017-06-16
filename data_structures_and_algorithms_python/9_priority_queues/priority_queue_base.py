@@ -1,12 +1,12 @@
 """
+Code Fragment 9.1
 
 Priority Queue base class from book
-
 """
 
 
 class PriorityQueueBase:
-    """ """
+    """ Abstract base class for a PQ"""
 
     class _Item:
         """ Lightweight composite to store PQ items """

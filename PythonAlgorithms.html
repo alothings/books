@@ -1,0 +1,2589 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-05-13 Sat 19:37 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Alonso" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org156b9c2">1. Data Structures and Algorithms in Python</a>
+<ul>
+<li><a href="#org6752224">1.1. <span class="done DONE">DONE</span> 1 Python Primer</a>
+<ul>
+<li><a href="#org1acb724">1.1.1. 1.2 Objects in Python</a></li>
+<li><a href="#org4419779">1.1.2. 1.3 Expressions, Operators, and Precedence</a></li>
+<li><a href="#orga405e7c">1.1.3. 1.4 Control Flow</a></li>
+<li><a href="#org099b2df">1.1.4. 1.5 Functions</a></li>
+<li><a href="#orgd89ae59">1.1.5. 1.6 Simple I/O</a></li>
+<li><a href="#orgc02f46c">1.1.6. 1.7 Exception Handling</a></li>
+<li><a href="#org9228a0c">1.1.7. 1.8 Iterators and Generators</a></li>
+<li><a href="#orgb3d076a">1.1.8. 1.9 Python Conveniences</a></li>
+<li><a href="#orgcede84b">1.1.9. 1.10 Scopes</a></li>
+<li><a href="#org54a05ad">1.1.10. 1.11 Modules and Import Statements</a></li>
+</ul>
+</li>
+<li><a href="#org2afb915">1.2. <span class="done DONE">DONE</span> 2 OOP</a>
+<ul>
+<li><a href="#orgf6c7e03">1.2.1. 2.1 Goals, Principles, and Patterns</a></li>
+<li><a href="#org3115625">1.2.2. 2.2 Software Development</a></li>
+<li><a href="#org3e08bd0">1.2.3. 2.3 Class Definition</a></li>
+<li><a href="#org9ef9f86">1.2.4. 2.4 Inheritance</a></li>
+<li><a href="#org610a55f">1.2.5. 2.5 Namespaces and Object-Orientation</a></li>
+<li><a href="#orgf1bbdca">1.2.6. 2.6 Shallow and Deep Copying</a></li>
+</ul>
+</li>
+<li><a href="#org3b4c694">1.3. <span class="done DONE">DONE</span> 3 Algorithm Analysis</a>
+<ul>
+<li><a href="#orgb24539b">1.3.1. 3.1 Experimental Studies</a></li>
+<li><a href="#org18a73c4">1.3.2. 3.2 The seven functions used in this Book</a></li>
+<li><a href="#orgcda9fda">1.3.3. 3.3 Asymptotic Analysis</a></li>
+<li><a href="#orgc2f94b7">1.3.4. 3.4 Simple Justification Techniques</a></li>
+</ul>
+</li>
+<li><a href="#orgaba2966">1.4. <span class="done DONE">DONE</span> 4 Recursion</a>
+<ul>
+<li><a href="#orga09a91d">1.4.1. 4.1 Ilustrative Examples</a></li>
+<li><a href="#org8a897ed">1.4.2. 4.2 Analyzing Recursive Algorithms</a></li>
+<li><a href="#org5f4f5ec">1.4.3. 4.3 Recursion run Amok</a></li>
+<li><a href="#org0b9ca70">1.4.4. 4.4 Further Examples of Recursion</a></li>
+<li><a href="#org9758a25">1.4.5. 4.5 Designing Recursive Algorithms</a></li>
+<li><a href="#org1c99400">1.4.6. 4.6 rEliminating Tail Recursion</a></li>
+</ul>
+</li>
+<li><a href="#org8c6875c">1.5. <span class="done DONE">DONE</span> 5 Array-based sequences</a>
+<ul>
+<li><a href="#orgab17530">1.5.1. 5.1 Python's Sequence Types</a></li>
+<li><a href="#orgb029426">1.5.2. 5.2 Low-Level Arrays</a></li>
+<li><a href="#org8467846">1.5.3. 5.3 Dynamic arrays and amortization</a></li>
+<li><a href="#orgbf91647">1.5.4. 5.4 Efficiency of Python's sequence types</a></li>
+<li><a href="#org6a43383">1.5.5. 5.5 Using Array-based sequences</a></li>
+<li><a href="#orga7c0a0c">1.5.6. 5.6 Multidimensional Data Sets</a></li>
+</ul>
+</li>
+<li><a href="#org39c18c3">1.6. 6 Stacks, Queues, and Deques</a>
+<ul>
+<li><a href="#org48e0148">1.6.1. 6.1 Stacks</a></li>
+<li><a href="#orgf3aed21">1.6.2. 6.2 Queues</a></li>
+<li><a href="#org2f7932d">1.6.3. 6.3 Double-ended Queues</a></li>
+</ul>
+</li>
+<li><a href="#org7f51aad">1.7. 7 Linked Lists</a>
+<ul>
+<li><a href="#orgbda2f20">1.7.1. 7.1 Singly Linked Lists</a></li>
+<li><a href="#org725bce2">1.7.2. 7.2 Circularly linked lits</a></li>
+<li><a href="#orgd8bc9ec">1.7.3. 7.3 Doubly linked lits</a></li>
+<li><a href="#orgd985654">1.7.4. 7.4 The positional list ADT</a></li>
+<li><a href="#org6fba5f9">1.7.5. 7.5 Sorting a Positional List</a></li>
+<li><a href="#orgeddfee5">1.7.6. 7.7 Link-based vs Array-based sequences</a></li>
+</ul>
+</li>
+<li><a href="#orgb6e2f10">1.8. <span class="done DONE">DONE</span> 8 Trees</a>
+<ul>
+<li><a href="#org485e110">1.8.1. 8.1 General Trees</a></li>
+<li><a href="#org8065c86">1.8.2. 8.2 Binary Trees</a></li>
+<li><a href="#orga7179c0">1.8.3. 8.3 Implementing Trees</a></li>
+<li><a href="#org77e8496">1.8.4. 8.4 Tree Traversal Algorithms</a></li>
+<li><a href="#org6e79faa">1.8.5. Case Study: An Expression Tree</a></li>
+</ul>
+</li>
+<li><a href="#orgaab0f5c">1.9. <span class="todo TODO">TODO</span> 9 Priority Queues</a>
+<ul>
+<li><a href="#org3ec5e68">1.9.1. 9.1 The Priority Queue Abstract Data Type</a></li>
+<li><a href="#org862187c">1.9.2. 9.2 Implementing Priority Queue</a></li>
+<li><a href="#org89cd474">1.9.3. 9.3 Heaps</a></li>
+<li><a href="#orgc8236b9">1.9.4. 9.4 Sorting with a Priority Queue</a></li>
+<li><a href="#org4897730">1.9.5. 9.5 Adaptable Priority Queues</a></li>
+</ul>
+</li>
+<li><a href="#orgf907401">1.10. 10 Maps, Hash Tables, and Skip Lists</a>
+<ul>
+<li><a href="#org64dbff6">1.10.1. 10.1 Maps and Dictionaries</a></li>
+<li><a href="#org224c261">1.10.2. 10.2 Hash Tables</a></li>
+<li><a href="#orgcfc9203">1.10.3. 10.3 Sorted Maps</a></li>
+<li><a href="#org50b9faa">1.10.4. 10.4 Skip Lists</a></li>
+<li><a href="#org821c0ab">1.10.5. 10.5 Sets, Multisents, and Multimaps</a></li>
+</ul>
+</li>
+<li><a href="#org88386aa">1.11. 11 Search Trees</a>
+<ul>
+<li><a href="#org6f88759">1.11.1. 1 Binary Search Trees</a></li>
+<li><a href="#org106a7dd">1.11.2. 2 Balanced Search Trees</a></li>
+<li><a href="#org351b532">1.11.3. 3 AVL Trees</a></li>
+<li><a href="#org6a98d0f">1.11.4. 4 Splay Trees</a></li>
+<li><a href="#orgd090910">1.11.5. 5 (2,4) Trees</a></li>
+<li><a href="#org678a6a2">1.11.6. 6 Red-Black Trees</a></li>
+</ul>
+</li>
+<li><a href="#org18ed1d2">1.12. 12 Sorting and Selection</a>
+<ul>
+<li><a href="#org0f01fd1">1.12.1. 12.2 Merge-Sort</a></li>
+<li><a href="#orgd6cd762">1.12.2. 12.3 Quick-Sort</a></li>
+<li><a href="#orgcf0efc4">1.12.3. 12.4 Studying Sorting through an Algorithmic Lens</a></li>
+<li><a href="#orge52adee">1.12.4. 12.5 Comparing Sorting Algorithms</a></li>
+<li><a href="#orga7f494d">1.12.5. 12.6 Python's Built-in sorting functions</a></li>
+<li><a href="#orgdf839a9">1.12.6. 12.7 Selection</a></li>
+</ul>
+</li>
+<li><a href="#orgdf3ec72">1.13. 13 Text Processing</a>
+<ul>
+<li><a href="#org02fe6fa">1.13.1. 13.1 Abunadnce of Digitized Text</a></li>
+<li><a href="#orgc25aeee">1.13.2. 13.2 Pattern-matching algorihtms</a></li>
+<li><a href="#org02c9915">1.13.3. 13.3 Dynamic Programming</a></li>
+<li><a href="#org7532c5c">1.13.4. 13.4 Text Compression and the Greedy Method</a></li>
+</ul>
+</li>
+<li><a href="#orgbe34abf">1.14. 14 Graph Algorithm</a>
+<ul>
+<li><a href="#org73b956f">1.14.1. 14.1 Graphs</a></li>
+<li><a href="#org3146147">1.14.2. 14.2 Data structures for graphs</a></li>
+<li><a href="#org9b8441c">1.14.3. 14.3 Graph Traversals</a></li>
+<li><a href="#org21d2448">1.14.4. 14.6 Shortest Paths</a></li>
+<li><a href="#orgb83389d">1.14.5. 14.7 Minimum Spanning Trees</a></li>
+</ul>
+</li>
+<li><a href="#org63b3328">1.15. 15 Memory Management and B-Trees</a>
+<ul>
+<li><a href="#orgd2145c1">1.15.1. 15.1 Memory Management</a></li>
+<li><a href="#org6a74378">1.15.2. 15.2 Memory Hierarchies and Caching</a></li>
+<li><a href="#orgb5d717b">1.15.3. 15.3 External searching and B-trees</a></li>
+<li><a href="#orge1fcb1c">1.15.4. 15.4 External-Memory Sorting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgd690c72">2. Fundamental Techniques (from Algorithm Design - Goodrich book)</a>
+<ul>
+<li><a href="#org4740ae7">2.1. The Greedy Method</a></li>
+<li><a href="#org5cec216">2.2. Divide and Conquer</a></li>
+<li><a href="#org21fd244">2.3. Dynamic Programming</a></li>
+</ul>
+</li>
+<li><a href="#org69bb244">3. Algorithm Design Patterns in this book</a>
+<ul>
+<li><a href="#org2898ffa">3.1. Algorithm design patterns:</a>
+<ul>
+<li><a href="#org25cc928">3.1.1. Recursion (chapter 4)</a></li>
+<li><a href="#org5734ea0">3.1.2. Dynamic programming (section 13.3)</a></li>
+<li><a href="#org4c5d632">3.1.3. The Greedy method (sections 13.4.2, 14.6.2, 14.7)</a></li>
+<li><a href="#org5ed0bae">3.1.4. Divide and conquer (section 12.2.1)</a></li>
+</ul>
+</li>
+<li><a href="#orgd632a6f">3.2. Software Engineering Design Patterns:</a>
+<ul>
+<li><a href="#org2af6db6">3.2.1. Template Method</a></li>
+<li><a href="#org6f5592d">3.2.2. Position (Sections 7.4 and 8.1.2)</a></li>
+<li><a href="#org1e1fb33">3.2.3. Composition (Sections 7.6.1, 9.2.1, and 10.1.4)</a></li>
+<li><a href="#org006f3f2">3.2.4. Template method (Sections 2.4.3, 8.4.6, 10.1.3, 10.5.2, and 11.2.1)</a></li>
+<li><a href="#org95464f4">3.2.5. Locator (Section 9.5.1)</a></li>
+<li><a href="#org9d76cec">3.2.6. Factory method (Section 11.2.1)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org84ae0b9">4. New Things I learned</a>
+<ul>
+<li><a href="#org42a6190">4.1. Duck typing: Trying something and handling exceptions if they occur. (As long as long as it quacks, treat it like a duck, otherwise treat differently)</a></li>
+<li><a href="#orga896836">4.2. Composition design patter (Section 7.6 and 9.2)</a></li>
+<li><a href="#org7bcb271">4.3. Template Method design patter (section 10.1.3)</a></li>
+</ul>
+</li>
+<li><a href="#org28e5d13">5. HW Solutions</a>
+<ul>
+<li><a href="#orge4ec6d6">5.1. Ch 8</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org156b9c2" class="outline-2">
+<h2 id="org156b9c2"><span class="section-number-2">1</span> Data Structures and Algorithms in Python</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>www.wiley.com/college/goodrich</li>
+</ul>
+</div>
+
+<div id="outline-container-org6752224" class="outline-3">
+<h3 id="org6752224"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> 1 Python Primer</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-org1acb724" class="outline-4">
+<h4 id="org1acb724"><span class="section-number-4">1.1.1</span> 1.2 Objects in Python</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>Python is an object-oriented language and <b>classes</b> form the basis for all data types.</li>
+</ul>
+</div>
+<ol class="org-ol"><li><a id="orgefcca08"></a>Identifiers, Objects, and Assignment<br /><div class="outline-text-5" id="text-1-1-1-1">
+<p>
+temperature = 98.6
+</p>
+<ul class="org-ul">
+<li>temperature is the <b>identifier</b>, aka name.</li>
+<li>the <b>identifier</b> is associated with the object float with the value of 98.6</li>
+</ul>
+</div>
+<ol class="org-ol"><li><a id="orga54f251"></a>Identifiers<br /><div class="outline-text-6" id="text-1-1-1-1-1">
+<p>
+Are case-sensitive
+Identifiers are like reference variable in Java or pointer variable in C++.
+Each identifier is associated with the memory address of the object.
+</p>
+
+<ul class="org-ul">
+<li>Note python uses <b>alias</b>, so original = temperature makes original point to the same object as temperature.</li>
+</ul>
+</div></li>
+<li><a id="org7d93bb8"></a>Accessors:<br /><div class="outline-text-6" id="text-1-1-1-1-2">
+<ul class="org-ul">
+<li>Methods of a class that return information about the state of object, but do not modify it.</li>
+</ul>
+</div></li>
+<li><a id="orgfcb0ee2"></a>Mutators (or update methods):<br /><div class="outline-text-6" id="text-1-1-1-1-3">
+<ul class="org-ul">
+<li>DO change the state of an object (like sort())</li>
+</ul>
+</div></li>
+<li><a id="orgd2077c8"></a>Sequences: Collection of values in which order is significant<br /><div class="outline-text-6" id="text-1-1-1-1-4">
+<ul class="org-ul">
+<li>list: stores sequence of references to its elements. Dynamic</li>
+<li>tuples: like lists but immutable</li>
+</ul>
+</div></li>
+<li><a id="org696e02d"></a>Set and Frozenset classes<br /><div class="outline-text-6" id="text-1-1-1-1-5">
+<ul class="org-ul">
+<li>set: represents mathematical notion of a set. Collection of elements without duplicates nor order. Optimized to check if element is contained. Can only contain instances of <b>immutable</b> types.</li>
+<li>frozenset: is a set thats immutable.</li>
+</ul>
+</div></li>
+<li><a id="orgfa404d5"></a>dict<br /></li></ol></li></ol>
+</div>
+
+<div id="outline-container-org4419779" class="outline-4">
+<h4 id="org4419779"><span class="section-number-4">1.1.2</span> 1.3 Expressions, Operators, and Precedence</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<ul class="org-ul">
+<li>/ true division</li>
+<li>// integer division</li>
+<li>and &amp; or are short circuit (don't need to eval second operand)</li>
+</ul>
+
+<p>
+Note that extened assignment operators can mutate elements without reassigning. For isntance
+alpha = [1,2,3]
+beta = alpha          # alias for alpha
+beta += [4,5]         # extends original
+beta = beta + [6,7]   # reassings beta to a new list 
+print(alpha)          # outputs: [1,2,3,4,5]
+</p>
+</div>
+<ol class="org-ol"><li><a id="orga320457"></a>Bitwise Operators<br /><div class="outline-text-5" id="text-1-1-2-1">
+<ul class="org-ul">
+<li>~ bitwise complement</li>
+<li>&amp; bitwise and</li>
+<li>| bitwise or</li>
+<li>^ bitwise exclusive-or</li>
+<li>&lt;&lt; shift bits left, filling with zeros</li>
+<li>&gt;&gt; shift bits to right, filling with sign bit</li>
+</ul>
+</div></li>
+<li><a id="org2f090e9"></a>Sequence Operators<br /><div class="outline-text-5" id="text-1-1-2-2">
+<p>
+Each of pythons built-in sequence types str,stuple,list support:
+</p>
+<ul class="org-ul">
+<li>s[j]</li>
+<li>s[start:stop] which slices [start,stop)</li>
+<li>s[start:stop:step]</li>
+<li>s + t concatenates</li>
+<li>k * s shortand for s + s .. + s (k times)</li>
+<li>val in s: check containment</li>
+<li>val not in s: check non-containment</li>
+</ul>
+</div></li>
+<li><a id="orga68c876"></a>Operators for Sets and Dictionaries<br /><div class="outline-text-5" id="text-1-1-2-3">
+<ul class="org-ul">
+<li>key <b>in</b> s, key <b>not in</b> s</li>
+<li><code>=, !</code>, &lt;=, &gt;=, | (uniont), &amp; (intersection)</li>
+<li>s1 - s2 set of elements in s1 but not in s2</li>
+<li>s1 ^ s1 set of elements in only s1 or s2</li>
+</ul>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orga405e7c" class="outline-4">
+<h4 id="orga405e7c"><span class="section-number-4">1.1.3</span> 1.4 Control Flow</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<ul class="org-ul">
+<li>if, elif, else.</li>
+<li>while</li>
+<li>for element in iterable, for i in range()</li>
+<li>break, continue</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org099b2df" class="outline-4">
+<h4 id="org099b2df"><span class="section-number-4">1.1.4</span> 1.5 Functions</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<ul class="org-ul">
+<li>Function: describe traditional, stateless function invoked without the context of a class or instance. Such as sorted(data)</li>
+<li>Method: a member function invoked upon a specific object, such as data.sort()</li>
+</ul>
+<p>
+When a function is called, Python creates a dedicated <b>activation record</b> that stores info of the current call, including the <b>namespace</b> to manage all <b>identifiers</b> that have a local scope.
+</p>
+</div>
+<ol class="org-ol"><li><a id="orgcd6c4d9"></a>1.5.1 Information Passing<br /><div class="outline-text-5" id="text-1-1-4-1">
+<ul class="org-ul">
+<li>formal parameters: parameters describing input</li>
+<li>actual parameters: object sent when functin is called.</li>
+<li>Mutable Parameters: makes it possible for the body of a function to alter the object passed as an actual parameter.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">scale</span><span style="color: #4f97d7;">(</span>data, factor<span style="color: #4f97d7;">)</span>:
+  <span style="color: #4f97d7; font-weight: bold;">for</span> j <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7;">len</span><span style="color: #bc6ec5;">(</span>data<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>:
+    <span style="color: #7590db;">data</span><span style="color: #4f97d7;">[</span>j<span style="color: #4f97d7;">]</span> *= factor
+</pre>
+</div>
+<ul class="org-ul">
+<li>The code above shows that the body of the function can modify the object. Because data (the formal parameter) works as an alias for the actual parameter.</li>
+<li>Python is polymorphic, also functions can declare one or more default values for parameters. Like 
+<ul class="org-ul">
+<li>def foo(a, b=15, c=27)</li>
+</ul></li>
+<li>Remember: In python, functions are first-class objects(1.10).</li>
+</ul>
+</div></li>
+<li><a id="org3685cc4"></a>1.5.2 Python's built-in functions<br /><div class="outline-text-5" id="text-1-1-4-2">
+<p>
+Chart on page 29
+</p>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orgd89ae59" class="outline-4">
+<h4 id="orgd89ae59"><span class="section-number-4">1.1.5</span> 1.6 Simple I/O</h4>
+<div class="outline-text-4" id="text-1-1-5">
+<ul class="org-ul">
+<li>print(a, b, .., sep=":"): can modify separator</li>
+<li>input(): optional string, always returns string. Do something like:
+<ul class="org-ul">
+<li>year = int(input('In what year were you born'))</li>
+</ul></li>
+</ul>
+</div>
+<ol class="org-ol"><li><a id="org7489fad"></a>1.6.2 Files<br /><div class="outline-text-5" id="text-1-1-5-1">
+<p>
+fp = open('sample.txt') returns a proxy for interactions. Allows read-only access to file.
+r: reading
+w: writing (causing existing file to be overwritten)
+a: appending to existing file
+rb, wb: working with binary files 
+</p>
+</div>
+<ol class="org-ol"><li><a id="org53967f0"></a>Reading from file<br /><div class="outline-text-6" id="text-1-1-5-1-1">
+<p>
+To access a file, beging with creating a proxy with open:
+</p>
+<ul class="org-ul">
+<li>fp = open('sample.txt')</li>
+</ul>
+
+<p>
+Optional second parameter: r (reading), w (writing), a (appending), rb (read binary), wb (write binary)
+</p>
+
+<p>
+most basic command for reading via proxy is read method.
+</p>
+<ul class="org-ul">
+<li>fp.read() or fp.read(k): return remaining contents, or return next k bytes</li>
+<li>fp.readline() return corrent line</li>
+<li>fp.readlines() return all lines</li>
+<li>fp.seek(k) change the current position to be at the kth byte</li>
+<li>fp.tell() return current position as byte-offset from start</li>
+<li>fp.write(string), fp.writelines(seq)</li>
+</ul>
+</div></li></ol></li></ol>
+</div>
+
+<div id="outline-container-orgc02f46c" class="outline-4">
+<h4 id="orgc02f46c"><span class="section-number-4">1.1.6</span> 1.7 Exception Handling</h4>
+<div class="outline-text-4" id="text-1-1-6">
+<p>
+Page 33
+</p>
+<ul class="org-ul">
+<li>raise: raise ValueError('wrong'): throws exception</li>
+</ul>
+<p>
+Catching Exceptions: "Look before you leap."
+</p>
+<ul class="org-ul">
+<li>if y != 0: ration = x/y, else do something else.</li>
+</ul>
+<p>
+Or "Easier ask for forgiveness than permission"
+</p>
+<ul class="org-ul">
+<li>try: ratio = x/y, except ZeroDivisionError: do something else</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9228a0c" class="outline-4">
+<h4 id="org9228a0c"><span class="section-number-4">1.1.7</span> 1.8 Iterators and Generators</h4>
+<div class="outline-text-4" id="text-1-1-7">
+</div><ol class="org-ol"><li><a id="orgb5c5979"></a>Iterators<br /><div class="outline-text-5" id="text-1-1-7-1">
+<p>
+They are used to allow objects to be iterable, like: 
+</p>
+<ul class="org-ul">
+<li>for element in iterable:
+do something..</li>
+</ul>
+
+<p>
+<b>Iterator</b>: object that manages an iteration through a series of values. So if i identifies an iterator object, then calling next(i) produces the next element until geting StopIteration exception.
+</p>
+
+<p>
+<b>Iterable</b>: object, obj, that produces an iterator via the syntax iter(obj)
+</p>
+
+<p>
+By this definitions:
+</p>
+<ul class="org-ul">
+<li><span class="underline">instance</span> of a <span class="underline">list</span> is an iterable, but not an iterator.
+however, an iterator object can be produced with syntax i=iter(data), and then each call to next(i) returns an element of that list.</li>
+<li>It is possible to create multiple <b>iterators</b> from the same iterable object. Note iterator does not store its own copy of the iterable object. So if it is modified while iterating, it will report the updated contents of the list.</li>
+</ul>
+</div></li>
+
+<li><a id="org8e654a9"></a>Generators<br /><div class="outline-text-5" id="text-1-1-7-2">
+<p>
+Most convenient technique for creating <b>iterators</b> in Python is by using <b>generators</b>.
+A <b>generator</b> is just a function that instead of having a <b>return</b> statement, it has a <b>yield</b> statement.
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">factors</span><span style="color: #4f97d7;">(</span>n<span style="color: #4f97d7;">)</span>            <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">traditonal f to compute factors</span>
+  <span style="color: #7590db;">results</span> = <span style="color: #4f97d7;">[]</span>
+  <span style="color: #4f97d7; font-weight: bold;">for</span> k <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span><span style="color: #4f97d7;">(</span><span style="color: #a45bad;">1</span>, n+<span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>:
+    <span style="color: #4f97d7; font-weight: bold;">if</span> n % k == <span style="color: #a45bad;">0</span>:
+      results.append<span style="color: #4f97d7;">(</span>k<span style="color: #4f97d7;">)</span>   <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">add k to list</span>
+  <span style="color: #4f97d7; font-weight: bold;">return</span> results          <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">return entire list</span>
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">factors</span><span style="color: #4f97d7;">(</span>n<span style="color: #4f97d7;">)</span>:           <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">generator that computes factors</span>
+  <span style="color: #4f97d7; font-weight: bold;">for</span> k <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span><span style="color: #4f97d7;">(</span><span style="color: #a45bad;">1</span>, n+<span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>:
+    <span style="color: #4f97d7; font-weight: bold;">if</span> n % k == <span style="color: #a45bad;">0</span>:        <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">instead of appending to list</span>
+      <span style="color: #4f97d7; font-weight: bold;">yield</span> k             <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">yield each iteam k</span>
+</pre>
+</div>
+
+<p>
+Then that can be used in a loop like:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">for</span> factor <span style="color: #4f97d7; font-weight: bold;">in</span> factors<span style="color: #4f97d7;">(</span><span style="color: #a45bad;">100</span><span style="color: #4f97d7;">)</span>:
+  do something
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orgb3d076a" class="outline-4">
+<h4 id="orgb3d076a"><span class="section-number-4">1.1.8</span> 1.9 Python Conveniences</h4>
+<div class="outline-text-4" id="text-1-1-8">
+</div><ol class="org-ol"><li><a id="orgbd5d593"></a>Support for <b>conditional expression</b><br /><div class="outline-text-5" id="text-1-1-8-1">
+<ul class="org-ul">
+<li>expression1 <b>if</b> condition <b>else</b> expression2</li>
+</ul>
+</div></li>
+
+<li><a id="orgcecf598"></a><b>comprehension syntax</b> like <b>list comprehension</b><br /><div class="outline-text-5" id="text-1-1-8-2">
+<ul class="org-ul">
+<li>[expression <b>for</b> value <b>in</b> iterable <b>if</b> condition]</li>
+<li>[expression <b>for</b> value <b>in</b> iterable]</li>
+</ul>
+<p>
+Examples:
+squares = [ k*k for k in range(1, n+1)]
+</p>
+
+<ul class="org-ul">
+<li>[ k*k for k in range(1, n+1) ]      list comprehension</li>
+<li>{ k*k for k in range(1, n+1) }      set</li>
+<li>( k*k for k in range(1, n+1) )      generator</li>
+<li>{ k : k*k for k in range(1, n+1) }  dictionary</li>
+</ul>
+</div></li>
+
+<li><a id="org7c39da0"></a>Packagin/Unpackaging sequences<br /><div class="outline-text-5" id="text-1-1-8-3">
+<p>
+Like: a,b,c = range(7,10)
+Simultaneous assignments j,k = k,j  
+</p>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orgcede84b" class="outline-4">
+<h4 id="orgcede84b"><span class="section-number-4">1.1.9</span> 1.10 Scopes</h4>
+<div class="outline-text-4" id="text-1-1-9">
+</div><ol class="org-ol"><li><a id="orga9f9792"></a>First-class Objects<br /><div class="outline-text-5" id="text-1-1-9-1">
+<p>
+Are instances of a type that can be:
+</p>
+<ul class="org-ul">
+<li>assigned to identifier,</li>
+<li>passed as a parameter,</li>
+<li>returned by a function.</li>
+</ul>
+<p>
+In python, all data types like int and list are first-class types, but additionally <b>functions</b> are as well. Example:
+</p>
+<ul class="org-ul">
+<li>scream = print</li>
+<li>scream("Hello")</li>
+</ul>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org54a05ad" class="outline-4">
+<h4 id="org54a05ad"><span class="section-number-4">1.1.10</span> 1.11 Modules and Import Statements</h4>
+<div class="outline-text-4" id="text-1-1-10">
+<p>
+Example: from math import pi, sqrt or import math, in which case the use should be math.pi.
+</p>
+
+<ul class="org-ul">
+<li>Use: if <span class="underline"><span class="underline">name</span></span> == '<span class="underline"><span class="underline">main</span></span>':</li>
+</ul>
+<p>
+To place commands that will be executed if module is directly invoked as script, but not when it is imported as a module. This is specially ised for <b>unit tests</b>
+</p>
+
+<p>
+Existing modules: array, collections, copy, math, os, random, re, sys, time, etc..
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2afb915" class="outline-3">
+<h3 id="org2afb915"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> 2 OOP</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+In OO Paradigm, main actors are <b>objects</b>.
+Each <b>object</b> is an <b>instance</b> of a <b>class</b>.
+Class has:
+</p>
+<ul class="org-ul">
+<li>Instance variables (aka data members)</li>
+<li>Methods (member functions)</li>
+</ul>
+</div>
+
+<div id="outline-container-orgf6c7e03" class="outline-4">
+<h4 id="orgf6c7e03"><span class="section-number-4">1.2.1</span> 2.1 Goals, Principles, and Patterns</h4>
+<div class="outline-text-4" id="text-1-2-1">
+</div><ol class="org-ol"><li><a id="orgcd1c524"></a>2.1.1 OO Design Goals<br /><ol class="org-ol"><li><a id="orgdb65276"></a>Robustness   : Capable of handling unexpected inputs<br /></li>
+<li><a id="org5481916"></a>Adaptability : Aka Evolvability, so it can run withminimal change on different hardward or OS<br /></li>
+<li><a id="org1121170"></a>Reusability  : Same code should be usable as a component of different systems.<br /></li></ol></li>
+
+<li><a id="orgea7f283"></a>2.1.2 OO Design Principles<br /><ol class="org-ol"><li><a id="org1deda9a"></a>Modularity   : Helps support Robustness and Reusability.<br /><div class="outline-text-6" id="text-1-2-1-2-1">
+<p>
+Different components of a software system are divided into separate functional units
+</p>
+</div></li>
+
+<li><a id="org774442b"></a>Abstraction  : To distill a complicated system down to its most fundamental parts<br /><div class="outline-text-6" id="text-1-2-1-2-2">
+<p>
+Uses ADTs (abstract data types). ADT specifies what and not how. ADT is a mathematical model, it specifies:
+</p>
+<ul class="org-ul">
+<li>data stored</li>
+<li>operations supported on such data</li>
+<li>types of parameters of the operations</li>
+</ul>
+<p>
+Set of behaviors supported by ADT = <b>public interface</b>
+</p>
+
+<p>
+In Python, supports ABC (abstract base class): ABC cannot be instantiated, but defines methods that all implementations of the abstraction must have.
+Concrete classes that inherit ABC
+</p>
+</div></li>
+
+<li><a id="orgd15b3b8"></a>Encapsulation: Diff components of system should not reveal internat details of their implementations<br /><div class="outline-text-6" id="text-1-2-1-2-3">
+<p>
+Pros: Gives programmer freedom to implement the details of a component without concern that other programmers will be writing code dependent on those internal components.
+Yields: Robustness and adaptability. Sincea public interface for such component will need to be created.
+</p>
+
+<p>
+In Python, variables with underscore are nonpublic: (<sub>secret</sub>)
+</p>
+</div></li></ol></li>
+
+<li><a id="orga4f14eb"></a>2.1.3 Design Patterns<br /><div class="outline-text-5" id="text-1-2-1-3">
+<p>
+Design pattern = Describes a solution to a "typical" software design problem. Provides general template for solution for many diff situations.
+</p>
+
+<p>
+Researchers have developed a variety of organizational concepts and methodologies for designing quality OO Software.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="org4035c08"></a>Examples of ALgorithm Design Patterns:<br /><div class="outline-text-6" id="text-1-2-1-3-1">
+<ul class="org-ul">
+<li>Recursion</li>
+<li>Amortization</li>
+<li>Divide and conquer</li>
+<li>Prune-and-search aka Decrease and conquer</li>
+<li>Brute force</li>
+<li>Dynamic Programming</li>
+<li>Greedy method</li>
+</ul>
+</div></li>
+
+<li><a id="org09c672a"></a>Examples of Engineering Design Patterns:<br /><div class="outline-text-6" id="text-1-2-1-3-2">
+<ul class="org-ul">
+<li>Iterator</li>
+<li>Adapter</li>
+<li>Position</li>
+<li>Composition</li>
+<li>Template method</li>
+<li>Locator</li>
+<li>Factory method</li>
+</ul>
+</div></li></ol></li></ol>
+</div>
+
+<div id="outline-container-org3115625" class="outline-4">
+<h4 id="org3115625"><span class="section-number-4">1.2.2</span> 2.2 Software Development</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Traditional steps: Design, IMplementation, Testing &amp; Debugging
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="org12659de"></a>2.2.1 Design<br /><div class="outline-text-5" id="text-1-2-2-1">
+<p>
+Helpful rules to determine how to design classes:
+</p>
+<ul class="org-ul">
+<li>Responsabilities: Divide work into different actors, each with their own responsability. They are the classes</li>
+<li>Independence: Define work of each class to be as independent from other classes as possible. Subdivide responsabilities between classes to make the autonomous.</li>
+<li>Behaviors: Define behaviors carefully and precisely, so consequences are well udnerstood by other classes.</li>
+</ul>
+
+<p>
+Notes:
+</p>
+<ul class="org-ul">
+<li>Can use UML to express the design. Like class diagram.</li>
+<li>An intermediate step before implementations: Pseudo-code.</li>
+</ul>
+</div></li>
+
+<li><a id="orgc2f81d2"></a>2.2.3 Coding style and Documentation<br /><div class="outline-text-5" id="text-1-2-2-2">
+<p>
+Encapsulation: private identifiers being with _underscore
+Docstring """ for documentation.
+</p>
+</div></li>
+
+<li><a id="org317b939"></a>2.2.4 Testing and Debugging<br /><div class="outline-text-5" id="text-1-2-2-3">
+<p>
+Perform unit test in:
+</p>
+<ul class="org-ul">
+<li>if <span class="underline"><span class="underline">name</span></span> == '<span class="underline"><span class="underline">main</span></span>':</li>
+</ul>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org3e08bd0" class="outline-4">
+<h4 id="org3e08bd0"><span class="section-number-4">1.2.3</span> 2.3 Class Definition</h4>
+<div class="outline-text-4" id="text-1-2-3">
+</div><ol class="org-ol"><li><a id="orgf8db1a2"></a>2.3.2 Operator Overloading and Python's Special Methods<br /></li>
+<li><a id="orgcb53f3a"></a>2.3.4 Iterators<br /><div class="outline-text-5" id="text-1-2-3-2">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">SequenceIterator</span>:
+  <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">__init__</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span>, sequence<span style="color: #4f97d7;">)</span>:
+    <span style="color: #4f97d7; font-weight: bold;">self</span>._seq = sequence
+    <span style="color: #4f97d7; font-weight: bold;">self</span>._k = -<span style="color: #a45bad;">1</span>
+
+  <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">__next__</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span><span style="color: #4f97d7;">)</span>:
+    <span style="color: #4f97d7; font-weight: bold;">self</span>._k += <span style="color: #a45bad;">1</span>
+    <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #4f97d7; font-weight: bold;">self</span>._k &lt; <span style="color: #4f97d7;">len</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span>._seq<span style="color: #4f97d7;">)</span>:
+      <span style="color: #4f97d7; font-weight: bold;">return</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span>._seq<span style="color: #bc6ec5;">[</span><span style="color: #4f97d7; font-weight: bold;">self</span>._k<span style="color: #bc6ec5;">]</span><span style="color: #4f97d7;">)</span>    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">return the data element</span>
+    <span style="color: #4f97d7; font-weight: bold;">else</span>:
+      <span style="color: #4f97d7; font-weight: bold;">raise</span> <span style="color: #ce537a; font-weight: bold;">StopIteration</span><span style="color: #4f97d7;">()</span>
+
+ <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">__iter__</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span><span style="color: #4f97d7;">)</span>:
+  <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #4f97d7; font-weight: bold;">self</span>             <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">By convention, always return self</span>
+
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org9ef9f86" class="outline-4">
+<h4 id="org9ef9f86"><span class="section-number-4">1.2.4</span> 2.4 Inheritance</h4>
+<div class="outline-text-4" id="text-1-2-4">
+</div><ol class="org-ol"><li><a id="orgccfc787"></a>2.4.1 Extending class<br /></li>
+<li><a id="orgc881830"></a>2.4.3 Abstract Base Classes<br /></li></ol>
+</div>
+
+<div id="outline-container-org610a55f" class="outline-4">
+<h4 id="org610a55f"><span class="section-number-4">1.2.5</span> 2.5 Namespaces and Object-Orientation</h4>
+<div class="outline-text-4" id="text-1-2-5">
+</div><ol class="org-ol"><li><a id="orgd0d7a20"></a>2.5.1 Instance and Class namespaces<br /></li>
+<li><a id="org4f10e6c"></a>2.5.2 Name Resolution &amp; Dunamic Dispatch<br /></li></ol>
+</div>
+
+<div id="outline-container-orgf1bbdca" class="outline-4">
+<h4 id="orgf1bbdca"><span class="section-number-4">1.2.6</span> 2.6 Shallow and Deep Copying</h4>
+</div>
+</div>
+
+<div id="outline-container-org3b4c694" class="outline-3">
+<h3 id="org3b4c694"><span class="section-number-3">1.3</span> <span class="done DONE">DONE</span> 3 Algorithm Analysis</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Data structure: systematic way of organizing and accessing data
+Algorithm: step-by-step procedure for performing some task
+</p>
+</div>
+<div id="outline-container-orgb24539b" class="outline-4">
+<h4 id="orgb24539b"><span class="section-number-4">1.3.1</span> 3.1 Experimental Studies</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+Determining the elapsed time by recording in it just before and just after the algorithm occurs:
+</p>
+<ul class="org-ul">
+<li>start<sub>time</sub> = time() # record starting time</li>
+<li>end<sub>time</sub> = time()   # record the ending time</li>
+<li>elapsed = end<sub>time</sub> - start<sub>time</sub></li>
+</ul>
+<p>
+This method is not practical for all instances, so need to find a different approach. Maybe time as a function of input?
+</p>
+</div>
+</div>
+
+<div id="outline-container-org18a73c4" class="outline-4">
+<h4 id="org18a73c4"><span class="section-number-4">1.3.2</span> 3.2 The seven functions used in this Book</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+Seven most important functions used in the analysis of alogirhtms. 
+</p>
+<ul class="org-ul">
+<li>The Constant Function: f(n) = c</li>
+<li>The Logarithm Function: x = logb(n) iff b<sup>x</sup> = n</li>
+<li>Linear: f(n) = n</li>
+<li>N-log-N: f(n) = nlogn,</li>
+<li>Quadratic: f(n) = n<sup>2</sup></li>
+<li>Cubic and other Polynomials: f(n) = n<sup>3</sup></li>
+<li>Exponential Function: b<sup>n</sup></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcda9fda" class="outline-4">
+<h4 id="orgcda9fda"><span class="section-number-4">1.3.3</span> 3.3 Asymptotic Analysis</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+Big-Oh notation. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc2f94b7" class="outline-4">
+<h4 id="orgc2f94b7"><span class="section-number-4">1.3.4</span> 3.4 Simple Justification Techniques</h4>
+<div class="outline-text-4" id="text-1-3-4">
+<p>
+Technique to make claims about an algorith. Such is showing it is correct or that it runs fast.
+</p>
+<ul class="org-ul">
+<li><b>By example</b> (or by counter exampleto negate something)</li>
+<li><b>The Contra Attack</b>: Contrapositive and COntradiction. Contrapositive method is like looking through a negative mirror. To justyfy "if p is true, then q is true", we can establish that "if q is not true, then p is not true". Rememer <b>DeMorgan's Law</b>.</li>
+<li><b>Induction and Loop Variants</b>: showing q(n) is true for n=1, then inductive step is true for n&gt;k, namely, show "if q(j) is true for al j&lt;n, then q(n) is true"</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgaba2966" class="outline-3">
+<h3 id="orgaba2966"><span class="section-number-3">1.4</span> <span class="done DONE">DONE</span> 4 Recursion</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Important technique in the study of data structures and algorithms. Will be used in chapters 8 and 12 (Trees and Sorting and Selection)
+</p>
+</div>
+<div id="outline-container-orga09a91d" class="outline-4">
+<h4 id="orga09a91d"><span class="section-number-4">1.4.1</span> 4.1 Ilustrative Examples</h4>
+<div class="outline-text-4" id="text-1-4-1">
+</div><ol class="org-ol"><li><a id="orge4e15bc"></a>Factorial Function: classic math function naturally recursive<br /><div class="outline-text-5" id="text-1-4-1-1">
+<p>
+Definition:
+</p>
+<ul class="org-ul">
+<li>n! = 1                      , if n = 0
+= n*(n-1)*(n-2)&#x2026;2*1    , if n &lt;= 1</li>
+</ul>
+<p>
+which can also be written as
+</p>
+<ul class="org-ul">
+<li>n! = 1                      , if n = 0      # base case
+= n*(n-1)!               , if n &lt;= 1</li>
+</ul>
+
+<p>
+In Python, each time a function is called, a structure known as <b>activation reccord</b> or <b>frame</b> is created to store info on the progress of that invocation. 
+During recursion, the former call is suspended and its  <b>activation record</b> stores the place that will resume when the nested function is done. There is a different activation record for each active call.
+</p>
+</div></li>
+
+<li><a id="orgab3a9aa"></a>English Ruler: has recursive pattern example of fractal struct.<br /><div class="outline-text-5" id="text-1-4-1-2">
+<p>
+Drawing the markings of a typical English ruler. Like:
+-&#x2014;0
+</p>
+<ul class="org-ul">
+<li></li>
+</ul>
+<p>
+&#x2013;
+</p>
+<ul class="org-ul">
+<li></li>
+</ul>
+<p>
+&#x2014;
+</p>
+<ul class="org-ul">
+<li></li>
+</ul>
+<p>
+&#x2013;
+</p>
+<ul class="org-ul">
+<li></li>
+</ul>
+<p>
+-&#x2014;1
+</p>
+
+<p>
+It is a simple example of a fractal, a shape that has a self-recursive structure at varios levels of magnification.
+</p>
+</div></li>
+
+<li><a id="orgb292f9a"></a>Binary Search: duh<br /></li>
+<li><a id="org1ef45a1"></a>File System: used to explore and manage file systems<br /></li></ol>
+</div>
+<div id="outline-container-org8a897ed" class="outline-4">
+<h4 id="org8a897ed"><span class="section-number-4">1.4.2</span> 4.2 Analyzing Recursive Algorithms</h4>
+</div>
+<div id="outline-container-org5f4f5ec" class="outline-4">
+<h4 id="org5f4f5ec"><span class="section-number-4">1.4.3</span> 4.3 Recursion run Amok</h4>
+</div>
+<div id="outline-container-org0b9ca70" class="outline-4">
+<h4 id="org0b9ca70"><span class="section-number-4">1.4.4</span> 4.4 Further Examples of Recursion</h4>
+</div>
+<div id="outline-container-org9758a25" class="outline-4">
+<h4 id="org9758a25"><span class="section-number-4">1.4.5</span> 4.5 Designing Recursive Algorithms</h4>
+<div class="outline-text-4" id="text-1-4-5">
+<p>
+Follows the following form:
+</p>
+<ul class="org-ul">
+<li>Test for base cases: (exit)</li>
+<li>Recur: It should make progress towards base case</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1c99400" class="outline-4">
+<h4 id="org1c99400"><span class="section-number-4">1.4.6</span> 4.6 rEliminating Tail Recursion</h4>
+</div>
+</div>
+
+<div id="outline-container-org8c6875c" class="outline-3">
+<h3 id="org8c6875c"><span class="section-number-3">1.5</span> <span class="done DONE">DONE</span> 5 Array-based sequences</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-orgab17530" class="outline-4">
+<h4 id="orgab17530"><span class="section-number-4">1.5.1</span> 5.1 Python's Sequence Types</h4>
+</div>
+<div id="outline-container-orgb029426" class="outline-4">
+<h4 id="orgb029426"><span class="section-number-4">1.5.2</span> 5.2 Low-Level Arrays</h4>
+</div>
+<div id="outline-container-org8467846" class="outline-4">
+<h4 id="org8467846"><span class="section-number-4">1.5.3</span> 5.3 Dynamic arrays and amortization</h4>
+</div>
+<div id="outline-container-orgbf91647" class="outline-4">
+<h4 id="orgbf91647"><span class="section-number-4">1.5.4</span> 5.4 Efficiency of Python's sequence types</h4>
+</div>
+<div id="outline-container-org6a43383" class="outline-4">
+<h4 id="org6a43383"><span class="section-number-4">1.5.5</span> 5.5 Using Array-based sequences</h4>
+</div>
+<div id="outline-container-orga7c0a0c" class="outline-4">
+<h4 id="orga7c0a0c"><span class="section-number-4">1.5.6</span> 5.6 Multidimensional Data Sets</h4>
+</div>
+</div>
+
+<div id="outline-container-org39c18c3" class="outline-3">
+<h3 id="org39c18c3"><span class="section-number-3">1.6</span> 6 Stacks, Queues, and Deques</h3>
+<div class="outline-text-3" id="text-1-6">
+</div><div id="outline-container-org48e0148" class="outline-4">
+<h4 id="org48e0148"><span class="section-number-4">1.6.1</span> 6.1 Stacks</h4>
+</div>
+<div id="outline-container-orgf3aed21" class="outline-4">
+<h4 id="orgf3aed21"><span class="section-number-4">1.6.2</span> 6.2 Queues</h4>
+</div>
+<div id="outline-container-org2f7932d" class="outline-4">
+<h4 id="org2f7932d"><span class="section-number-4">1.6.3</span> 6.3 Double-ended Queues</h4>
+</div>
+</div>
+
+<div id="outline-container-org7f51aad" class="outline-3">
+<h3 id="org7f51aad"><span class="section-number-3">1.7</span> 7 Linked Lists</h3>
+<div class="outline-text-3" id="text-1-7">
+</div><div id="outline-container-orgbda2f20" class="outline-4">
+<h4 id="orgbda2f20"><span class="section-number-4">1.7.1</span> 7.1 Singly Linked Lists</h4>
+</div>
+<div id="outline-container-org725bce2" class="outline-4">
+<h4 id="org725bce2"><span class="section-number-4">1.7.2</span> 7.2 Circularly linked lits</h4>
+</div>
+<div id="outline-container-orgd8bc9ec" class="outline-4">
+<h4 id="orgd8bc9ec"><span class="section-number-4">1.7.3</span> 7.3 Doubly linked lits</h4>
+</div>
+<div id="outline-container-orgd985654" class="outline-4">
+<h4 id="orgd985654"><span class="section-number-4">1.7.4</span> 7.4 The positional list ADT</h4>
+</div>
+<div id="outline-container-org6fba5f9" class="outline-4">
+<h4 id="org6fba5f9"><span class="section-number-4">1.7.5</span> 7.5 Sorting a Positional List</h4>
+</div>
+<div id="outline-container-orgeddfee5" class="outline-4">
+<h4 id="orgeddfee5"><span class="section-number-4">1.7.6</span> 7.7 Link-based vs Array-based sequences</h4>
+</div>
+</div>
+
+<div id="outline-container-orgb6e2f10" class="outline-3">
+<h3 id="orgb6e2f10"><span class="section-number-3">1.8</span> <span class="done DONE">DONE</span> 8 Trees</h3>
+<div class="outline-text-3" id="text-1-8">
+</div>
+<div id="outline-container-org485e110" class="outline-4">
+<h4 id="org485e110"><span class="section-number-4">1.8.1</span> 8.1 General Trees</h4>
+<div class="outline-text-4" id="text-1-8-1">
+</div><ol class="org-ol"><li><a id="org8c9022e"></a>8.1.1 General Tree Stuff<br /><div class="outline-text-5" id="text-1-8-1-1">
+<p>
+Tree: is an <b>abstract data type</b> that stores elements hierarchically. Except the root, each element has a <b>parent</b> and zero or more <b>children</b>.
+Typically we call the <b>root</b> of the tree, and the other elements are connected to it.
+</p>
+
+<p>
+Formal definition
+A tree T is a set of nodes storing elements such that the nodes have a <b>parent-child</b> relationship.
+</p>
+<ul class="org-ul">
+<li>If T is nonempty, it has a special node called the <b>root</b> that has no parent.</li>
+<li>Each node v of T different grom the root has a unique <b>parent</b> node w; every node with a parent w is a child of w.</li>
+</ul>
+<p>
+Note: According to def, tree can be empty. This allows us to define a tree recursively, such that a tree T is either empty or consists of a node r, called the root of T, and a set of subtrees whose roots are the children of r.
+</p>
+
+<ul class="org-ul">
+<li><b>edge</b>: is a pair of nods (u,v) such that <i>u</i> is the parent of <i>v</i>, or vice versa.</li>
+
+<li><b>Internal Nodes</b>: Nodes that have children</li>
+<li><b>External Nodes</b>: Nodes that are leafs, so don't have children.</li>
+</ul>
+</div></li>
+
+<li><a id="orged5b035"></a>8.1.2 Tree Abstract Data Type<br /><div class="outline-text-5" id="text-1-8-1-2">
+<p>
+We define a tree ADT using the concept of a <b>position</b> as an abstraction for a node of a tree.
+Position supports:
+</p>
+<ul class="org-ul">
+<li>p.element(): Return element stored at position p</li>
+
+<li>Tree ADT supports following <b>accessor methods</b>:
+<ul class="org-ul">
+<li>T.Root() : Returns position fo root in tree or None</li>
+<li>T.is<sub>root</sub>(p) :</li>
+<li>T.parent(p) : Returns position of parent or None</li>
+<li>T.num<sub>children</sub>(p) : Returns number of children</li>
+<li>T.Children(p) : Generate an iteration of the children of p</li>
+<li>T.is<sub>leaf</sub>(p) : True if p doesn't have children</li>
+<li>len(T) : Length</li>
+<li>T.is<sub>empty</sub>() : True if empty</li>
+<li>T.positions() : Generate iteration fo all positions of T</li>
+<li>iter(T) : Generate an iteration fo all elements stored in T</li>
+</ul></li>
+</ul>
+
+<p>
+At this point, this book goes into defining a Tree Abstract Base Class in Python, which will be the base class for a lot of different Tree types (Binary search trees, etc) to reuse as much code as possible.
+Provides definition for a nested <b>Position class</b> and a number of accessor methods. However, it does not define any internal representation for storing a tree.
+There are 5 methods that remain abstract: 
+root, parent, num<sub>children</sub>, children, and <span class="underline"><span class="underline">len</span></span>
+Each method raises a NotImplementedError
+</p>
+</div></li>
+
+<li><a id="org1abc892"></a>8.1.3 Computing Depth and Height<br /><div class="outline-text-5" id="text-1-8-1-3">
+<ul class="org-ul">
+<li>Depth(p): If p is root, the depth is 0, otherwise, deph of p is 1 + depth(parent of p). This allows for a simple recursive algorithm.</li>
+<li>Height(p): If p is a leaf, then height is 0. Otherwise, height of p is 1 + max(height(children))</li>
+<li>Height of tree = Height of the root.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">_height1</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span><span style="color: #4f97d7;">)</span>:
+    <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #4f97d7;">max</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span>.depth<span style="color: #bc6ec5;">(</span>p<span style="color: #bc6ec5;">)</span> <span style="color: #4f97d7; font-weight: bold;">for</span> p <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7; font-weight: bold;">self</span>.positions<span style="color: #bc6ec5;">()</span> <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #4f97d7; font-weight: bold;">self</span>.is_leaf<span style="color: #bc6ec5;">(</span>p<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Works in O(n^2)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">_height2</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span>, p<span style="color: #4f97d7;">)</span>:
+  <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #4f97d7; font-weight: bold;">self</span>.is_leaf<span style="color: #4f97d7;">(</span>p<span style="color: #4f97d7;">)</span>: <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #a45bad;">0</span>
+  <span style="color: #4f97d7; font-weight: bold;">else</span>: <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #a45bad;">1</span> + <span style="color: #4f97d7;">max</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span>._height2<span style="color: #bc6ec5;">(</span>c<span style="color: #bc6ec5;">)</span> <span style="color: #4f97d7; font-weight: bold;">for</span> c <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7; font-weight: bold;">self</span>.children<span style="color: #bc6ec5;">(</span>p<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">This runs in linear time</span>
+</pre>
+</div>
+
+<p>
+Better way:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">height</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span>, p=<span style="color: #a45bad;">None</span><span style="color: #4f97d7;">)</span>:
+  <span style="color: #4f97d7; font-weight: bold;">if</span> p <span style="color: #4f97d7; font-weight: bold;">is</span> <span style="color: #a45bad;">None</span>:
+    <span style="color: #7590db;">p</span> = <span style="color: #4f97d7; font-weight: bold;">self</span>.root<span style="color: #4f97d7;">()</span>
+  <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #4f97d7; font-weight: bold;">self</span>._height2<span style="color: #4f97d7;">(</span>p<span style="color: #4f97d7;">)</span>
+
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org8065c86" class="outline-4">
+<h4 id="org8065c86"><span class="section-number-4">1.8.2</span> 8.2 Binary Trees</h4>
+<div class="outline-text-4" id="text-1-8-2">
+</div><ol class="org-ol"><li><a id="org2b18304"></a>Definitions<br /><div class="outline-text-5" id="text-1-8-2-1">
+<p>
+Normal Definition:
+A bt is an ordered tree with the following properties:
+</p>
+<ol class="org-ol">
+<li>Every node has at most 2 childrem</li>
+<li>each child is labeled as left child or right child</li>
+<li>a left child precedes the right child in the order of children of a node.</li>
+</ol>
+
+<p>
+Recursive Binary Tree Definition:
+A tree is either empty of consists of:
+</p>
+<ul class="org-ul">
+<li>A node r, called the root of T, stores an element</li>
+<li>A BT (possibly empty), called the left subtree of T</li>
+<li>A BT (possibly empty), called right subtree of T</li>
+
+<li>Binary Tree Abstract Data Type can support:
+<ul class="org-ul">
+<li>T.left(p)</li>
+<li>T.right(p)</li>
+<li>T.sibling(p)</li>
+</ul></li>
+
+<li><b>proper BT</b>: if each node has either 0 or 2 children</li>
+</ul>
+</div></li>
+
+<li><a id="orgd378576"></a>Properties of Binary Trees<br /><div class="outline-text-5" id="text-1-8-2-2">
+<p>
+Denoting all the nodes of same depth d as <b>level</b> d of T,
+level 0 has at most 1 node, level 1 at most 2 nodes, etc. 
+Thus, <b>level d</b> has at most 2<sup>d</sup> nodes
+</p>
+
+<p>
+Proposition 8.8: Let T be nonempty BT. n=# nodes, ne=# of external nodes, ni=# internal nodes, and h=height of T.
+Then:
+</p>
+<ul class="org-ul">
+<li>h+1 &lt;= n &lt;= 2<sup>(h+1)</sup> - 1</li>
+<li>1 &lt;= ne &lt;= 2<sup>h</sup></li>
+<li>h &lt;= ni &lt;= 2<sup>h</sup> - 1</li>
+<li>lof(n+1 - 1 &lt;= h &lt;= n-1</li>
+</ul>
+
+<p>
+Proposition 8.9: In nonempty <b>proper</b> bt T: ne = ni+1
+</p>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orga7179c0" class="outline-4">
+<h4 id="orga7179c0"><span class="section-number-4">1.8.3</span> 8.3 Implementing Trees</h4>
+<div class="outline-text-4" id="text-1-8-3">
+</div><ol class="org-ol"><li><a id="org6705128"></a>8.3.1 Linked List Representation<br /><div class="outline-text-5" id="text-1-8-3-1">
+<p>
+We all know what it is. It's the most commong way of representing Trees.
+Summary of performance of this implementation:
+</p>
+<ul class="org-ul">
+<li>len: LinkedBinaryTree uses an isntance variable to store numer of nodes of T. Takes O(1)</li>
+<li>is<sub>empty</sub>: inherited from Tree,relies on a single call to len, so O(1) as well.</li>
+<li>root, left, right, num<sub>children</sub> from Tree run in O(1), same as is<sub>root</sub> (which calls root)</li>
+<li>depth(p) in O(dp + 1)</li>
+<li>height runs in O(n)</li>
+<li>add<sub>root</sub>, add<sub>left</sub>, add<sub>right</sub>, replace, delete, attach all run in O(1)</li>
+</ul>
+<p>
+SEE CODE OF IMPLEMENTATION in repository
+</p>
+</div></li>
+
+<li><a id="org9e140bf"></a>8.3.2 Array-Based Representation<br /><div class="outline-text-5" id="text-1-8-3-2">
+<p>
+Alternative representation based on array (though in Python we will use lists)
+For very position p of T, let f(p) be the integer defined as follows:
+</p>
+<ul class="org-ul">
+<li>if p is in the root of T, then f(p) = 0</li>
+<li>if p is the left child of position q, then f(p) = 2f(q)+1</li>
+<li>if p is the right child of position q, then f(p) = 2f(q)+2</li>
+</ul>
+<p>
+f function is known as <b>level numbering</b> of positions in a binary tree T.
+</p>
+
+<p>
+Advantages:
+Position p can be represented by a single integer.
+Position-based methods such as root, parent, left, right can be implemented using arithmetic.
+left child = 2f(p) + 1
+parent = floor((f(p)-1)/2)
+</p>
+
+<p>
+Considerations:
+</p>
+<ul class="org-ul">
+<li>Space usage can be a problem. Depends of the shape of the tree. If it is not <b>full</b> there would be a lot of empty cells. The worst case is N = 2<sup>n</sup> -1 (N is length of array) Note: the array A requires length N = 1+fm (where N is length, and fm is the maximum value of f(p)).</li>
+<li>Some update operations are not efficient. Like <b>delete</b> and <b>promoting</b> take O(n), because all descendants need to move within the array.</li>
+</ul>
+
+<p>
+It is of great usefulness in certain cases, though, like in <b>"heaps"</b>
+</p>
+</div></li>
+
+<li><a id="orgba1ccef"></a>8.3.4 Linked Structure for General Trees:<br /><div class="outline-text-5" id="text-1-8-3-3">
+<p>
+Same, just have a <b>container</b> to store references to children. Like a Python list for example.
+</p>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org77e8496" class="outline-4">
+<h4 id="org77e8496"><span class="section-number-4">1.8.4</span> 8.4 Tree Traversal Algorithms</h4>
+<div class="outline-text-4" id="text-1-8-4">
+</div><ol class="org-ol"><li><a id="org2f08b7a"></a>8.4.1 Preorder and postorder Traversal for general trees<br /><div class="outline-text-5" id="text-1-8-4-1">
+<ul class="org-ul">
+<li>Preorder: root is visited first. Then the subtrees rooted at its children are traversed recursively. If the tree is ordered, then subtrees are traversed according to the order of the children. Like a Book Index.</li>
+<li>Postorder: Recursively traverses subtrees rooted at the children of the root first, then it visits the root.</li>
+</ul>
+
+<p>
+Running-Time Analysis
+Both are efficient ways to access all the positions of a tree. At each position p, the nonrecursive part requires constant O(cp+1) time, making the traversal be O(n), where n is the number of positions in the tree.
+</p>
+</div></li>
+
+<li><a id="org7335739"></a>8.4.2 Breadth-first for general trees too<br /><div class="outline-text-5" id="text-1-8-4-2">
+<p>
+Another traversing approach, is to go visit all the positions of level (or depth) d, before visiting the next level (or depth) d+1.
+This approach is commong in software for playing games, to represent the possible choices of moves.
+</p>
+
+<p>
+Algorithm: It is not recursive. Instead think of using a  <b>Queue</b>. While queue is not empty, p = deque, visit(p), then for all the children of p, enqueue them.
+</p>
+</div></li>
+
+<li><a id="orga1417d8"></a>8.4.3 Inorder traversal for binary tree<br /><div class="outline-text-5" id="text-1-8-4-3">
+<p>
+The previous ways of traversing could be applied to general trees because they don't require an order. 
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">inorder</span><span style="color: #4f97d7;">(</span>p<span style="color: #4f97d7;">)</span>:
+  <span style="color: #4f97d7; font-weight: bold;">if</span> p.left:
+    inorder<span style="color: #4f97d7;">(</span>p.left<span style="color: #4f97d7;">)</span>
+  visit<span style="color: #4f97d7;">(</span>p<span style="color: #4f97d7;">)</span>
+  <span style="color: #4f97d7; font-weight: bold;">if</span> p.right:
+    inorder<span style="color: #4f97d7;">(</span>p.right<span style="color: #4f97d7;">)</span>
+
+</pre>
+</div>
+</div>
+
+<ol class="org-ol"><li><a id="org93f8d43"></a>Binary Search Trees<br /><div class="outline-text-6" id="text-1-8-4-3-1">
+<p>
+Let S be a set of unique elements with an order relation.
+</p>
+<ul class="org-ul">
+<li>Position p stores element of S, denoted as e(p)</li>
+<li>Elements in left subtree of p, are less than e(p)</li>
+<li>Elements in right of subtree of p, are greater than e(p)</li>
+</ul>
+<p>
+It can be viewed as a <b>binary decision tree</b>
+</p>
+</div></li></ol></li>
+
+<li><a id="org6a7a9fc"></a>8.4.4 Implementing tree traversals in Python<br /><div class="outline-text-5" id="text-1-8-4-4">
+<p>
+Remember that when defining the Tree ADT, we stated T should include support for:
+</p>
+<ul class="org-ul">
+<li>T.positions(): To generate an iteration of all positions</li>
+<li>iter(T): To generate all elements stored within the tree T</li>
+</ul>
+</div></li>
+
+<li><a id="org1dc1393"></a>8.4.5 Applications of Tree Traversals<br /><div class="outline-text-5" id="text-1-8-4-5">
+<ul class="org-ul">
+<li>To indent! Like book table of contents or label</li>
+<li>Parenthetic string representations P(T)
+<ol class="org-ol">
+<li>if T consists of only 1 single position:
+P(T) = str(p.element())</li>
+<li>else: 
+P(T) = str(p.element()) + '(' + P(T1) + ', ' + &#x2026; + ', ' + P(Tk) + ')'</li>
+</ol></li>
+</ul>
+<p>
+Example:
+Electronics R’Us (R&amp;D, Sales (Domestic, International (Canada,
+S. America, Overseas (Africa, Europe, Asia, Australia))),
+Purchasing, Manufacturing (TV, CD, Tuner))
+</p>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org6e79faa" class="outline-4">
+<h4 id="org6e79faa"><span class="section-number-4">1.8.5</span> Case Study: An Expression Tree</h4>
+</div>
+</div>
+
+<div id="outline-container-orgaab0f5c" class="outline-3">
+<h3 id="orgaab0f5c"><span class="section-number-3">1.9</span> <span class="todo TODO">TODO</span> 9 Priority Queues</h3>
+<div class="outline-text-3" id="text-1-9">
+</div><div id="outline-container-org3ec5e68" class="outline-4">
+<h4 id="org3ec5e68"><span class="section-number-4">1.9.1</span> 9.1 The Priority Queue Abstract Data Type</h4>
+<div class="outline-text-4" id="text-1-9-1">
+</div><ol class="org-ol"><li><a id="org227adbd"></a>Priorities<br /><div class="outline-text-5" id="text-1-9-1-1">
+<p>
+Collection of prioratized elements that allows arbitrary element insertion, and the removal of element with first priority.
+When element is added to PQ, it is associated with a <b>key</b>. The elements with lowest <b>key</b> values are removed first.
+</p>
+</div></li>
+
+<li><a id="org62c6c4c"></a>Priority Queue ADT<br /><div class="outline-text-5" id="text-1-9-1-2">
+<p>
+The following is the PQ ADT modeled as key-value pair.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">P.add(k, v)</td>
+<td class="org-left">Insert item with key k and value v</td>
+</tr>
+
+<tr>
+<td class="org-left">P.min()</td>
+<td class="org-left">return tuple (k,v) but don't removed</td>
+</tr>
+
+<tr>
+<td class="org-left">P.remove<sub>min</sub>()</td>
+<td class="org-left">Remove and return item with min key from PQ</td>
+</tr>
+
+<tr>
+<td class="org-left">P.is<sub>empty</sub>()</td>
+<td class="org-left">True of P is empty</td>
+</tr>
+
+<tr>
+<td class="org-left">len(P)</td>
+<td class="org-left">return # items in P</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+In Section 9.5, we consider keys with changing values.
+</p>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org862187c" class="outline-4">
+<h4 id="org862187c"><span class="section-number-4">1.9.2</span> 9.2 Implementing Priority Queue</h4>
+<div class="outline-text-4" id="text-1-9-2">
+</div><ol class="org-ol"><li><a id="org37b41a1"></a>9.2.1 The Composition Design Pattern<br /><div class="outline-text-5" id="text-1-9-2-1">
+<p>
+To keep track of elements in our data structure, in this case the element and its key, even as they are relocated within the ds.
+We can define a _Item nested class in our PriorityQueueBase class to ensure that each element remains paired.
+In PQ, we use <b>composition</b> to store items internally as pairs.
+View code priority<sub>queue</sub><sub>base.py</sub>
+</p>
+
+<p>
+Composition Design Concept: When need to describe an object containing another one. It implies strong ownership. (In this case the element needs the key)
+</p>
+</div></li>
+
+<li><a id="org0de0e22"></a>Implementation with Unsorted list<br /><div class="outline-text-5" id="text-1-9-2-2">
+<p>
+Storing entries in unsorted list, key-value pairs are represented as composites. This items are stored within a PositionalList, identified as the _data member of the class.
+</p>
+
+<p>
+How it works: When adding an element,a new _Item composite is created and its added to the end of the list. Taking O(1).
+Min() and remove<sub>min</sub>() must locate item so they take O(n)
+</p>
+
+<p>
+Analysis:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">len, is<sub>empty</sub>, add</td>
+<td class="org-left">O(1)</td>
+</tr>
+
+<tr>
+<td class="org-left">min, remove<sub>min</sub></td>
+<td class="org-left">O(n)</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+
+<li><a id="org333f371"></a>Implementation with Sorted list<br /><div class="outline-text-5" id="text-1-9-2-3">
+<p>
+Another implementation using a positional list, is to maintain entries sorted by non-decreasing keys.
+In this case the analysis of running times:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">len, is<sub>empty</sub>, min, remove<sub>min</sub></td>
+<td class="org-left">O(1)</td>
+</tr>
+
+<tr>
+<td class="org-left">add</td>
+<td class="org-left">O(n)</td>
+</tr>
+</tbody>
+</table>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org89cd474" class="outline-4">
+<h4 id="org89cd474"><span class="section-number-4">1.9.3</span> 9.3 Heaps</h4>
+<div class="outline-text-4" id="text-1-9-3">
+<p>
+A difference with the other 2 strategies for implementing a priority queue in which there are trade-offs for running times. This section provides a more efficient realization using: <b>binary heaps</b>.
+</p>
+
+<p>
+<b>Binary heap</b> allows perform insertions and removals in logarithmic time. This improvement is achieved by using a <b>binary tree</b> structure to find a compromise between elements being entirely unsorted or perfectly sorted.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="org410366c"></a>9.3.1 Heap Data Structure<br /><div class="outline-text-5" id="text-1-9-3-1">
+<p>
+<b>Heap</b> is a binary tree T that stores a collection of items at its positions with 2 additional properties:
+</p>
+<ul class="org-ul">
+<li>a <b>relational property</b> defined by the way keys are stored in T</li>
+<li>a <b>structural property</b> defined in terms of the shape of T</li>
+</ul>
+
+<p>
+<b>Relational Property: Heap-Order Property</b>
+In a heap T, for every position p other than the root, the key stored at p is greater or equal than the key stored at p's parent.
+T.key(p) &gt;= T.key(T.parent(p))
+</p>
+<ul class="org-ul">
+<li>keys stored in nondecreasing order while traversing to leaves.</li>
+<li>minimum key always at top</li>
+<li>better if height of heap tree is small as possible.</li>
+</ul>
+
+<p>
+<b>Structural Property: Complete Binary Tree Property</b>
+A heap T with height h is a <b>complete</b> binary tree if levels 0,1,..h-1 have the max number of nodes. In other words, all levels but the last one are full.
+</p>
+
+<p>
+<b>The Height of a Heap</b>
+Proposition 9.2: A heap T storing n entries has height <b>h = floor(logn)</b>
+</p>
+</div></li>
+
+<li><a id="org2eb05be"></a>9.3.2 Implementing a PQ with a Heap<br /><div class="outline-text-5" id="text-1-9-3-2">
+<p>
+Since height h = floor(log(n)), we can perform update operations in O(logn) time!
+Implementation is really simple. We can store elements as Section 9.2 shows using key-value pairs as items in the heap. Len and is<sub>empty</sub> methods are simple. And min is trivial because it just returns the root (which is the element with the minimum key).
+The add and remove<sub>min</sub> methods, though, are interesting.
+</p>
+
+<p>
+<b>Adding Item to Heap</b>
+</p>
+<ol class="org-ol">
+<li>Add at leftmost position available in the last level.</li>
+<li>Swim up! or as this book calls it <b>up-heap bubbling</b></li>
+</ol>
+
+<p>
+<b>Removing Item with Minimum Key</b>
+</p>
+<ol class="org-ol">
+<li>Remove root</li>
+<li>Put last item of T in the root</li>
+<li><b>Down-heap bubbling</b></li>
+</ol>
+</div></li>
+
+<li><a id="orgfcd1d98"></a>9.3.3 Array-Based representation of Complete Binary Tree<br /><div class="outline-text-5" id="text-1-9-3-3">
+<p>
+Just like the array implementation we mentioned in the chapter above. In this case it works great because it is a <b>complete</b> tree, meaning there won't be wasted spaces in the array. 
+Also adding/finding the last element in a linked structure would mean traversing, while in an array we know is the element at n-1.
+Plus, in Python works great because the size is dynamic.
+</p>
+
+<p>
+<b>Implementation</b>: Elements of T are stored in array-based list A, such that the element at position p in T is stored in A with an index equal to the level number <b>f(p)</b>, defined as:
+</p>
+<ul class="org-ul">
+<li>If p is the root of T, then f(p) = 0</li>
+<li>If p is left child of position q, then f(p) = 2*f(q) + 1</li>
+<li>If p is right child of position q, then f(p) = 2*f(q) + 2</li>
+</ul>
+
+<p>
+Indices are contiguous in the range [0, n-1], and last position of T is always at n-1. Where n is the number of positions.
+</p>
+</div></li>
+
+<li><a id="orgcc1b229"></a>9.3.4 Python Heap Implementation<br /><div class="outline-text-5" id="text-1-9-3-4">
+<p>
+Code in Fragment , provides an implementation in Python of a heap-based priority queue. Although the implementation is array-based, we can provide methods that compute the level numbering of a parent or a child, so we can describe the rest of algorithms using tree-like terminology. This is not crucial though.
+</p>
+
+<p>
+Recursion is used for methods: _upheap() and _downheap()
+</p>
+</div></li>
+
+<li><a id="orgf43a8af"></a>9.3.5 Analysis of Heap-Based PQ<br /><div class="outline-text-5" id="text-1-9-3-5">
+<p>
+Well&#x2026; this method is much better than the unordered and ordered implementations, since the worst case scenario for either adding or removing in those implementations was O(n). While for Binary Heap the worst case is O(logn).
+</p>
+</div></li>
+
+<li><a id="org8f780f1"></a>9.3.7 Python's heapq Modules<br /><div class="outline-text-5" id="text-1-9-3-6">
+<p>
+Python's heapq module provides support for <b>heap-based priority queues</b>.
+It does not provide any priority queue class; instead it provides functions that allow a normal Python list to be managed as a heap.
+</p>
+
+<p>
+Supports:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">heappush(L, e)</td>
+<td class="org-left">Push element e onto list L in O(logn) time</td>
+</tr>
+
+<tr>
+<td class="org-left">heappop(L)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">heappushpop(L,e)</td>
+<td class="org-left">Push e on list L, and then pop and return min</td>
+</tr>
+
+<tr>
+<td class="org-left">heapreplace(L,e)</td>
+<td class="org-left">Pop is performed before the push</td>
+</tr>
+
+<tr>
+<td class="org-left">heapify(L)</td>
+<td class="org-left">transform unordered list to heap-order O(n)</td>
+</tr>
+
+<tr>
+<td class="org-left">nlargest(k, iterable)</td>
+<td class="org-left">Produce list of k largest values</td>
+</tr>
+
+<tr>
+<td class="org-left">nsmallest(k,iterable)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orgc8236b9" class="outline-4">
+<h4 id="orgc8236b9"><span class="section-number-4">1.9.4</span> 9.4 Sorting with a Priority Queue</h4>
+<div class="outline-text-4" id="text-1-9-4">
+<p>
+The ADT shos that any object can be used as a key, but such object must be <b>comparable</b> with each other, and that it has a natural order.
+Must follow this properties:
+</p>
+<ul class="org-ul">
+<li>Irreflexible: x !&lt; x</li>
+<li>Transitive: if x &lt; y and y &lt; z, then x &lt; z</li>
+</ul>
+
+<p>
+Code Fragment 9.7 shows an implementation of the pq<sub>sort</sub> function to sort a collection of elements stored in a positional list.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="org65a269c"></a>Selection-sort and Insertion-sort<br /><div class="outline-text-5" id="text-1-9-4-1">
+<p>
+Kinda confusing.. This book implements selection sort and insertion sort using a priority queue data structure? I think it tries to show how cool heap sort is in contrast to selection sort and insertion sort, and that is why it puts those sorts in this chapter.
+</p>
+
+<p>
+Using the same code as in Fragment 9.7, it has 2 parts.
+Phase 1: Deletes elements of collection C,and puts them in PriorityQueue P.
+Phase 2: Transfers elements in order from P to C
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="org3632276"></a>Selection-Sort<br /><div class="outline-text-6" id="text-1-9-4-1-1">
+<p>
+If P is an unsorted list. Then Phase 1 takes O(n), because it just puts transfers elements from collection C to P. However, Phase 2 runs in O(n). Because it has to go through collection and find the min.
+Total complexity is O(n<sup>2</sup>)
+</p>
+</div></li>
+
+<li><a id="org2de16de"></a>Insertion-Sort<br /><div class="outline-text-6" id="text-1-9-4-1-2">
+<p>
+If we implement priority queue P using a sorted list. Then Phase 1 runs in O(n), while remove<sub>min</sub>() in Phase 2 runs in O(1)
+Total complexity is O(n<sup>2</sup>) 
+</p>
+</div></li></ol></li>
+
+<li><a id="org7628677"></a>Heap-sort<br /><div class="outline-text-5" id="text-1-9-4-2">
+<p>
+A difference with the previously mentioned sorts, a priority queue with a heap has the advantage of adding and removing in log(n) time. 
+In Phase 1, there are n operations at log(n) times. So O(nlog(n)), which can be improved to O(n) using bottom-up head construction.
+In Phase 2, we have a total of O(nlog(n)) as well.
+</p>
+
+<p>
+Proposition 9.4: THe heap sort algorithm sorts a collection C of n items in O(nlog(n)) time, assuming 2 elements of C can be compared in O(1) time.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="orgdae8a11"></a>Implementing Heap-Sort in-place<br /></li></ol></li></ol>
+</div>
+
+<div id="outline-container-org4897730" class="outline-4">
+<h4 id="org4897730"><span class="section-number-4">1.9.5</span> 9.5 Adaptable Priority Queues</h4>
+</div>
+</div>
+
+<div id="outline-container-orgf907401" class="outline-3">
+<h3 id="orgf907401"><span class="section-number-3">1.10</span> 10 Maps, Hash Tables, and Skip Lists</h3>
+<div class="outline-text-3" id="text-1-10">
+</div><div id="outline-container-org64dbff6" class="outline-4">
+<h4 id="org64dbff6"><span class="section-number-4">1.10.1</span> 10.1 Maps and Dictionaries</h4>
+<div class="outline-text-4" id="text-1-10-1">
+<p>
+In Python, the class <b>dict</b> represents an abstraction known as <b>dictionary</b>.
+Dictionary: Unique <b>keys</b> mapped to associated <b>values</b>. So <b>keys</b> are a set.
+Because of relationship, dictionaries are also known as <b>associative arrays</b> or <b>maps</b>. 
+</p>
+
+<p>
+In this book:
+</p>
+<ul class="org-ul">
+<li>dictionary -&gt; dict</li>
+<li>map -&gt; more general notion of the ADT</li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="org896c6c0"></a>10.1.1 The Map ADT<br /><div class="outline-text-5" id="text-1-10-1-1">
+<p>
+Defining behaviours of the map ADT consistent with the dict classic. The core functionality of a map is represented by these 5 methods:
+</p>
+<ul class="org-ul">
+<li>M[k] : return value associated with key k, otherwise raise KeyError. In Python, implemented with _<sub>getitem</sub>_<sub>()</sub></li>
+<li>M[k] = v : Associate value v with k. Replacing the existing value. In Python it is implemented with _<sub>setitem</sub>_<sub>()</sub></li>
+<li>del M[k] : Remove item with key equal to k. If M doesn't have such item, raise KeyError. In Python implemented with _<sub>delitem</sub>_<sub>()</sub></li>
+<li>len(M) : _<sub>len</sub>_<sub>()</sub></li>
+<li>iter(M) : generate sequence of keys in map. _<sub>iter</sub>_<sub>()</sub>. To allow "for k in M: "</li>
+</ul>
+
+<p>
+There are other additional behaviours that a map should support.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">k in M</td>
+<td class="org-left">Return True if the map M contains key k</td>
+</tr>
+
+<tr>
+<td class="org-left">M.get(k, d=None)</td>
+<td class="org-left">* Return M[k] if exists, else return d</td>
+</tr>
+
+<tr>
+<td class="org-left">M.setdefault(k,d)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M.pop(k, d=None)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M.popitem()</td>
+<td class="org-left">Remove arbitrary key-value, return tuple</td>
+</tr>
+
+<tr>
+<td class="org-left">M.clear()</td>
+<td class="org-left">Remove all key-value pairs</td>
+</tr>
+
+<tr>
+<td class="org-left">M.keys()</td>
+<td class="org-left">Return set-like view of all keys</td>
+</tr>
+
+<tr>
+<td class="org-left">M.values()</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M.items()</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">M.update(M2)</td>
+<td class="org-left">Assign M[k] = v for k,v in M2</td>
+</tr>
+
+<tr>
+<td class="org-left">M == M2</td>
+<td class="org-left">True if identical k-v associations</td>
+</tr>
+
+<tr>
+<td class="org-left">M != m2</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+
+<li><a id="org68b0be7"></a>10.1.2 Application: Counting Word Frequencies<br /><div class="outline-text-5" id="text-1-10-1-2">
+<p>
+Case study: counting number of occurences of words in a document. 
+Task: Program counting word frequencies in a document and reporting the most frequent word.
+</p>
+</div></li>
+
+<li><a id="orgba7684e"></a>10.1.3 Python's Mutable Mapping Abstract Base class<br /><div class="outline-text-5" id="text-1-10-1-3">
+<ol class="org-ol">
+<li>Python's concept of <b>abstract base class</b> has a big role in the collections module. Methods declared to be abstract in a base class must be implemented by concrete classes. However the abstract base class can implement concrete methods that rely upong the abstract methods.</li>
+<li>Collections module in python provides: <b>Mapping</b> and <b>MutableMapping</b> classes.</li>
+</ol>
+<p>
+Mapping: includes all nonmutating methods supported by python dict class.
+MutableMapping: extends that to include mutating methods.
+</p>
+
+<p>
+The significance of these abstract base classes is that they provide a framework to help user-defined map classes. For instance:
+<b>MutableMapping</b>: Provides concrete implementations to all the behaviours of map other than the core 5 methods. So, if we implement a map abstraction, as long as we define those 5 core behaviours (<span class="underline"><span class="underline">getitem</span></span>, <span class="underline"><span class="underline">setitem</span></span>, <span class="underline"><span class="underline">delitem</span></span>, <span class="underline"><span class="underline">len</span></span>,  <span class="underline"><span class="underline">iter</span></span>), we can inherit theother derived behaviors by declaring <b>MutableMapping</b> as a parent class.
+</p>
+</div></li>
+
+<li><a id="org1245073"></a>10.1.4 Our MapBase Class<br /><div class="outline-text-5" id="text-1-10-1-4">
+<p>
+This book provides many implementations of the map ADT using a variety of data structures. Each different implementation has trade-offs.
+Structure:
+</p>
+
+<ul class="org-ul">
+<li>MutableMapping (parent)
+<ul class="org-ul">
+<li>Map Base (extends MutableMapping) 10.1.4
+<ul class="org-ul">
+<li>UnsortedTableMap 10.1.5</li>
+<li>HashMapBase 10.2.4
+<ul class="org-ul">
+<li>ChainHashMap 10.2.4</li>
+<li>ProbeHashMap 10.2.4</li>
+</ul></li>
+<li>SortedTableMap 10.3.1</li>
+<li>TreeMap Ch 11</li>
+</ul></li>
+</ul></li>
+</ul>
+</div></li>
+
+<li><a id="orgd6edd00"></a>10.1.5 Simple Unsorted Map Implementation<br /><div class="outline-text-5" id="text-1-10-1-5">
+<p>
+It's a very simple concret implementation, but it is not very efficient. Since the keys are unsorted. each fundamental method like getitem, setitem, delitem uses a loop. Thus, running time is O(n). (Code Fragment 10.3)
+</p>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org224c261" class="outline-4">
+<h4 id="org224c261"><span class="section-number-4">1.10.2</span> 10.2 Hash Tables</h4>
+<div class="outline-text-4" id="text-1-10-2">
+<p>
+Most practical data structure for implementing a map. It is also the one implemented by Python's dict class. 
+A map M supports the abstraction of using keys as indices with a syntax such as M[k]. You can think about it like a <b>lookup table</b>.
+A lookup table of length 11 for a map: (1,D),(3,Z),(6,C),(7,Q): 
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+<td class="org-right">7</td>
+<td class="org-right">8</td>
+<td class="org-right">9</td>
+<td class="org-right">10</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">D</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">Z</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">C</td>
+<td class="org-right">Q</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Challenges with this framework:
+</p>
+<ol class="org-ol">
+<li>May not wish to use an array of length N for a few elements</li>
+<li>Shouldn't require the keys to be integers.</li>
+</ol>
+
+<p>
+Therefore, we use something called <b>hash function</b> to map general keys to corresponding indices in a table. Since multiple distinct keys may be mapped to the same index, we can think of it as a <b>bucket array</b>.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="org78f7db9"></a>10.2.1 Hash Function<br /><div class="outline-text-5" id="text-1-10-2-1">
+<p>
+Goal of hash function, h, is to map each key k to an integer in the range [0, N-1], where N is the capacity of the bucket array for a hash table.
+</p>
+
+<p>
+The idea of this approach is to be able to use the hash function value, h(k), as an index into our bucket array A, instead of just using A (which may not be appropiate to use as a direct index (like if it's not an integer)). In short, we store item (k,v) in the bucket A[h(k)].
+</p>
+
+<p>
+If more than one keys have same h(k), then 2 items are mapped into same bucket in A (this is called a <b>collision</b>). While there are ways of dealing with collisions, we should try to avoid them. A hash function is "good" if it minimizes collisions.
+</p>
+
+<p>
+<b>Hash function common structure</b>: 
+</p>
+<ul class="org-ul">
+<li><b>hash code</b>: maps key k to an integer</li>
+<li><b>compression function</b>: maps the hash code to an integer within a range of indices [0, N-1] for the bucket array.</li>
+</ul>
+</div></li>
+
+<li><a id="orgd57ffdd"></a>10.2.2 Collision-handling Schemes<br /></li>
+<li><a id="org61c5d71"></a>10.2.3 Load Factors, Rehashing, and Efficiency<br /></li>
+<li><a id="orgd2dc96b"></a>10.2.4 Python Hash Table Implementation!<br /></li></ol>
+</div>
+
+<div id="outline-container-orgcfc9203" class="outline-4">
+<h4 id="orgcfc9203"><span class="section-number-4">1.10.3</span> 10.3 Sorted Maps</h4>
+</div>
+
+
+<div id="outline-container-org50b9faa" class="outline-4">
+<h4 id="org50b9faa"><span class="section-number-4">1.10.4</span> 10.4 Skip Lists</h4>
+</div>
+<div id="outline-container-org821c0ab" class="outline-4">
+<h4 id="org821c0ab"><span class="section-number-4">1.10.5</span> 10.5 Sets, Multisents, and Multimaps</h4>
+</div>
+</div>
+
+<div id="outline-container-org88386aa" class="outline-3">
+<h3 id="org88386aa"><span class="section-number-3">1.11</span> 11 Search Trees</h3>
+<div class="outline-text-3" id="text-1-11">
+</div><div id="outline-container-org6f88759" class="outline-4">
+<h4 id="org6f88759"><span class="section-number-4">1.11.1</span> 1 Binary Search Trees</h4>
+</div>
+<div id="outline-container-org106a7dd" class="outline-4">
+<h4 id="org106a7dd"><span class="section-number-4">1.11.2</span> 2 Balanced Search Trees</h4>
+</div>
+<div id="outline-container-org351b532" class="outline-4">
+<h4 id="org351b532"><span class="section-number-4">1.11.3</span> 3 AVL Trees</h4>
+</div>
+<div id="outline-container-org6a98d0f" class="outline-4">
+<h4 id="org6a98d0f"><span class="section-number-4">1.11.4</span> 4 Splay Trees</h4>
+</div>
+<div id="outline-container-orgd090910" class="outline-4">
+<h4 id="orgd090910"><span class="section-number-4">1.11.5</span> 5 (2,4) Trees</h4>
+</div>
+<div id="outline-container-org678a6a2" class="outline-4">
+<h4 id="org678a6a2"><span class="section-number-4">1.11.6</span> 6 Red-Black Trees</h4>
+</div>
+</div>
+
+<div id="outline-container-org18ed1d2" class="outline-3">
+<h3 id="org18ed1d2"><span class="section-number-3">1.12</span> 12 Sorting and Selection</h3>
+<div class="outline-text-3" id="text-1-12">
+</div><div id="outline-container-org0f01fd1" class="outline-4">
+<h4 id="org0f01fd1"><span class="section-number-4">1.12.1</span> 12.2 Merge-Sort</h4>
+</div>
+<div id="outline-container-orgd6cd762" class="outline-4">
+<h4 id="orgd6cd762"><span class="section-number-4">1.12.2</span> 12.3 Quick-Sort</h4>
+</div>
+<div id="outline-container-orgcf0efc4" class="outline-4">
+<h4 id="orgcf0efc4"><span class="section-number-4">1.12.3</span> 12.4 Studying Sorting through an Algorithmic Lens</h4>
+</div>
+<div id="outline-container-orge52adee" class="outline-4">
+<h4 id="orge52adee"><span class="section-number-4">1.12.4</span> 12.5 Comparing Sorting Algorithms</h4>
+</div>
+<div id="outline-container-orga7f494d" class="outline-4">
+<h4 id="orga7f494d"><span class="section-number-4">1.12.5</span> 12.6 Python's Built-in sorting functions</h4>
+</div>
+<div id="outline-container-orgdf839a9" class="outline-4">
+<h4 id="orgdf839a9"><span class="section-number-4">1.12.6</span> 12.7 Selection</h4>
+</div>
+</div>
+
+<div id="outline-container-orgdf3ec72" class="outline-3">
+<h3 id="orgdf3ec72"><span class="section-number-3">1.13</span> 13 Text Processing</h3>
+<div class="outline-text-3" id="text-1-13">
+</div><div id="outline-container-org02fe6fa" class="outline-4">
+<h4 id="org02fe6fa"><span class="section-number-4">1.13.1</span> 13.1 Abunadnce of Digitized Text</h4>
+</div>
+<div id="outline-container-orgc25aeee" class="outline-4">
+<h4 id="orgc25aeee"><span class="section-number-4">1.13.2</span> 13.2 Pattern-matching algorihtms</h4>
+</div>
+<div id="outline-container-org02c9915" class="outline-4">
+<h4 id="org02c9915"><span class="section-number-4">1.13.3</span> 13.3 Dynamic Programming</h4>
+</div>
+<div id="outline-container-org7532c5c" class="outline-4">
+<h4 id="org7532c5c"><span class="section-number-4">1.13.4</span> 13.4 Text Compression and the Greedy Method</h4>
+</div>
+</div>
+
+<div id="outline-container-orgbe34abf" class="outline-3">
+<h3 id="orgbe34abf"><span class="section-number-3">1.14</span> 14 Graph Algorithm</h3>
+<div class="outline-text-3" id="text-1-14">
+</div><div id="outline-container-org73b956f" class="outline-4">
+<h4 id="org73b956f"><span class="section-number-4">1.14.1</span> 14.1 Graphs</h4>
+</div>
+<div id="outline-container-org3146147" class="outline-4">
+<h4 id="org3146147"><span class="section-number-4">1.14.2</span> 14.2 Data structures for graphs</h4>
+</div>
+<div id="outline-container-org9b8441c" class="outline-4">
+<h4 id="org9b8441c"><span class="section-number-4">1.14.3</span> 14.3 Graph Traversals</h4>
+</div>
+<div id="outline-container-org21d2448" class="outline-4">
+<h4 id="org21d2448"><span class="section-number-4">1.14.4</span> 14.6 Shortest Paths</h4>
+</div>
+<div id="outline-container-orgb83389d" class="outline-4">
+<h4 id="orgb83389d"><span class="section-number-4">1.14.5</span> 14.7 Minimum Spanning Trees</h4>
+<div class="outline-text-4" id="text-1-14-5">
+</div><ol class="org-ol"><li><a id="org7c61bf4"></a>14.7.1 Prim-jarnik Algorithm<br /></li>
+<li><a id="org1242375"></a>14.7.2 Kriskal's Algorithm<br /></li>
+<li><a id="orgfee99dd"></a>14.7.3 Disjoint Partitions and Union-Find Structures<br /></li></ol>
+</div>
+</div>
+
+<div id="outline-container-org63b3328" class="outline-3">
+<h3 id="org63b3328"><span class="section-number-3">1.15</span> 15 Memory Management and B-Trees</h3>
+<div class="outline-text-3" id="text-1-15">
+<p>
+Computer systems are greatly impacted by the management of the computer's memory system. This book talks about <b>ways in which memory is allocated and deallocated during execution</b> and the impact in performance. Then, the <b>complexity of multilevel memory hierarchies</b> in systems. Finally, <b>use of classic data structures and algorithms used to manage memory</b>, and how the use of memory hierarchies impacts choice of data structures and algorithms.
+</p>
+</div>
+
+<div id="outline-container-orgd2145c1" class="outline-4">
+<h4 id="orgd2145c1"><span class="section-number-4">1.15.1</span> 15.1 Memory Management</h4>
+<div class="outline-text-4" id="text-1-15-1">
+<p>
+Computer memory is organized into a sequence of <b>words</b>, of typical sizes: 4, 8, 16 bytes. Memory words numbered from 0 to N-1, where N is the number of memory words available in the computer.
+</p>
+<ul class="org-ul">
+<li>Memory address: number associated with each mem word.</li>
+</ul>
+<p>
+So memory of computer can be seen as giant array of memory words.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="org600df88"></a>15.1.1 Memory allocation<br /><div class="outline-text-5" id="text-1-15-1-1">
+<p>
+In Python, all objects are stored in a pool of memory called <b>memory heap</b> or <b>Python heap</b> (not same as ds heap).
+</p>
+<ul class="org-ul">
+<li><b>blocks</b>: storage available is divided into contiguous array-like chuncks of memory.</li>
+</ul>
+<p>
+System must quickly allocate memory for new objects.
+</p>
+<ul class="org-ul">
+<li><b>free list</b>: method to keep contiguous holes of available memory in a linked list.</li>
+<li><b>fragmentation</b>: separation of unused memory into diff holes. Becomes a problem bc makes it harder to find large contiguous chunks of free space. Goal: minimize fragmentation.</li>
+</ul>
+<p>
+Types of fragmentation: Internal and External.
+</p>
+<ul class="org-ul">
+<li>Internal: portion of allocated memory block is unused. ie array of size 1000, but only 100 cells contain values. (Not much run-time env can do&#x2026;)</li>
+<li>External: significant amount of unused memory between many blocks of allocated memory..So run-time env should allocate memory in a way to try to reduce external fragmentation.</li>
+</ul>
+<p>
+Herustics for allocating memory from the heap:
+</p>
+<ul class="org-ul">
+<li>Best-fit algorithm: searches entire free list to find hole whose size is closes to amount of mem requested.</li>
+<li>First-fit algorithm: searches from beginning for first hole large enough.</li>
+<li>Next-fit algorithm: similar to first-fit, but begins search where it left off previously. (Like circular ll)</li>
+<li>Worst-fit algorithm: searches free list to find largest hole of available memory.</li>
+</ul>
+<p>
+In each algorithm, the requested amount of memory is subtracted from the chosen memory hole and the leftover part of that hole is returned to the <b>free list</b>.
+Best-fit -&gt; produces worst fragmentation,since leftover parts are tiny. The first-fit is fast, but produces a lot of fragmentation in the front of the list. The next-fit fixes that by spreading fragmentation eavenly, but still makes it hard to allocate large blocks. Worst-fit attempts to avoid this by keeping contiguous sections of free memory as large as possible.
+</p>
+</div></li>
+
+<li><a id="org805231f"></a>15.1.2 Garbage collection<br /><div class="outline-text-5" id="text-1-15-1-2">
+<p>
+Other languages: memory space for objects must be explicitly deallocated by programmer. 
+In Python: interpreter does the memory management.
+</p>
+<ul class="org-ul">
+<li><b>Garbage collection</b>: process of detecting "stale" objects, deallocated their space, and returning reclaimed space to <b>free list</b></li>
+</ul>
+
+<p>
+Definitions for garbage collection:
+</p>
+<ul class="org-ul">
+<li><b>Live objects</b>: program has direct or indirect reference to such object.</li>
+<li><b>Direct reference</b>: to an object is identifier in active namespace (ie global namespace or local namespace for active function).</li>
+<li><b>root objects</b>: objects with direct references (like w = Widget(), w is in current namespace.</li>
+<li><b>indirect reference</b>: reference that occurs withing state of some other live object. ie if widget object maintains a list attribute. That list is a live obj.</li>
+</ul>
+<p>
+Python deallocate any object that is not considered <b>live obj</b>. Python uses 2 strategies: Reference counts &amp; Cycle Detection.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="orgf717b72"></a>Reference Counts<br /><div class="outline-text-6" id="text-1-15-1-2-1">
+<p>
+Every Python object has integer called <b>reference count</b>. This is the count of how many references to this object exist anywhere in the system. 
+Increases when reference is assigned to object.
+Decreases when reference is reassigned to something else.
+</p>
+<ul class="org-ul">
+<li>Python allows programs to see object's ref count. Using <b>sys</b> module, function called <b>getrefcount</b>.</li>
+</ul>
+<p>
+Whenever ref count is 0, object is deallocated.
+</p>
+</div></li>
+
+<li><a id="org1594f3d"></a>Cycle Detection<br /><div class="outline-text-6" id="text-1-15-1-2-2">
+<p>
+Some objects with nonzero ref counts may be live. For isntance, if a group of objects have references to each other, but are not reachable from a root object.
+Every so often, especially when memory heap is running out of space, the interpreter runs certain algorithms to reclaim memory. A classic algo is <b>mark-sweep</b>.
+</p>
+<ul class="org-ul">
+<li><b>Mark-Sweep Algorithm</b>: This algorithm associates a "mark" bit with each object that identifies whether obj is alive. When garbage collection seems needed, it suspends all other activity and clear themark bits of all the objects currently in mem heap. Then, go through active namespace and mark all root objects as live. Then, perform <b>deph-first</b> search on directed graph defined by objects referencing other objects. So objects = vertex and reference = directed edge. Once all objects marked, scan through heap and reclaim space from objects not marketd. Optionally coalesce all allocated space into a single block.</li>
+<li>Performing DFS In-Place: Note that since the goal is to reclaim unused space, algorith must not use extra space during garbage collection. So no recursive. DFS using only a constant amount of additional space.</li>
+</ul>
+</div></li></ol></li>
+
+<li><a id="org0006ad1"></a>15.1.3 Additional memory used by interpreter<br /><ol class="org-ol"><li><a id="orgeca3572"></a>The Run-Time Call Stack<br /><div class="outline-text-6" id="text-1-15-1-3-1">
+<p>
+Stacks = Super important in run-time env of python programs.
+</p>
+<ul class="org-ul">
+<li><b>Call stack (Python interpreter stack)</b>: Private stack of a running program in python. Keeps track of nested sequence of currently active invocations of functions.</li>
+<li><b>Activation record (frame)</b>: each entry of stack. Stores important info about the func invoked.</li>
+<li><b>Running Call</b>: activation record of  function that is being executed is at top of stack. All others are <b>suspended calls</b></li>
+<li>Each activation record has dictionary with local namespace for that call.</li>
+<li>Also has a reference to the function definition itself, and a variable called <b>program counter</b> , to maintain the address of the statement within the function. This is used by the interpreter when a suspended function becomes active.</li>
+</ul>
+</div></li>
+
+<li><a id="org0518603"></a>Operand Stack<br /><div class="outline-text-6" id="text-1-15-1-3-2">
+<p>
+In arithmetic operations, the interpreter uses the operand stack.
+</p>
+</div></li></ol></li></ol>
+</div>
+
+<div id="outline-container-org6a74378" class="outline-4">
+<h4 id="org6a74378"><span class="section-number-4">1.15.2</span> 15.2 Memory Hierarchies and Caching</h4>
+<div class="outline-text-4" id="text-1-15-2">
+</div><ol class="org-ol"><li><a id="org84b562a"></a>Memory Systems<br /><div class="outline-text-5" id="text-1-15-2-1">
+<p>
+Hierarchy: CPU, Registers, Caches, Int memory, Ext memory, network storage.
+</p>
+</div></li>
+
+<li><a id="orgaab2eab"></a>Caching Strategies<br /><div class="outline-text-5" id="text-1-15-2-2">
+<p>
+Most algorithms are not designed with memory hierarchy in mind, in spite of the great variance between access times.
+A justification is that, it wouldn't be device independent, and such optimizations are not always necessary.
+</p>
+<ul class="org-ul">
+<li>Caching: bringing data into primary memory (motivated by temporal locality), expecting that to be used again soon.</li>
+<li>Blocking: (motivated by spatial locality) bringing a chunk surrounding l (location needed), expecting locations nearby to be accessed soon.</li>
+</ul>
+<p>
+Blocks in between cache memory &amp; internal memory: <b>cache lines</b>.
+</p>
+<ul class="org-ul">
+<li>Blocks between internal memory &amp; external memory: <b>pages</b>.</li>
+</ul>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orgb5d717b" class="outline-4">
+<h4 id="orgb5d717b"><span class="section-number-4">1.15.3</span> 15.3 External searching and B-trees</h4>
+<div class="outline-text-4" id="text-1-15-3">
+<ul class="org-ul">
+<li><b>disk blocks</b>: secondary memory blocks</li>
+<li><b>disk transfer</b>: transfer of a block from secondary to primary memory.</li>
+</ul>
+<p>
+Goal: minimize # of disk transfers needed to perform a query or update. Such count known as <b>I/O complexity</b>.
+</p>
+</div>
+<ol class="org-ol"><li><a id="org078a419"></a>15.3.1 (a,b) Trees<br /></li>
+<li><a id="org47f0686"></a>15.3.2 B-Trees<br /></li></ol>
+</div>
+
+<div id="outline-container-orge1fcb1c" class="outline-4">
+<h4 id="orge1fcb1c"><span class="section-number-4">1.15.4</span> 15.4 External-Memory Sorting</h4>
+<div class="outline-text-4" id="text-1-15-4">
+</div><ol class="org-ol"><li><a id="org4d38c28"></a>15.4.1 Multiway merging<br /></li></ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd690c72" class="outline-2">
+<h2 id="orgd690c72"><span class="section-number-2">2</span> Fundamental Techniques (from Algorithm Design - Goodrich book)</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Actually they are also in this Book!!!
+</p>
+</div>
+<div id="outline-container-org4740ae7" class="outline-3">
+<h3 id="org4740ae7"><span class="section-number-3">2.1</span> The Greedy Method</h3>
+</div>
+<div id="outline-container-org5cec216" class="outline-3">
+<h3 id="org5cec216"><span class="section-number-3">2.2</span> Divide and Conquer</h3>
+</div>
+<div id="outline-container-org21fd244" class="outline-3">
+<h3 id="org21fd244"><span class="section-number-3">2.3</span> Dynamic Programming</h3>
+</div>
+</div>
+
+<div id="outline-container-org69bb244" class="outline-2">
+<h2 id="org69bb244"><span class="section-number-2">3</span> Algorithm Design Patterns in this book</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-org2898ffa" class="outline-3">
+<h3 id="org2898ffa"><span class="section-number-3">3.1</span> Algorithm design patterns:</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-org25cc928" class="outline-4">
+<h4 id="org25cc928"><span class="section-number-4">3.1.1</span> Recursion (chapter 4)</h4>
+</div>
+<div id="outline-container-org5734ea0" class="outline-4">
+<h4 id="org5734ea0"><span class="section-number-4">3.1.2</span> Dynamic programming (section 13.3)</h4>
+</div>
+<div id="outline-container-org4c5d632" class="outline-4">
+<h4 id="org4c5d632"><span class="section-number-4">3.1.3</span> The Greedy method (sections 13.4.2, 14.6.2, 14.7)</h4>
+</div>
+<div id="outline-container-org5ed0bae" class="outline-4">
+<h4 id="org5ed0bae"><span class="section-number-4">3.1.4</span> Divide and conquer (section 12.2.1)</h4>
+</div>
+</div>
+
+<div id="outline-container-orgd632a6f" class="outline-3">
+<h3 id="orgd632a6f"><span class="section-number-3">3.2</span> Software Engineering Design Patterns:</h3>
+<div class="outline-text-3" id="text-3-2">
+</div><div id="outline-container-org2af6db6" class="outline-4">
+<h4 id="org2af6db6"><span class="section-number-4">3.2.1</span> Template Method</h4>
+</div>
+<div id="outline-container-org6f5592d" class="outline-4">
+<h4 id="org6f5592d"><span class="section-number-4">3.2.2</span> Position (Sections 7.4 and 8.1.2)</h4>
+</div>
+<div id="outline-container-org1e1fb33" class="outline-4">
+<h4 id="org1e1fb33"><span class="section-number-4">3.2.3</span> Composition (Sections 7.6.1, 9.2.1, and 10.1.4)</h4>
+</div>
+<div id="outline-container-org006f3f2" class="outline-4">
+<h4 id="org006f3f2"><span class="section-number-4">3.2.4</span> Template method (Sections 2.4.3, 8.4.6, 10.1.3, 10.5.2, and 11.2.1)</h4>
+</div>
+<div id="outline-container-org95464f4" class="outline-4">
+<h4 id="org95464f4"><span class="section-number-4">3.2.5</span> Locator (Section 9.5.1)</h4>
+</div>
+<div id="outline-container-org9d76cec" class="outline-4">
+<h4 id="org9d76cec"><span class="section-number-4">3.2.6</span> Factory method (Section 11.2.1)</h4>
+<div class="outline-text-4" id="text-3-2-6">
+<p>
+draw trees in org mode emacs
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org84ae0b9" class="outline-2">
+<h2 id="org84ae0b9"><span class="section-number-2">4</span> New Things I learned</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-org42a6190" class="outline-3">
+<h3 id="org42a6190"><span class="section-number-3">4.1</span> Duck typing: Trying something and handling exceptions if they occur. (As long as long as it quacks, treat it like a duck, otherwise treat differently)</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Person</span>:
+    <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">help</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span><span style="color: #4f97d7;">)</span>:
+        <span style="color: #4f97d7; font-weight: bold;">print</span><span style="color: #4f97d7;">(</span><span style="color: #2d9574;">"Heeeelp!"</span><span style="color: #4f97d7;">)</span>
+
+<span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Duck</span>:
+    <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">help</span><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">self</span><span style="color: #4f97d7;">)</span>:
+        <span style="color: #4f97d7; font-weight: bold;">print</span><span style="color: #4f97d7;">(</span><span style="color: #2d9574;">"Quaaaaaack!"</span><span style="color: #4f97d7;">)</span>
+
+<span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">SomethingElse</span>:
+    <span style="color: #4f97d7; font-weight: bold;">pass</span>
+
+<span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">InTheForest</span><span style="color: #4f97d7;">(</span>x<span style="color: #4f97d7;">)</span>:      <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Here, passing any object</span>
+    x.<span style="color: #4f97d7;">help</span><span style="color: #4f97d7;">()</span>             <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">and calling its help() method.</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">This either works differentl for each object or gives runtime error</span>
+
+<span style="color: #7590db;">donald</span> = Duck<span style="color: #4f97d7;">()</span>
+<span style="color: #7590db;">john</span> = Person<span style="color: #4f97d7;">()</span>
+<span style="color: #7590db;">who</span> = SomethingElse<span style="color: #4f97d7;">()</span>
+
+<span style="color: #4f97d7; font-weight: bold;">for</span> thing <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">[</span>donald, john, who<span style="color: #4f97d7;">]</span>:
+    <span style="color: #4f97d7; font-weight: bold;">try</span>:
+        InTheForest<span style="color: #4f97d7;">(</span>thing<span style="color: #4f97d7;">)</span>
+    <span style="color: #4f97d7; font-weight: bold;">except</span> <span style="color: #ce537a; font-weight: bold;">AttributeError</span>:
+        <span style="color: #4f97d7; font-weight: bold;">print</span> <span style="color: #2d9574;">'Meeowww!'</span>
+
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Abstract Base Class: ABC cannot be instantiated. But defines one or more common methods that all implementations of the abstraction <b>must</b> have.</li>
+<li>Concrete classes inherit from ABC and provide implementations for the methods declared by the ABC.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga896836" class="outline-3">
+<h3 id="orga896836"><span class="section-number-3">4.2</span> Composition design patter (Section 7.6 and 9.2)</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Defining an _Item class to ensure that each element remained paired with its associated count in the primary data structure.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7bcb271" class="outline-3">
+<h3 id="org7bcb271"><span class="section-number-3">4.3</span> Template Method design patter (section 10.1.3)</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+The use of <b>abstract base class</b>.
+</p>
+<ul class="org-ul">
+<li>Methods that are declared to be abstract in such a base class <b>must</b> be implemented by <b>concrete subclasses</b></li>
+<li>Abstract base class may provide <b>concrete</b> implementation of other methods that depend upon use of the presumed abstract methods. (this is the example of <b>template method design patter</b>)</li>
+</ul>
+
+<p>
+So.. When an abstract base class provides concrete methods that depend on the use of presumed abstract methods, which will be implemented by concrete classes.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org28e5d13" class="outline-2">
+<h2 id="org28e5d13"><span class="section-number-2">5</span> HW Solutions</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-orge4ec6d6" class="outline-3">
+<h3 id="orge4ec6d6"><span class="section-number-3">5.1</span> Ch 8</h3>
+<div class="outline-text-3" id="text-5-1">
+<ol class="org-ol">
+<li>root is the node without parents, internal nodes have children, cs016 has 9 descendants, and one ancestor. depth of the node paper is 3. height of tree is 4.</li>
+<li>a linear tree</li>
+<li>Proposition 4: Heigh of nonempty tree is equal to the maximum of the depths of its leaf positions. Because the height of tree is = to the height of the root. Which by the definition is one more than the maximum of the heights of its children. and the max height of the children is the max depth of a leaf.</li>
+<li>Given a T. Recurse the tree in order. For node in T.inorder(): if T.right(node) is None and T.left(node) is not None and not T.children(T.left(node)) count += 1</li>
+<li></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Alonso</p>
+<p class="date">Created: 2017-05-13 Sat 19:37</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

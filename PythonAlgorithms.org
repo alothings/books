@@ -200,7 +200,7 @@ To place commands that will be executed if module is directly invoked as script,
 Existing modules: array, collections, copy, math, os, random, re, sys, time, etc..
 
 ** DONE 2 OOP
-CLOSED: [2017-05-04 Thu 15:57]
+CLOSED: [2017-05-24 Wed 15:03]
 In OO Paradigm, main actors are *objects*.
 Each *object* is an *instance* of a *class*.
 Class has:
@@ -257,7 +257,7 @@ Researchers have developed a variety of organizational concepts and methodologie
 - Factory method
   
 *** 2.2 Software Development
-Traditional steps: Design, IMplementation, Testing & Debugging
+Traditional steps: Design, Implementation, Testing & Debugging
 
 **** 2.2.1 Design
 Helpful rules to determine how to design classes:
@@ -310,6 +310,7 @@ class SequenceIterator:
 *** 2.6 Shallow and Deep Copying
 
 ** DONE 3 Algorithm Analysis
+CLOSED: [2017-06-13 Tue 14:48]
 Data structure: systematic way of organizing and accessing data
 Algorithm: step-by-step procedure for performing some task
 *** 3.1 Experimental Studies
@@ -339,6 +340,7 @@ Technique to make claims about an algorith. Such is showing it is correct or tha
 - *Induction and Loop Variants*: showing q(n) is true for n=1, then inductive step is true for n>k, namely, show "if q(j) is true for al j<n, then q(n) is true"
 
 ** DONE 4 Recursion
+CLOSED: [2017-06-13 Tue 14:48]
 Important technique in the study of data structures and algorithms. Will be used in chapters 8 and 12 (Trees and Sorting and Selection)
 *** 4.1 Ilustrative Examples
 **** Factorial Function: classic math function naturally recursive
@@ -376,10 +378,11 @@ Follows the following form:
 - Test for base cases: (exit)
 - Recur: It should make progress towards base case
 
-*** 4.6 rEliminating Tail Recursion
+*** 4.6 Eliminating Tail Recursion
+Since recursion maintains an active record for each function call, it may be too heavy on memory. We can convert it into a loop sort of thing using a *stack*.
 
 ** DONE 5 Array-based sequences
-CLOSED: [2017-05-04 Thu 15:57]
+CLOSED: [2017-06-13 Tue 14:48]
 *** 5.1 Python's Sequence Types
 *** 5.2 Low-Level Arrays
 *** 5.3 Dynamic arrays and amortization
@@ -401,7 +404,7 @@ CLOSED: [2017-05-04 Thu 15:57]
 *** 7.7 Link-based vs Array-based sequences
 
 ** DONE 8 Trees
-CLOSED: [2017-05-04 Thu 17:20]
+CLOSED: [2017-06-13 Tue 14:48]
 *** 8.1 General Trees
 **** 8.1.1 General Tree Stuff
 Tree: is an *abstract data type* that stores elements hierarchically. Except the root, each element has a *parent* and zero or more *children*.
@@ -590,7 +593,8 @@ Purchasing, Manufacturing (TV, CD, Tuner))
 
 *** Case Study: An Expression Tree
 
-** TODO 9 Priority Queues
+** DONE 9 Priority Queues
+CLOSED: [2017-06-13 Tue 14:48]
 *** 9.1 The Priority Queue Abstract Data Type
 **** Priorities
 Collection of prioratized elements that allows arbitrary element insertion, and the removal of element with first priority.
@@ -599,44 +603,53 @@ When element is added to PQ, it is associated with a *key*. The elements with lo
 **** Priority Queue ADT
 The following is the PQ ADT modeled as key-value pair.
 
+|----------------+---------------------------------------------|
 | P.add(k, v)    | Insert item with key k and value v          |
 | P.min()        | return tuple (k,v) but don't removed        |
 | P.remove_min() | Remove and return item with min key from PQ |
 | P.is_empty()   | True of P is empty                          |
 | len(P)         | return # items in P                         |
+|----------------+---------------------------------------------|
 
 In Section 9.5, we consider keys with changing values.
 
 *** 9.2 Implementing Priority Queue
-**** 9.2.1 The Composition Design Patter
+**** 9.2.1 The Composition Design Pattern
 To keep track of elements in our data structure, in this case the element and its key, even as they are relocated within the ds.
-We can define a _Item class to ensure that each element remains paired.
+We can define a _Item nested class in our PriorityQueueBase class to ensure that each element remains paired.
 In PQ, we use *composition* to store items internally as pairs.
 View code priority_queue_base.py
+
+Composition Design Concept: When need to describe an object containing another one. It implies strong ownership. (In this case the element needs the key)
 
 **** Implementation with Unsorted list
 Storing entries in unsorted list, key-value pairs are represented as composites. This items are stored within a PositionalList, identified as the _data member of the class.
 
 How it works: When adding an element,a new _Item composite is created and its added to the end of the list. Taking O(1).
 Min() and remove_min() must locate item so they take O(n)
+
 Analysis:
+|--------------------+------|
 | len, is_empty, add | O(1) |
 | min, remove_min    | O(n) |
+|--------------------+------|
 
 **** Implementation with Sorted list
 Another implementation using a positional list, is to maintain entries sorted by non-decreasing keys.
 In this case the analysis of running times:
+|--------------------------------+------|
 | len, is_empty, min, remove_min | O(1) |
 | add                            | O(n) |
+|--------------------------------+------|
 
 *** 9.3 Heaps
 A difference with the other 2 strategies for implementing a priority queue in which there are trade-offs for running times. This section provides a more efficient realization using: *binary heaps*.
 
-*Binary heap* allows perform insertions and removals in logarithmic time. This improvement is acchieved by using a *binary tree* structure to find a compromise between elements being entirely unsorted or perfectly sorted.
+*Binary heap* allows perform insertions and removals in logarithmic time. This improvement is achieved by using a *binary tree* structure to find a compromise between elements being entirely unsorted or perfectly sorted.
 
 **** 9.3.1 Heap Data Structure
 *Heap* is a binary tree T that stores a collection of items at its positions with 2 additional properties:
-- a *relational property* defined in the way keys are stored in T
+- a *relational property* defined by the way keys are stored in T
 - a *structural property* defined in terms of the shape of T
 
 *Relational Property: Heap-Order Property*
@@ -650,10 +663,10 @@ T.key(p) >= T.key(T.parent(p))
 A heap T with height h is a *complete* binary tree if levels 0,1,..h-1 have the max number of nodes. In other words, all levels but the last one are full.
 
 *The Height of a Heap*
-Proposition 9.2: A heap T storing n entries has height h = floor(logn)
+Proposition 9.2: A heap T storing n entries has height *h = floor(logn)*
 
 **** 9.3.2 Implementing a PQ with a Heap
-Since heigh h = floot(log(n)), we can perform update operations in O(logn) time!
+Since height h = floor(log(n)), we can perform update operations in O(logn) time!
 Implementation is really simple. We can store elements as Section 9.2 shows using key-value pairs as items in the heap. Len and is_empty methods are simple. And min is trivial because it just returns the root (which is the element with the minimum key).
 The add and remove_min methods, though, are interesting.
 
@@ -661,54 +674,664 @@ The add and remove_min methods, though, are interesting.
 1. Add at leftmost position available in the last level.
 2. Swim up! or as this book calls it *up-heap bubbling*
 
-*Remiving Item with Minimum Key*
+*Removing Item with Minimum Key*
 1. Remove root
 2. Put last item of T in the root
-3. Down-heap bubbling 
+3. *Down-heap bubbling*
 
 **** 9.3.3 Array-Based representation of Complete Binary Tree
 Just like the array implementation we mentioned in the chapter above. In this case it works great because it is a *complete* tree, meaning there won't be wasted spaces in the array. 
 Also adding/finding the last element in a linked structure would mean traversing, while in an array we know is the element at n-1.
 Plus, in Python works great because the size is dynamic.
 
+*Implementation*: Elements of T are stored in array-based list A, such that the element at position p in T is stored in A with an index equal to the level number *f(p)*, defined as:
+- If p is the root of T, then f(p) = 0
+- If p is left child of position q, then f(p) = 2*f(q) + 1
+- If p is right child of position q, then f(p) = 2*f(q) + 2
+
+Indices are contiguous in the range [0, n-1], and last position of T is always at n-1. Where n is the number of positions.
+
 **** 9.3.4 Python Heap Implementation
+Code in Fragment , provides an implementation in Python of a heap-based priority queue. Although the implementation is array-based, we can provide methods that compute the level numbering of a parent or a child, so we can describe the rest of algorithms using tree-like terminology. This is not crucial though.
+
+Recursion is used for methods: _upheap() and _downheap()
+
 **** 9.3.5 Analysis of Heap-Based PQ
 Well... this method is much better than the unordered and ordered implementations, since the worst case scenario for either adding or removing in those implementations was O(n). While for Binary Heap the worst case is O(logn).
 
+**** 9.3.4 Buttom-Up Heap Construction
+If we have an empty heap, n successive calls to add would cost O(nlogn).
+If all key-value pairs are given in advance, we can take advantage of that.
+Steps (# of steps = h+1 = log(n+1) in this case)
+1. Form (n+1)/2 heaps of 1 element each
+2. Form (n+1)/4 heaps of 3 elements each, merging previous heaps and putting new element as root, then _downheap()
+i. for 2 <= i <= h: Form (n+1)/(2^i) heaps of 2^i - 1 elements each, mearging prev heaps, putting new elements as root, then _downheap()
+h+1. Form final heap storing all n entries and _downheap() root.
+
+Ok, This is actually a really cool algorithm, and surprisingly easy to implement in Python thanks to the _downheap() function.
+
+
+**** 9.3.7 Python's heapq Modules
+Python's heapq module provides support for *heap-based priority queues*.
+It does not provide any priority queue class; instead it provides functions that allow a normal Python list to be managed as a heap.
+
+Supports:
+| heappush(L, e)        | Push element e onto list L in O(logn) time    |
+| heappop(L)            |                                               |
+| heappushpop(L,e)      | Push e on list L, and then pop and return min |
+| heapreplace(L,e)      | Pop is performed before the push              |
+| heapify(L)            | transform unordered list to heap-order O(n)   |
+| nlargest(k, iterable) | Produce list of k largest values              |
+| nsmallest(k,iterable) |                                               |
+
 *** 9.4 Sorting with a Priority Queue
+The ADT shos that any object can be used as a key, but such object must be *comparable* with each other, and that it has a natural order.
+Must follow this properties:
+- Irreflexible: x !< x
+- Transitive: if x < y and y < z, then x < z
+
+Code Fragment 9.7 shows an implementation of the pq_sort function to sort a collection of elements stored in a positional list.
+#+BEGIN_SRC python
+def pq_sort(C):
+  """ Sort a collection of elements stored in a positional list"""
+  n = len(C)
+  P = PriorityQueue()
+  for j in range(n):
+    element = C.delete(C.first())
+    P.add(element, element)
+  for j in range(n):
+    (k,v) = P.remove_min()
+    C.add_last(v)
+
+#+END_SRC
 **** Selection-sort and Insertion-sort
+Kinda confusing.. This book implements selection sort and insertion sort using a priority queue data structure? I think it tries to show how cool heap sort is in contrast to selection sort and insertion sort, and that is why it puts those sorts in this chapter.
+
+Using the same code as in Fragment 9.7, it has 2 parts.
+Phase 1: Deletes elements of collection C,and puts them in PriorityQueue P
+Phase 2: Transfers elements in order from P to C
+
+***** Selection-Sort
+If P is an unsorted list. Then Phase 1 takes O(n), because it just puts transfers elements from collection C to P. However, Phase 2 runs in O(n). Because it has to go through collection and find the min.
+Total complexity is O(n^2)
+
+***** Insertion-Sort
+If we implement priority queue P using a sorted list. Then Phase 1 runs in O(n), while remove_min() in Phase 2 runs in O(1)
+Total complexity is O(n^2) 
+
 **** Heap-sort 
+A difference with the previously mentioned sorts, a priority queue with a heap has the advantage of adding and removing in log(n) time. 
+In Phase 1, there are n *add* operations at log(n) times. So O(nlog(n)), which can be improved to O(n) using bottom-up head construction.
+In Phase 2, the jth remove_min operation runs in O(log(n-j+1)), since the heap has n-j+1 entries at the time of the operation. Altogether all the remove_min operations also take O(nlogn) time.
+
+Proposition 9.4: THe heap sort algorithm sorts a collection C of n items in O(nlog(n)) time, assuming 2 elements of C can be compared in O(1) time.
+
+***** Implementing Heap-Sort in-place
+To be able to perform a sort in place in an array-based sequence we can follow these steps:
+1. Redefine the heap operations to be /maximum-oriented/ heap, so instead of having the root with the min key, we would have the max key.
+2. In Phase 1, we have the sequence occupying the entire length of the array and an empty heap. We move the bowndary between the heap and the sequence from left to right one step at a time, expanding the heap by adding the element at i-1
+3. In Phase 2, we start with an empty sequence and move the boundary between the heap and the sequence from right to left, one step at a time. 
 
 *** 9.5 Adaptable Priority Queues
+Adaptable priority queues allows for more functions that may be needed like:
+- If a standby passanger becomes tired of waiting and decides to leave before boarding time. Then remove_min() wouldn't necessarily work. We need to remove an element with a specific key.
+- If a passanger finds her gold frequence flier card, we need to update his/her key to reflect a different priority.
 
-** 10 Maps, Hash Tables, and Skip Lists
-*** 1 Maps and Dictionaries
-*** 2 Hash Tables
-*** 3 Sorted Maps
-*** 4 Skip Lists
-*** 5 Sets, Multisents, and Multimaps
+**** 9.5.1 Locators 
+Goal: Mechanism for finding an element within a PQ, that avoids a linear search through entire collection.
+For this, we use a new element called *locator*. When a new element is added to the PQ, we return a *locator*. Then, we require the user to provide an appropriate locator as a parameter when updating or removing an element from a PQ.
+| P.update(loc, k, v) | Replace key and value for the item identified by locator loc |
+| P.remove(loc)       | Removeitem identified by locator loc, return its (k,v)       |
 
-** 11 Search Trees 
-*** 1 Binary Search Trees
-*** 2 Balanced Search Trees
-*** 3 AVL Trees
-*** 4 Splay Trees
-*** 5 (2,4) Trees
-*** 6 Red-Black Trees
+The Locator abstraction is similar to the Position anstraction used in previous chapters (Positional list and Trees). The difference is in that the locator does not represent a tangible placement of an element within the structure. 
+To implement a Locator class, we extend _Item composite and add another field, so we have:
+(k, v, loc) like (4, C, 0), (5, A, 1), and so on.
+
+
+
+**** 9.5.2 Implementing an Adaptable Priority Queue
+
+** DONE 10 Maps, Hash Tables, and Skip Lists
+CLOSED: [2017-06-13 Tue 14:48]
+*** 10.1 Maps and Dictionaries
+In Python, the class *dict* represents an abstraction known as *dictionary*.
+Dictionary: Unique *keys* mapped to associated *values*. So *keys* are a set.
+Because of relationship, dictionaries are also known as *associative arrays* or *maps*. 
+
+In this book:
+- dictionary -> dict
+- map -> more general notion of the ADT
+
+**** 10.1.1 The Map ADT 
+Defining behaviors of the map ADT consistent with the dict classic. The core functionality of a map is represented by these 5 methods:
+- M[k] : return value associated with key k, otherwise raise KeyError. In Python, implemented with __getitem__()
+- M[k] = v : Associate value v with k. Replacing the existing value. In Python it is implemented with __setitem__()
+- del M[k] : Remove item with key equal to k. If M doesn't have such item, raise KeyError. In Python implemented with __delitem__()
+- len(M) : __len__()
+- iter(M) : generate sequence of keys in map. __iter__(). To allow "for k in M: "
+
+There are other additional behaviours that a map should support.
+| k in M            | Return True if the map M contains key k  |
+| M.get(k, d=None)  | * Return M[k] if exists, else return d   |
+| M.setdefault(k,d) |                                          |
+| M.pop(k, d=None)  |                                          |
+| M.popitem()       | Remove arbitrary key-value, return tuple |
+| M.clear()         | Remove all key-value pairs               |
+| M.keys()          | Return set-like view of all keys         |
+| M.values()        |                                          |
+| M.items()         |                                          |
+| M.update(M2)      | Assign M[k] = v for k,v in M2            |
+| M == M2           | True if identical k-v associations       |
+| M != m2           |                                          |
+
+**** 10.1.2 Application: Counting Word Frequencies
+Case study: counting number of occurences of words in a document. 
+Task: Program counting word frequencies in a document and reporting the most frequent word.
+
+**** 10.1.3 Python's Mutable Mapping Abstract Base class
+1. Python's concept of *abstract base class* has a big role in the collections module. Methods declared to be abstract in a base class must be implemented by concrete classes. However the abstract base class can implement concrete methods that rely upon the abstract methods.
+2. Collections module in python provides: *Mapping* and *MutableMapping* classes.
+Mapping: includes all nonmutating methods supported by python dict class.
+MutableMapping: extends that to include mutating methods.
+
+The significance of these abstract base classes is that they provide a framework to help user-defined map classes. For instance:
+*MutableMapping*: Provides concrete implementations to all the behaviours of map other than the core 5 methods. So, if we implement a map abstraction, as long as we define those 5 core behaviours (__getitem__, __setitem__, __delitem__, __len__,  __iter__), we can inherit the other derived behaviors by declaring *MutableMapping* as a parent class.
+
+**** 10.1.4 Our MapBase Class
+This book provides many implementations of the map ADT using a variety of data structures. Each different implementation has trade-offs.
+Structure:
+
+- MutableMapping (parent)
+  + Map Base (extends MutableMapping) 10.1.4
+    - UnsortedTableMap 10.1.5
+    - HashMapBase 10.2.4
+      + ChainHashMap 10.2.4
+      + ProbeHashMap 10.2.4
+    - SortedTableMap 10.3.1
+    - TreeMap Ch 11 
+
+**** 10.1.5 Simple Unsorted Map Implementation
+It's a very simple concret implementation, but it is not very efficient. Since the keys are unsorted. each fundamental method like getitem, setitem, delitem uses a loop. Thus, running time is O(n). (Code Fragment 10.3)
+
+*** 10.2 Hash Tables
+Most practical data structure for implementing a map. It is also the one implemented by Python's dict class. 
+A map M supports the abstraction of using keys as indices with a syntax such as M[k]. You can think about it like a *lookup table*.
+A lookup table of length 11 for a map: (1,D),(3,Z),(6,C),(7,Q): 
+| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|   | D |   | Z |   |   | C | Q |   |   |    |
+
+Challenges with this framework:
+1. May not wish to use an array of length N for a few elements
+2. Shouldn't require the keys to be integers.
+
+Therefore, we use something called *hash function* to map general keys to corresponding indices in a table. Since multiple distinct keys may be mapped to the same index, we can think of it as a *bucket array*.
+
+**** 10.2.1 Hash Function
+Goal of hash function, h, is to map each key k to an integer in the range [0, N-1], where N is the capacity of the bucket array for a hash table.
+
+The idea of this approach is to be able to use the hash function value, h(k), as an index into our bucket array A, instead of just using the key k (which may not be appropiate to use as a direct index (like if it's not an integer)). In short, we store item (k,v) in the bucket A[h(k)].
+
+If more than one keys have same h(k), then 2 items are mapped into same bucket in A (this is called a *collision*). While there are ways of dealing with collisions, we should try to avoid them. A hash function is "good" if it minimizes collisions.
+
+*Hash function common structure*: 
+- *hash code*: maps key k to an integer
+- *compression function*: maps the hash code to an integer within a range of indices [0, N-1] for the bucket array.
+
+Advantages of separating hash function into parts: Hash code portion is independent of the hash table size.
+First, hash function takes the key k, and computes an integer called *hash code* for k. This integer may be greater than the array size or even negative. The goal is to avoid collisions as much as possible at this stage, otherwise such collisions can't be fixed in the next step.
+
+*Theory of hash codes and Practical implementations in Python*
+- *Treating the Bit representation as an integer*
+- *Polynomial Hash Codes*: For character strings or other variable length objects of the form (x0, x1, ..., xn-1) where the order of xi is significant, we shouldnt use as hash code the sum of the unicode values of the characters in s, since it would have a lot of collisions "stop", "tops", "post", etc. Better would be a polynomial way x0a^(n-1) + x1a^(n-2)+ ... + xn-2*a + xn-1, where a is a nonzero constant != 1. By Horner's rule that polynomial can be computed as: xn-1 + a(xn-2 + a(xn-3 + ... + a(x2 + a(x1 + ax0)))). For English words, 33, 37, 39, and 41 are particular good choices for a.
+- *Cyclic-Shift Hash Codes*: Replaces multiplication by a, with a cyclic shift of a partial sum by a certain number of bits. Example: a 5-bit cyclic shift of the 32 bit value 00111101100....00 is achieved by taking the leftmost 5 bits, and placing them on the right most side, resulting in 1011..0000111. This accomplishes the goal of varying the bits of the calculation. In Python a cyclic shift of bits can be done through careful use of bitwise operators << and >>. Taking care to truncate results to 32-bit integers.
+#+BEGIN_SRC python
+def hash_code(s):
+  mask = (1 << 32) -1
+  h = 0
+  for character in s: 
+    h = (h << 5 & mask) | (h >> 27)
+    h += ord(characer)
+  return h
+
+#+END_SRC
+
+*Hash Codes in Python*
+Standard mechanism for computing hash codes in Python is through a built-in function called *hash(x)*, returns an integer that is the hash cod eof object x. However, only *immutable* data types are deemed hashable in Python. 
+
+Among python's built-in data types the immutable: int, float, str, tuple, and frozenset classes produce robust hash codes.
+
+User-defined classes are treated as unhashable by default, and the hash function raises a TypeError. However, function that computes hash codes can be impemented using the special method *__hash__*.
+
+Rules: If a class defines equivalence through __eq__, then __hash__ must be consistent with if x == y, then hash(x) == hash(y)
+
+*Compression Functions*
+Compressing the integer hash code, which can be any integer, to be in the range [0,N-1]. A good compression function minimizes the nuber of collisions.
+
+- *The Division Method*: It maps an integer i to (i mod N), where N is the size of the bucket array. Using a N that is prime would reduce the number of collisions. For instance instead of using 100, use 101.
+- *The MAD Method*: More sophisticated which helps eliminate repeated patterns is the Multiply-Add-and-Divide method. This maps an integer i to [(ai+b)mod p] mod N, where N is the size, p is a prime bummber larger than N, a and b are integers chosing at random from the interval [0, p-1], with a > 0. This eliminates repeated patters and get us closer to a "good" hash function, that is one wihere the probability any 2 different keys collide is 1/N. 
+
+**** 10.2.2 Collision-handling Schemes
+This section discusses how to handle collisions, such that h(k1) = h(k2).
+***** Separate Chaining
+Simple and efficient. Idea is to have ach bucked A[j] store its own secondary container, holding items (k,v), such that h(k) = j. THe second container can be a small map instance implemented using a list. This is called separate chaining. Running time in such bucket is proportional to its size. Therefore assuming we have a good hash function to index *n* items, the expected size of a bucket is n/N a good hash function would run on O(ceiling(n/N)). The ration n/N is called *load factor*.
+Disadvantage: it requres the use of an auciliary data structure--a list-- to hold buckets.
+
+***** Open Addressing 
+To tackle the disadvantage of separate chaining, we could store each item directly in a table slot. It wouldn't require additional data structures, but it may be more complex. To deal with collisions there are variants of this approach known as *open addressing schemes*. Open addressing requires the *load factor* to always be at most 1, and items to be stored directly in the array itself.
+
+***** Linear Probing and Its Variants
+This is an open addressing scheme. In this approach, whenever there is a collision, lets say for item (k,v) and bucket A[j] is already occupied, where j = j(k). Then try next A[(j+1) mod N], if that is occupied, add another, so move on to A[(j+2) mod N], and so on. This scheme requires a different srtategy for searching. To locate an item with key equal to k, we must examin consecutive slots, starting from A[(h(k))] until we either find an item with that key or we find an empty bucket.
+To implement deletion, we cannot simply delete an element, since the search function terminates when it finds an empty slot. A typical solution is to pot a special "available" market. So whenever __setitem__ reaches an empty slot or an available, it puts the element there, and during search, it can skip over the slots market as "available".
+Disadvantage: Although it saves space, it clusters the items of a map into contiguous runs, which may overlap (especially if more than half of the cells in the hash table are occupied). 
+Another strategy is *quadratic probing*, iteratively tries the buckets A[(h(k) + f(i)) mod N] for i = 0, 1, 2, ..., where f(i) = i^2. This scheme avoids the linear clustering, but it creates its own kind of clustering called *secondary clustering*. 
+
+Another Open Addressing Sheme that does not cause clustering is called *double hashing*. In this approach we choose a secondary hash function h' and if h maps some key k to a bucket A[h(k)] that is already occupied, then we iteratively try the buckets A[(h(k) + f(i)) mod N] next for i = 1,2,3,.., where f(i) = i*h'(k); a common choice is h'(k) = q - (k mod q) for some prime number q < N, also N should be prime. 
+Another approach is to iteratively try buckets where f(i) is based on a pseudo-random number generator. This is the approach used by Python's dict.
+
+**** 10.2.3 Load Factors, Rehashing, and Efficiency
+In the hash table schemes described above, it is important to keep the *load factor* = n/N below 1. In separate chaining, when load factor gets close to 1, collision chances increase, and overhead on the operations increases. Experiments suggest to maintain separate chaining's load factor < 0.9
+In Open Addressing, the load factor from 0.5 to 1, clusters of entries start to grow. For linear probing try maintaining a load factor less than 0.5. Python's implementation enfoces that load factor is < 2/3.
+When an insertion causes the load factor to be above the threashold, it is commont to resize the table. Onle need to reapply a new compression function. A good requiremnt is for the new table to be at least the double of the previous one.
+
+*Efficiency of Hash Tables*
+If our hash function is good,entries are uniformily distributed in the N cells. Then for setitem and getitem, we have an amortized O(1), considering the rehashing when resizing the table. Note that in the wors case with a bad hash function we could have O(n).
+- Hash tables are among the most efficient means of implementing a map, to the point that it is taken for granted to hace constant time access.
+- 2003 paper discussed exploiting worst-case performance of ha sh tables to cause DoS attack. 
+
+**** 10.2.4 Python Hash Table Implementation!
+Two implementations of hash table:
+- Separate chaining
+- Open addressing with linear probing
+We extend MapBase to define HashMapBase, to provide commong functionality.
+
+The main design elements of HashMapBase are:
+- Bucket array is represented as a Python list, named self._table, entries initialized to None
+- Maintain an instance variable self._n represents # of distinct items
+- if load factor increses beyond 0.5, double size of table and rehash
+- Define _hash_function that relies on Python's hash function to produce hash codes for keys, and a randomized MAD formula for compression
+
+Not implementing the notion of how the "bucket" is represented, because in Separate Chaining, each bucket it's an independent structure. With Open Addressing, there is no tangible container for bucket
+
+Abstract methods:
+- _bucket_getitem(j,k)
+- _bucket_setitem(j,k,v)
+- _bucket_delitem(j,k)
+- __iter__
+
+- *Separate Chaining*: ChainHashMap relies on UnsortedTableMap for every bucket. 
+- *Linear Probing*: Uses object _AVAIL = object() as a marker
+
+*** 10.3 Sorted Maps
+Case study: When the data is financial transactions, and the events are organized by a *time stamp*, if we can assume that the timestamps are unique, we can use that as a referene ID for each event. In which case we can quickly retrieve information about that event from the map. This is harder to do in a hash since it intentionally scatters the keys.
+
+Sorted Map ADT includes all behaviors of standard map, plus:
+| M.find_min()             |   |
+| M.find_max()             |   |
+| M.find_Lt(k)             |   |
+| M.find_le(k)             |   |
+| M.find_gt(k)             |   |
+| M.find_ge(k)             |   |
+| M.find_range(start,stop) |   |
+| iter(M)                  |   |
+| reversed(M)              |   |
+
+**** 10.3.1 Sorted Search Tables
+Sections 10.4 and Chapter 11 examing advanced techniques data structures that also support sorted map ADT.
+In this section we have a simple implementation. Srote map's items in array-based sequence A in increasing order. This implementation is called *sorted search table*.
+Advantage: It allows to use binary search. 
+
+***** Binary Search and Inexact Searches
+Binary search must be adapted. Currently it would only help in the __contains__ method. 
+Note: Binary search helps determin the index at or near where a target might be found. 
+- If successful, target is found.
+- else, algorithm can determine a pair of indices designating elements of the collection that are just less than or greater than the missing target.
+
+***** Implementation
+See Code Fragment 10.8 through 10.10 for the class SortedTableMap.
+Notable features: _find_index utility function.
+
+***** Analysis
+| Operation                    | Running Time                           |
+| len(M)                       | O(1)                                   |
+| k in M                       | O(log n)                               |
+| M[k] = v                     | O(n) wors case; O(log n) if existing k |
+| del M[k]                     | O(n) worst case                        |
+| M.find min( ), M.find max( ) | O(1)                                   |
+| M.find lt(k), M.find gt(k)   | O(log n)                               |
+| M.find le(k), M.find ge(k)   | O(log n)   |
+| M.find range(start, stop)    | O(s + log n) where s is items reported |
+| iter(M), reversed(M)         | O(n)                                   |
+
+**** 10.3.2 Two Applications of Sorted Maps  
+***** Flight Databases
+Referring to websites that allow users to perform queries on flight db to buy tickets. We can model this as a map. Keys are the flight objects that contain: 
+k = (origin, destination, date, time)
+Additional information can be stored in the value object.
+In this case there is not need necessarily for a perfect match, except for the origin and destination cities. We can handle query by ordering our keys lexicographically, then use a sorted map.
+
+For instance, query with key k, we could call find_ge(k) to return the first flight between the desired cities. We could also used find_range(k1, k2), like if k1 = (ORD, PVD, 05May, 09:30), and k2 = (ORD, PVD, 05May, 20:00)
+
+***** Maxima Sets
+Trade-offs. Lets say we have a set of cars with price and speeds as elements. We want to find the car with maximum speed that user can afford.
+Cost-performance pair (a,b) dominates pair (c,d) != (a,b) if a <=c and b >= d, in a (price, speed) scenario.
+A pair (a,b) is called a *maximum* pair if it is not dominated by any other pair.
+
+***** Maintaining a Maxima Set with a Sorted Map
+We can implement such as: Cost is key and performance (Speed) is the value. We can store this pairs in a sorted map M.
+Unfortunately, implementing M using a SortedTableMap leads to the add behavior having O(n) worst-case. With Skip Lists, it would query in O(log n)
+
+*** 10.4 Skip Lists
+While sorted array allows a O(log n) time searches using binary search, it leads to /update/ operations run in O(n), because it needs to shift elements. On the other hand a linked lists provide O(1) time to update, but O(n) search, since it cannot perform binary search. A compromise is *skip lists*.
+
+Skip list S for a map M consists of a series fo lists {S0, S1, .., Sh}.
+Each list Si stores a subset of the items of M sorted by increasing keys, plus 2 sentines denoted −∞ and +∞, where the first is smallest than every possible key that can be inserted in M, and the second is greatest that every possible key.
+Also:
+- List S0 contains every item of map M including the 2 sentinels
+- for i = 1,.., h-1, the list Si contains the sentinels and a randomly generated subset of items in list Si-1
+- List Sh contains only −∞ and +∞
+Also, Si+1 contains more or less alternate items of Si. We refer to *h* as the height of the skip list S.
+
+How lists are setup:
+- the items or Si+1 are chosen at random from the items of Si. At every insert, we pick element in Si to have a probability of 1/2 to be in Si+1.
+- So we expect S1 to have about n/2 itmes. S2 to have n/4 items, and so on.
+- Expected height of S becomes log n, bc Si contains n/(2^i) elements
+
+Algorithm for SkipSearch(k):
+Input: Search key k
+Output: Position p in the bottom list S0 with largest key s.t. key(p) <= k
+p = start
+while below(p) is not None:
+  p = below(p)
+  while k >= key(next(p)):
+    p = next(p)
+return p
+Expected running time is O(log n)
+
+**** Inserting in a Skip List
+
+*** 10.5 Sets, Multisents, and Multimaps
+This section examins abstractions that are closely related to the map ADT, and that can be implemented using similar data structures.
+- *Set*: unordered collection of elements withoud duplicates. Typically supports efficient membership test. (like keys of maps)
+- *multiset*: (aka *bag*) like a set, but allows duplicates
+- *multimap*: similar to a traditional map (associates keys and values); however, the same key can be mapped to multiple values. (Like in an index of a book, same term can have multiple locations).
+
+**** 10.5.1 The Set ADT 
+Python's built in classes for set are *set* and *frozenset* which is an immutable form of a set.
+Fundamental behaviors in a set S: 
+- S.add(e)
+- S.discard(e)
+- e in S: Returns True if element in S. In Python implemented through special __contains__ method.
+- len(S): Python's __len__ method
+- iter(S): 
+
+Additionally, operations that draw from the fundamental behaviors:
+- S.remove(e)
+- S.pop(): Remuve and return arbitrary element from set, or raise KeyError.
+- S.clear(): Remove all elements
+
+**** 10.5.2 Python's MutableSet Abstract Base Class
+Python's collection module provides an abstract base class called *MutableSet*, to help in the creation of user-defined set classes.
+MutableSet provides concrete implementations for all methods mentioned above, except for the 5 core behaviors. This design is also known as template method pattern, bc the concrete methods rely on presumend abstract methods that will be implemented by a subclass.
+
+Example of implementation __lt__:
+
+#+BEGIN_SRC python
+def lt (self, other):
+  ”””Return true if this set is a proper subset of other.”””
+  if len(self) >= len(other):
+    return False
+  # proper subset must have strictly smaller size
+  for e in self:
+    if e not in other:
+      return False # not a subset since element missing from other
+  return True  # success; all conditions are met
+
+#+END_SRC
+
+To implement S | T, which returns union of S and T, use __or__(), and to implement S |= T, which assigns S the union of S and T, use __ior__().
+
+**** 10.5.3 Implementing Sets, Multisets, and Multimaps
+***** Sets
+Very similar to map, just that keys don't have associated values. Any data structure used to implement map, cab be used for set. We could abandon the _Item composite that we use in MapBase, and instead store set elements directly in a data structure
+
+***** Multisets
+We could either use the data structures we have seen so far since they support duplicates, or use a map, in which the associated value is a count of the number of occurrences. Python has a collections module called Counter, that is in essence a multiset.
+
+***** Multimaps
+There is no multimap in Python standard libraries, but we could use a standard map, and associated with a container class storing any number of associated values.
+See Code Fragment 10.17
+
+** DONE 11 Search Trees
+CLOSED: [2017-06-13 Tue 14:48]
+*** 11.1 Binary Search Trees
+**** 11.1.1 Navigating a Binary Search Tree
+**** 11.1.2 Searches
+**** 11.1.3 Insertions and Deletions
+**** 11.1.4 Python Implementation
+**** 11.1.5 Performance of a Binary Search Tree
+
+*** 11.2 Balanced Search Trees
+**** 11.2.1 Python Framework for Balancing Search Trees
+
+*** 11.3 AVL Trees
+*Remarks*
+Height of a subtree at position p is:
+1. # of edges on longest path from p to a leaf or
+2. # of nodes on longest path, where leaf is 1 and null nodes = 0
+
+*Height Balance Property*: For all positions p, the heights of all the children of p differ by at most 1.
+
+If a tree follows the *Height Balance Property*, then it is called an AVL tree. 
+*Proposition 11.2*: The height of an AVL tree storing n entries is O(log n)
+
+**** 11.3.1 Update Operations
+Given a binary search tree T, we say that a position is:
+- balanced: if the absolute difference between the heights of its children is at most 1, otherwise it us unbalanced.
+- Therefore, AVL trees are balanced on every position
+
+***** Insertion
+Notice: 
+1. insertion results in a new node leaf (because it didn't exist before)
+2. Height-balance property may be violated, but only in p's ancestors.
+
+Approach:
+z: first node that is unbalanced going up from new inserted node p, to the root.
+y: child of z with heigher height
+x: child of y with heigher height
+Rebalance subtree rooted at z, by calling *trinode restructuring* method restructure(x)
+
+***** Deletion
+Notice:
+1. Deletion results in the *structural* removal of a node having zero or one children, which may violate the AVL property.
+Approach is similar to insertion: z, y, and x are defined as insertion. Then rebalance subtree usig rotation.
+Continue walking up T looking for unbalanced positions.
+
+**** 11.3.2 Python Implementation (of AVL Trees)
+
+*** 11.4 Splay Trees
+Does not strictly enforce a logarithmic upper bound on height of tree.
+There are no additional height, balance, or other aux data associated with the nodes of this tree.
+
+Efficiency lays on a *move-to-root* operation called *splaying*. Splaying is performed at bottommost position *p* reached during: insertion, deletion, and search.
+
+Allows guarantee a logarithmic amortized running time, for insertions, deletions, and searches.
+
+**** 11.4.1 Splaying
+Given a node *x* of a binary search tree T, we *splay* x by moving x to the root through a sequence of specific restructurings. 
+Let x be the node in question, y the parent of x, and z the parent of y.
+- *zig-zig*: x is left child of a left child OR a right child of a right cchild. Promote x, making y a child of x and z a child of y.
+- *zig-zag*: x is a left child of a right child OR a right child of a left child. Promote x by making x have y and z as its children, while maintaining inorder reltionships of nodes.
+- *zig*: x is chold of root. Single rotation to promote x over y.
+
+**** 11.4.2 When to Splay 
+- When *searching* for key k, if k is found at position p, we splay p. Otherwise, we splay the leaf position at which search terminates.
+- When *inserting* key k, splay the new node where it is inserted.
+- When *deleting* key k, splay the position p that is the parten of the removed node.
+
+**** 11.4.3 Python Implementation
+See code fragment
+
+**** 11.4.4 Amortized analysis of Splaying
+
+*** 11.5 (2,4) Trees
+A (2,4) tree is a particular example of a general structure known as a *multiway search tree*, in which internal noes may have more than 2 children.
+
+**** 11.5.1 Multiway Search Trees
+
+
+**** 11.5.2 (2,4)-Tree Operations
+(2,4) Tree, aka 2-3-4 tree, maintains the following  properties:
+- Size Property: Every internal node has at most 4 children
+- Depth Property: Every external node has the same depth
+The name 2-3-4 tree implies each internal node has 2, 3, or 4 children.
+
+Each node can be represented using an unordered or ordered array and still achieve O(1) because max # of keys is 4.
+*Proposition 11.8*: Height of a 2-4 tree storing n items is O(log n)
+***** Insertion
+***** Deletion
+
+*** 11.6 Red-Black Trees
+**** 11.6.1 Red-Black Tree Operations
+**** 11.6.2 Python Implementation
 
 ** 12 Sorting and Selection
+*** 12.1 Why to study sorting
+Although Python has built-in sorting support. THey use advanced algorithms and are highly optimized. However, a programmer should know what to expect in terms of efficiency and how that may depend on the initial order of elements that are being sorted.
+**** Insertion (5.5.2, 7.5, 9.4.1)
+
+#+BEGIN_SRC python
+def insertion_sort(A):
+  """Sort list of comparable elements"""
+  for k in range(1, len(A)):   # from 1 to n-1
+    cur = A[k]                 # current element to be inserted
+    j = k                      # find correct index j for current
+    while j > 0 and A[j-1] > cur:
+      A[j] = A[j-1]
+      j -= 1
+    A[j] = cur
+#+END_SRC
+**** Selection (9.4.1)
+**** Bubble-sort (Exercise C-7.38)
+**** Heap-sort (9.4.2)
+In-place Heap sort:
+- First: Modify heap operations to be maximum oriented
+- Phase 1: Sequence in an array. Divide in 2 parts. Left is the heap, and the right is the sequence. The heap starts empty, and we go from left to right adding elements to the heap.
+- Phase 2: Array divided in 2 parts. Heap on left and (ordered) sequence on right. The sequence is empty. We remove_max() from heap and put it in n-j (right side of array). There are n operations taking log(n)
+
+In this chapter, we will see merge-sort, quick-sort, bucket-sort, and radix-sort.
 *** 12.2 Merge-Sort
+High level description of the merge-sort using *Divide-and-Conquer* design pattern:
+To sort a sequence S with n elements, perform the following:
+1. *Divide*: if S has zero or 1 element, S is already sorted, return S. Otherwise, remove all elements from S and put them into two sequences S1 and S2, each containing half of the elements. S1 contains the first floor(n/2) elements of S, and S2 contains the remaining ceiling(n/2).
+2. *Conquer*: Recursively sort sequences S1 and S2
+3. *Combine*: Put back elements into S by mergin sorted sequences S1 and S2 into a sorted sequence.
+
+**** Array-Based Implementation fo Merge-Sort
+**** Running Time of Merge Sort
+**** Alternative Implementations (Sorting Linked Lists)
+**** Bottom-Up (Nonrecursive) Merge-Sort
+
 *** 12.3 Quick-Sort
+***** High-Level Description of Quick-Sort
+***** Quick-Sort on General Sequences (Implementation)
+***** Running Time of Quick-Sort
+**** Randomized Quick-Sort
+**** Additional Optimizations (In-Place)
+
 *** 12.4 Studying Sorting through an Algorithmic Lens
+**** 12.4.1 Lower Bound for Sorting
+**** 12.4.2 Linear-Time Sorting: Bucket-Sort and Radix-Sort
 *** 12.5 Comparing Sorting Algorithms
 *** 12.6 Python's Built-in sorting functions
+Whenever we need to sort by something other than natural order. For instance, when we need to sort strings by their length. Python's built ins provides an optional keyword parameter that allows to compute a key for each element, and then the elements are sorted based on that key.
+
+Example: colors = ['red','blue','green','yellow']
+colors.sort(key=len)
+
+**** Decorate-Sort-Undecorate Design Pattern
+This design pattern is exemplified by Python's support for a key function when sorting. There are 3 steps:
+- Each element of the list is temporarily replaced with a "decorated" version that includes the result of the key function applied to each element.
+- The list is sorted based upon the nat order of such keys
+- The decorated elements are replaced with their original contents.
+
 *** 12.7 Selection
 
 ** 13 Text Processing
-*** 13.1 Abunadnce of Digitized Text
+*** 13.1 Abudance of Digitized Text
 *** 13.2 Pattern-matching algorihtms
+The Pattern-matching problem is a classic one. We are given a *text* T of length n and a *pattern* string P of length m. Need to find whether P is a substring of P. It allows for things like:
+P in T, T.find(P), T.index(P), T.count(P), T.partition(P), T.replace(P,Q)
+
+**** 13.2.1 Brute Force
+The Brute-Force algorithm design is a powerful technique for *searching* or to *optimize some function*. In this case, we loop through each character of the text, and whenever finding the first case in which T[i] == P[k], we loop through P to check for equality.
+
+- Performace: Clearly is O(nm)
+
+**** 13.2.2 The Boyer-Moore Algorithm
+This section discusses a simplified version of this algorithm, which is focused on improving the run time of Brute-force algorithm adding time-saving heuristics.
+Heuristics: 
+- Looking-Glass Heuristic: When testing a possible placement of P against T, begin the comparisons from the end of P and move backwards.
+- Character-Jump Heuristic: During the testing of a possible placement of P within T, a mismatch of text character T[i]=c, with the corresponding pattern character P[k] is handled as follows: 
+  + If c is not contained anywhere in P, then shift P completely past T[i]
+  + Else, shift P until an occurence of character c in P gets aligned with T[i]
+
+In this scenario we use the help of 3 pointers:
+- i: index in the text T, usually represents the mismatched character too
+- k: index in the pattern P
+- j: represents the index of the last occurrence of T[i] in pattern P.
+
+The efficiency of this algorithm relies on creating a lookup table (we prefer to use a hash table) to access quickly whether T[i] is in P and what is its index. So we define a function last(c) as:
+- last(c): if c is in P, last(c) is the index of the last (rightmost) occurrence of c in P, otherwise last(c) = -1
+
+- Performance: O(nm + |Σ|)
+
+**** 13.2.3 The Knuth-Morris-Pratt Algorithm
+Idea: unlike the previous methods, when detecting a mismatch, do not ignore the information already gained by the successful comparisons, but use it instead.
+Precompute self-overlaps between portions of the pattern so that when a mismatch occurs at one location, we immediately know the maximum amount to shift.
+
+The KMP algorithm achieves O(n+m). Man, this one is tricky.
+
 *** [#A] 13.3 Dynamic Programming
+The *dynamic programming* algorithm design technique is similar to divide-and-conquer, in that it can be applied to a wide variety of different problems. Reducing problems that seem to require exponential time into polynomial-time. 
+Solutions are often quite simple with some nested loops for filling in a table.
+
+Idea: Used for *optimization* problems, to find best way of doing something. Dynamic Programming is applicable if a problem has certain properties:
+- *Simple Subproblems*: There has to be a way of repeatedly breaking the global optimization problem into subproblems AND it should be easy to parameterize with a few indices
+- *Subproblem Optimization*: Global solution must be a composition of optimal subproblem solutions
+- *Subproblem Overlap*: Optimal solutions to unrelated subproblems can contain subproblems in common
+
+**** 13.3.1 Matrix Chain Product
+Problem: In matrix multiplication
+ A = Ao.A1.A2....An-1
+Where Ai is a di x di+1 matrix, we note that the location of the parenthesis marks a clear difference in the number of multiplications. In other words, B·(C·D) requires 10400 multiplications, while (B·C)·D requires 3000. We need to minimize the total number of multiplications.
+
+*Defining Subproblems*
+Using brute-force results in exponential time. One important observation is that the problem can be split into *subproblems*.
+In this case, we can define a number of different subproblems, each of wich is to compute the best parenthesization for some subexpression Ai·Ai+1···Aj. We call Ni,j the minimum number of multiplications needed for this subexpression
+
+*Characterizing Optimal Solutions* 
+Another observation is that we can get the optimal solution to a particular subproblem in the of optimal solutions to its subproblems. This property is called *subproblem optimality* condition.
+
+*Designing a Dynamic Programming Algorithm*
+We can therefore characterize the optimal subproblem solution Ni,j as:
+    Ni,j = min {Ni,k + Nk+1,j + di dk+1 d j+1 }
+It means, Ni,j is the minimum taken over all the possible places to perform the final multiplication of the number of multiplications needed to compute each subexpression plus the number of multiplications needed to perform the final matrix multiplication.
+Notice a *sharing of subproblems* going on that prevents us from dividing the problem into completely independent subproblems. Therefore we cannot use *divide-and-conquer*.
+
+However, we can work our solution *bottom-up*, finding first the most optimal solution for the bottommost cases and use that one for the next bigger subproblem.
+- Using the Ni,j equation to compute Ni,j values,
+- Storing intermediate solutions in a table of Ni,j values
+- Begin assigning Ni,i=0, for i = 0, 1,..., n-1, then
+- Compute Ni,i+1, then Ni,i+2, and so on.
+- Finally compute values of N0,n-1
+
+
+
+**** 13.3.2 DNA and Text Sequence Alignment
+
+
 *** 13.4 Text Compression and the Greedy Method
+*** 13.5 Tries
 
 ** 14 Graph Algorithm
 *** 14.1 Graphs
@@ -721,7 +1344,7 @@ Well... this method is much better than the unordered and ordered implementation
 **** 14.7.3 Disjoint Partitions and Union-Find Structures
 
 ** 15 Memory Management and B-Trees
-Computer systems are greatly impacted by the management of the computer's memory system. This book talks about *ways in which memory is allocated and deallocated during execution* and the impact in performance. Then, the *complexity of multilevel memory hierarchies* in systems. Finally, *use of classic data structures and algorithms used to manage memory*, and how the use of memory hierarchies impacts choice of data structures and algorithms.
+Computer systems are greatly impacted by the management of the computer's memory system. This section discusses the following: *ways in which memory is allocated and deallocated during execution* and the impact in performance. Then, the *complexity of multilevel memory hierarchies* in systems. Finally, *use of classic data structures and algorithms used to manage memory*, and how the use of memory hierarchies impacts choice of data structures and algorithms.
 
 *** 15.1 Memory Management
 Computer memory is organized into a sequence of *words*, of typical sizes: 4, 8, 16 bytes. Memory words numbered from 0 to N-1, where N is the number of memory words available in the computer.
@@ -737,11 +1360,11 @@ System must quickly allocate memory for new objects.
 Types of fragmentation: Internal and External.
 - Internal: portion of allocated memory block is unused. ie array of size 1000, but only 100 cells contain values. (Not much run-time env can do...)
 - External: significant amount of unused memory between many blocks of allocated memory..So run-time env should allocate memory in a way to try to reduce external fragmentation.
-Herustics for allocating memory from the heap:
-- Best-fit algorithm: searches entire free list to find hole whose size is closes to amount of mem requested.
-- First-fit algorithm: searches from beginning for first hole large enough.
-- Next-fit algorithm: similar to first-fit, but begins search where it left off previously. (Like circular ll)
-- Worst-fit algorithm: searches free list to find largest hole of available memory.
+*Herustics for allocating memory from the heap:*
+- *Best-fit algorithm*: searches entire free list to find hole whose size is closes to amount of mem requested.
+- *First-fit algorithm*: searches from beginning for first hole large enough.
+- *Next-fit algorithm*: similar to first-fit, but begins search where it left off previously. (Like circular ll)
+- *Worst-fit algorithm*: searches free list to find largest hole of available memory.
 In each algorithm, the requested amount of memory is subtracted from the chosen memory hole and the leftover part of that hole is returned to the *free list*.
 Best-fit -> produces worst fragmentation,since leftover parts are tiny. The first-fit is fast, but produces a lot of fragmentation in the front of the list. The next-fit fixes that by spreading fragmentation eavenly, but still makes it hard to allocate large blocks. Worst-fit attempts to avoid this by keeping contiguous sections of free memory as large as possible.
 
@@ -754,7 +1377,7 @@ Definitions for garbage collection:
 - *Live objects*: program has direct or indirect reference to such object.
 - *Direct reference*: to an object is identifier in active namespace (ie global namespace or local namespace for active function).
 - *root objects*: objects with direct references (like w = Widget(), w is in current namespace.
-- *indirect reference*: reference that occurs withing state of some other live object. ie if widget object maintains a list attribute. That list is a live obj.
+- *indirect reference*: reference that occurs within state of some other live object. ie if widget object maintains a list attribute. That list is a live obj.
 Python deallocate any object that is not considered *live obj*. Python uses 2 strategies: Reference counts & Cycle Detection.
 
 ***** Reference Counts
@@ -765,9 +1388,9 @@ Decreases when reference is reassigned to something else.
 Whenever ref count is 0, object is deallocated.
 
 ***** Cycle Detection
-Some objects with nonzero ref counts may be live. For isntance, if a group of objects have references to each other, but are not reachable from a root object.
+Some objects with nonzero ref counts may be live. For instance, if a group of objects have references to each other, but are not reachable from a root object.
 Every so often, especially when memory heap is running out of space, the interpreter runs certain algorithms to reclaim memory. A classic algo is *mark-sweep*.
-- *Mark-Sweep Algorithm*: This algorithm associates a "mark" bit with each object that identifies whether obj is alive. When garbage collection seems needed, it suspends all other activity and clear themark bits of all the objects currently in mem heap. Then, go through active namespace and mark all root objects as live. Then, perform *deph-first* search on directed graph defined by objects referencing other objects. So objects = vertex and reference = directed edge. Once all objects marked, scan through heap and reclaim space from objects not marketd. Optionally coalesce all allocated space into a single block.
+- *Mark-Sweep Algorithm*: This algorithm associates a "mark" bit with each object that identifies whether obj is alive. When garbage collection seems needed, it suspends all other activity and clear the mark bits of all the objects currently in mem heap. Then, go through active namespace and mark all root objects as live. Then, perform *deph-first* search on directed graph defined by objects referencing other objects. So objects = vertex and reference = directed edge. Once all objects marked, scan through heap and reclaim space from objects not marked. Optionally coalesce all allocated space into a single block.
 - Performing DFS In-Place: Note that since the goal is to reclaim unused space, algorith must not use extra space during garbage collection. So no recursive. DFS using only a constant amount of additional space.
 
 **** 15.1.3 Additional memory used by interpreter
@@ -804,11 +1427,196 @@ Goal: minimize # of disk transfers needed to perform a query or update. Such cou
 *** 15.4 External-Memory Sorting
 **** 15.4.1 Multiway merging
 
+
 * Fundamental Techniques (from Algorithm Design - Goodrich book)
 Actually they are also in this Book!!!
 ** The Greedy Method
-** Divide and Conquer
+** Divide and Conquer (12.2)
+Used in merge-sort and quick-sort. It is an algorithmic design pattern.
+Steps:
+1. *Divide*: If the input size is below a certain threshold (like 1 or 2), solve using a straightforward method and return solution. Else, divide input into 2 or more *disjoint* subsets.
+2. *Conquer*: Recursively solve subproblems associated with subsets
+3. *Combine*: Take solutions to subproblems and merge them into a solution to original problem
+
+See merge-sort for an example of its use
+study sorting
+Although Python has built-in sorting support. THey use advanced algorithms and are highly optimized. However, a programmer should know what to expect in terms of efficiency and how that may depend on the initial order of elements that are being sorted.
+**** Insertion (5.5.2, 7.5, 9.4.1)
+
+#+BEGIN_SRC python
+def insertion_sort(A):
+  """Sort list of comparable elements"""
+  for k in range(1, len(A)):   # from 1 to n-1
+    cur = A[k]                 # current element to be inserted
+    j = k                      # find correct index j for current
+    while j > 0 and A[j-1] > cur:
+      A[j] = A[j-1]
+      j -= 1
+    A[j] = cur
+#+END_SRC
+**** Selection (9.4.1)
+**** Bubble-sort (Exercise C-7.38)
+**** Heap-sort (9.4.2)
+In-place Heap sort:
+- First: Modify heap operations to be maximum oriented
+- Phase 1: Sequence in an array. Divide in 2 parts. Left is the heap, and the right is the sequence. The heap starts empty, and we go from left to right adding elements to the heap.
+- Phase 2: Array divided in 2 parts. Heap on left and (ordered) sequence on right. The sequence is empty. We remove_max() from heap and put it in n-j (right side of array). There are n operations taking log(n)
+
+In this chapter, we will see merge-sort, quick-sort, bucket-sort, and radix-sort.
+*** 12.2 Merge-Sort
+High level description of the merge-sort using *Divide-and-Conquer* design pattern:
+To sort a sequence S with n elements, perform the following:
+1. *Divide*: if S has zero or 1 element, S is already sorted, return S. Otherwise, remove all elements from S and put them into two sequences S1 and S2, each containing half of the elements. S1 contains the first floor(n/2) elements of S, and S2 contains the remaining ceiling(n/2).
+2. *Conquer*: Recursively sort sequences S1 and S2
+3. *Combine*: Put back elements into S by mergin sorted sequences S1 and S2 into a sorted sequence.
+
+**** Array-Based Implementation fo Merge-Sort
+**** Running Time of Merge Sort
+**** Alternative Implementations (Sorting Linked Lists)
+**** Bottom-Up (Nonrecursive) Merge-Sort
+
+*** 12.3 Quick-Sort
+***** High-Level Description of Quick-Sort
+***** Quick-Sort on General Sequences (Implementation)
+***** Running Time of Quick-Sort
+**** Randomized Quick-Sort
+**** Additional Optimizations (In-Place)
+
+*** 12.4 Studying Sorting through an Algorithmic Lens
+**** 12.4.1 Lower Bound for Sorting
+**** 12.4.2 Linear-Time Sorting: Bucket-Sort and Radix-Sort
+*** 12.5 Comparing Sorting Algorithms
+*** 12.6 Python's Built-in sorting functions
+Whenever we need to sort by something other than natural order. For instance, when we need to sort strings by their length. Python's built ins provides an optional keyword parameter that allows to compute a key for each element, and then the elements are sorted based on that key.
+
+Example: colors = ['red','blue','green','yellow']
+colors.sort(key=len)
+
+**** Decorate-Sort-Undecorate Design Pattern
+This design pattern is exemplified by Python's support for a key function when sorting. There are 3 steps:
+- Each element of the list is temporarily replaced with a "decorated" version that includes the result of the key function applied to each element.
+- The list is sorted based upon the nat order of such keys
+- The decorated elements are replaced with their original contents.
+
+*** 12.7 Selection
+
+
+** 13 Text Processing
+*** 13.1 Abunadnce of Digitized Text
+*** 13.2 Pattern-matching algorihtms
+*** [#A] 13.3 Dynamic Programming
+*** 13.4 Text Compression and the Greedy Method
+
+** 14 Graph Algorithm
+*** 14.1 Graphs
+*** 14.2 Data structures for graphs
+*** 14.3 Graph Traversals
+*** 14.6 Shortest Paths
+*** 14.7 Minimum Spanning Trees
+**** 14.7.1 Prim-jarnik Algorithm
+**** 14.7.2 Kriskal's Algorithm
+**** 14.7.3 Disjoint Partitions and Union-Find Structures
+
+** 15 Memory Management and B-Trees
+Computer systems are greatly impacted by the management of the computer's memory system. This section discusses the following: *ways in which memory is allocated and deallocated during execution* and the impact in performance. Then, the *complexity of multilevel memory hierarchies* in systems. Finally, *use of classic data structures and algorithms used to manage memory*, and how the use of memory hierarchies impacts choice of data structures and algorithms.
+
+*** 15.1 Memory Management
+Computer memory is organized into a sequence of *words*, of typical sizes: 4, 8, 16 bytes. Memory words numbered from 0 to N-1, where N is the number of memory words available in the computer.
+- Memory address: number associated with each mem word.
+So memory of computer can be seen as giant array of memory words.
+
+**** 15.1.1 Memory allocation
+In Python, all objects are stored in a pool of memory called *memory heap* or *Python heap* (not same as ds heap).
+- *blocks*: storage available is divided into contiguous array-like chuncks of memory.
+System must quickly allocate memory for new objects.
+- *free list*: method to keep contiguous holes of available memory in a linked list.
+- *fragmentation*: separation of unused memory into diff holes. Becomes a problem bc makes it harder to find large contiguous chunks of free space. Goal: minimize fragmentation.
+Types of fragmentation: Internal and External.
+- Internal: portion of allocated memory block is unused. ie array of size 1000, but only 100 cells contain values. (Not much run-time env can do...)
+- External: significant amount of unused memory between many blocks of allocated memory..So run-time env should allocate memory in a way to try to reduce external fragmentation.
+*Herustics for allocating memory from the heap:*
+- *Best-fit algorithm*: searches entire free list to find hole whose size is closes to amount of mem requested.
+- *First-fit algorithm*: searches from beginning for first hole large enough.
+- *Next-fit algorithm*: similar to first-fit, but begins search where it left off previously. (Like circular ll)
+- *Worst-fit algorithm*: searches free list to find largest hole of available memory.
+In each algorithm, the requested amount of memory is subtracted from the chosen memory hole and the leftover part of that hole is returned to the *free list*.
+Best-fit -> produces worst fragmentation,since leftover parts are tiny. The first-fit is fast, but produces a lot of fragmentation in the front of the list. The next-fit fixes that by spreading fragmentation eavenly, but still makes it hard to allocate large blocks. Worst-fit attempts to avoid this by keeping contiguous sections of free memory as large as possible.
+
+**** 15.1.2 Garbage collection
+Other languages: memory space for objects must be explicitly deallocated by programmer. 
+In Python: interpreter does the memory management.
+- *Garbage collection*: process of detecting "stale" objects, deallocated their space, and returning reclaimed space to *free list*
+
+Definitions for garbage collection:
+- *Live objects*: program has direct or indirect reference to such object.
+- *Direct reference*: to an object is identifier in active namespace (ie global namespace or local namespace for active function).
+- *root objects*: objects with direct references (like w = Widget(), w is in current namespace.
+- *indirect reference*: reference that occurs within state of some other live object. ie if widget object maintains a list attribute. That list is a live obj.
+Python deallocate any object that is not considered *live obj*. Python uses 2 strategies: Reference counts & Cycle Detection.
+
+***** Reference Counts
+Every Python object has integer called *reference count*. This is the count of how many references to this object exist anywhere in the system. 
+Increases when reference is assigned to object.
+Decreases when reference is reassigned to something else.
+- Python allows programs to see object's ref count. Using *sys* module, function called *getrefcount*.
+Whenever ref count is 0, object is deallocated.
+
+***** Cycle Detection
+Some objects with nonzero ref counts may be live. For instance, if a group of objects have references to each other, but are not reachable from a root object.
+Every so often, especially when memory heap is running out of space, the interpreter runs certain algorithms to reclaim memory. A classic algo is *mark-sweep*.
+- *Mark-Sweep Algorithm*: This algorithm associates a "mark" bit with each object that identifies whether obj is alive. When garbage collection seems needed, it suspends all other activity and clear the mark bits of all the objects currently in mem heap. Then, go through active namespace and mark all root objects as live. Then, perform *deph-first* search on directed graph defined by objects referencing other objects. So objects = vertex and reference = directed edge. Once all objects marked, scan through heap and reclaim space from objects not marked. Optionally coalesce all allocated space into a single block.
+- Performing DFS In-Place: Note that since the goal is to reclaim unused space, algorith must not use extra space during garbage collection. So no recursive. DFS using only a constant amount of additional space.
+
+**** 15.1.3 Additional memory used by interpreter
+***** The Run-Time Call Stack
+Stacks = Super important in run-time env of python programs.
+- *Call stack (Python interpreter stack)*: Private stack of a running program in python. Keeps track of nested sequence of currently active invocations of functions.
+- *Activation record (frame)*: each entry of stack. Stores important info about the func invoked.
+- *Running Call*: activation record of  function that is being executed is at top of stack. All others are *suspended calls*
+- Each activation record has dictionary with local namespace for that call.
+- Also has a reference to the function definition itself, and a variable called *program counter* , to maintain the address of the statement within the function. This is used by the interpreter when a suspended function becomes active.
+
+***** Operand Stack
+In arithmetic operations, the interpreter uses the operand stack.
+
+*** 15.2 Memory Hierarchies and Caching
+**** Memory Systems
+Hierarchy: CPU, Registers, Caches, Int memory, Ext memory, network storage.
+
+**** Caching Strategies
+Most algorithms are not designed with memory hierarchy in mind, in spite of the great variance between access times.
+A justification is that, it wouldn't be device independent, and such optimizations are not always necessary.
+- Caching: bringing data into primary memory (motivated by temporal locality), expecting that to be used again soon.
+- Blocking: (motivated by spatial locality) bringing a chunk surrounding l (location needed), expecting locations nearby to be accessed soon.
+Blocks in between cache memory & internal memory: *cache lines*.
+- Blocks between internal memory & external memory: *pages*.
+
+*** 15.3 External searching and B-trees
+- *disk blocks*: secondary memory blocks
+- *disk transfer*: transfer of a block from secondary to primary memory.
+Goal: minimize # of disk transfers needed to perform a query or update. Such count known as *I/O complexity*.
+**** 15.3.1 (a,b) Trees
+**** 15.3.2 B-Trees
+
+*** 15.4 External-Memory Sorting
+**** 15.4.1 Multiway merging
+
+
+* Fundamental Techniques (from Algorithm Design - Goodrich book)
+Actually they are also in this Book!!!
+** The Greedy Method
+** Divide and Conquer (12.2)
+Used in merge-sort and quick-sort. It is an algorithmic design pattern.
+Steps:
+1. *Divide*: If the input size is below a certain threshold (like 1 or 2), solve using a straightforward method and return solution. Else, divide input into 2 or more *disjoint* subsets.
+2. *Conquer*: Recursively solve subproblems associated with subsets
+3. *Combine*: Take solutions to subproblems and merge them into a solution to original problem
+
+See merge-sort for an example of its use
+
 ** Dynamic Programming
+** Prune-and-Search
+
 
 * Algorithm Design Patterns in this book
 ** Algorithm design patterns: 
@@ -859,8 +1667,15 @@ for thing in [donald, john, who]:
 - Abstract Base Class: ABC cannot be instantiated. But defines one or more common methods that all implementations of the abstraction *must* have.
 - Concrete classes inherit from ABC and provide implementations for the methods declared by the ABC.
 
-** Composition design patter (Section 7.6 and 9.2)
+** Composition design pattern (Section 7.6 and 9.2)
 Defining an _Item class to ensure that each element remained paired with its associated count in the primary data structure.
+
+** Template Method design patter (section 10.1.3)
+The use of *abstract base class*.
+- Methods that are declared to be abstract in such a base class *must* be implemented by *concrete subclasses*
+- Abstract base class may provide *concrete* implementation of other methods that depend upon use of the presumed abstract methods. (this is the example of *template method design patter*)
+
+So.. When an abstract base class provides concrete methods that depend on the use of presumed abstract methods, which will be implemented by concrete classes.
 
 * HW Solutions
 ** Ch 8
@@ -869,3 +1684,20 @@ Defining an _Item class to ensure that each element remained paired with its ass
 3) Proposition 4: Heigh of nonempty tree is equal to the maximum of the depths of its leaf positions. Because the height of tree is = to the height of the root. Which by the definition is one more than the maximum of the heights of its children. and the max height of the children is the max depth of a leaf.
 5) Given a T. Recurse the tree in order. For node in T.inorder(): if T.right(node) is None and T.left(node) is not None and not T.children(T.left(node)) count += 1
 6) 
+
+** Ch 9 Priority Queues
+1. How long would it take to remove the ceil(logn) semallest element from a heap that contains n entries, using the remove_min() R: Log 2n?
+2. Suppose you label each position p of a binary tree T with a key equal to its preorder rank. Under what circumstances is T a heap? R: If it's a min heap. Becase the root will have a lower rank than the children. And if it is complete.
+3. 1, 3, 4, 5, 2, 6
+4. PQ ordered list based. Because there may not be a time constrain for insterting, while it may be necessary to extract the min in O(1). If both need to be equally efficient, then a heap would be best.
+5. To make the min method in the UnsortedPriorityQueue class execute in O(1) instead of O(n), we.. could transform the list into a sorted one?
+6. Once we use a sorted list and the min method runs in O(1), then remove min is the same.
+7. How would selection sort execute: (22, 15, 36, 44, 10, 3, 9, 13, 29, 25) R: It would pass that collection in the same order to a PQ. With a total of O(n) operations. Then in the second phase, it would select the min of the pq (which runs in O(n-i) time) delete that element and put it in the collection in order. The total cost would be O(n^2)
+8. In insertion sort, all the work is done in phase 1. When it popleft() from the collection and puts that element in its correct order into the PQ. This operation takes 1, 2, 3, ..., n-1 comparisons at each level. In total the running time is also O(n^2)
+9. Example of worst case sequence for insertion sort? If sequence is in reverse order. Like 6,5,4,3,2,1. When 6 has no comparisons, 5 has 1 comparison, 4 has 2, 3 has 3 (is compared with 6 then 5 then 4, and so on.
+10. The thrid smallest key may be stored at the left or right child of the root.
+11. The largest key may be stored at any of the leaves of the last level.
+
+
+
+

@@ -1,0 +1,25 @@
+* Database Systems: A parctical approach to Design, Implmenetation, and Management
+
+* Part 1: Background
+Introduction to DB
+Database Environment
+The Relational Model
+Relational Algebra and Relational Calculus
+SQL: Data Manipulation
+SQL: Data DEfinition
+Query by query example (MS Access)
+Commercials RDBMSs (Oracle and Access)
+Database Planning and Design Techniques
+Fact-Finding Techniques
+Entity-relationship Modeling
+Enhanced Entity-Relationship Modeling (Aggregation, Composition)
+Normalization
+Advanced Normalization
+21 Query Processingn
+22 Distributed DBMS - Concepts and Design
+23 Distributed DBMS - Advanced Concepts
+29 Web Technology and DBMSs
+30 Semistructured Data and XML
+31 Data Warehousing Concepts
+33 OLAP Online Analytical Processing
+34 Data Minin
